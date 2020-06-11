@@ -16,6 +16,10 @@ import TableRow from "@material-ui/core/TableRow";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
+const simpleLog = (props) => {
+  console.log(props);
+};
+
 function App() {
   return (
     <Box className="App">
@@ -27,7 +31,13 @@ function App() {
 
       <Box className="project-dashboard">
         <ButtonGroup size="medium">
-          <Button>Bug</Button>
+          <Button
+            onClick={() => fetch("https://tokyopython.com/bugs").then((res) =>
+              simpleLog(res)
+            )}
+          >
+            Bug
+          </Button>
           <Button>Feature</Button>
         </ButtonGroup>
 
