@@ -4,9 +4,13 @@ import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Collapse from "@material-ui/core/Collapse";
+// import IconButton from '@material-ui/core/IconButton';
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+// import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+// import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+// import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -21,6 +25,9 @@ const simpleLog = (props) => {
 };
 
 function App() {
+  // const { row } = props;
+  // const [open, setOpen] = React.useState(false);
+  // const classes = useRowStyles();
   return (
     <Box className="App">
       <AppBar position="relative">
@@ -32,9 +39,11 @@ function App() {
       <Box className="project-dashboard">
         <ButtonGroup size="medium">
           <Button
-            onClick={() => fetch("https://tokyopython.com/bugs").then((res) =>
-              simpleLog(res)
-            )}
+            onClick={() =>
+              fetch("https://tokyopython.com/bugs").then((res) =>
+                simpleLog(res)
+              )
+            }
           >
             Bug
           </Button>
@@ -51,18 +60,37 @@ function App() {
 
         <Box>
           <TableContainer>
-            <Table>
+            <Table stickyHeader>
               <TableHead>
                 <TableRow>
-                  <TableCell>One-liner</TableCell>
-                  <TableCell>Views</TableCell>
+                  <TableCell>Bug Name</TableCell>
+                  <TableCell>View Count</TableCell>
                 </TableRow>
               </TableHead>
+
               <TableBody>
+                {/* <TableRow> */}
+                {/* <TableCell> */}
+                {/* <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}> */}
+                {/* {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} */}
+                {/* </IconButton> */}
+                {/* </TableCell> */}
+                {/* <TableCell component="th" scope="row"> */}
+                {/* Bug Name 2 */}
+                {/* </TableCell> */}
+                {/* <TableCell align="right">Assigned To</TableCell> */}
+                {/* <TableCell align="right">View Count 2</TableCell> */}
+                {/* </TableRow> */}
+
                 <TableRow>
-                  <TableCell>Example of a bug description</TableCell>
-                  <TableCell>10</TableCell>
+                  <TableCell colSpan={2}>
+                    <Collapse in={true} timeout="auto" unmountOnExit>
+                      <TableCell>Example of a bug description</TableCell>
+                      <TableCell>10</TableCell>
+                    </Collapse>
+                  </TableCell>
                 </TableRow>
+
                 <TableRow>
                   <TableCell>Example of a bug description</TableCell>
                   <TableCell>10</TableCell>
