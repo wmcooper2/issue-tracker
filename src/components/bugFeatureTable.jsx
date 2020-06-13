@@ -7,6 +7,9 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 const BugFeatureTable = (props) => {
+  console.log("BugFeatureTable props:", props);
+  const { bugs } = props;
+  console.log("bugs:", bugs);
   return (
     <TableContainer>
       <Table stickyHeader>
@@ -18,20 +21,14 @@ const BugFeatureTable = (props) => {
         </TableHead>
 
         <TableBody>
-          <TableRow>
-            <TableCell>Example of a bug description</TableCell>
-            <TableCell>10</TableCell>
-          </TableRow>
-
-          <TableRow>
-            <TableCell>Example of a bug description</TableCell>
-            <TableCell>10</TableCell>
-          </TableRow>
-
-          <TableRow>
-            <TableCell>Example of a bug description</TableCell>
-            <TableCell>10</TableCell>
-          </TableRow>
+          {bugs === null
+            ? null
+            : bugs.map((item, index) => (
+                <TableRow onClick={() => console.log(item._id)} key={index}>
+                  <TableCell>{item.name}</TableCell>
+                  <TableCell>10</TableCell>
+                </TableRow>
+              ))}
         </TableBody>
       </Table>
     </TableContainer>

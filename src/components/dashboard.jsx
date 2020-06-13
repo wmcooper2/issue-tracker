@@ -18,11 +18,12 @@ const customStyles = makeStyles({
 
 const Dashboard = (props) => {
   const classes = customStyles();
+  //   console.log("Dashboard props:", props);
   return (
     <React.Fragment>
       <Box className={classes.projectDashboard}>
         <PriorityBtns></PriorityBtns>
-        <BugFeatureTable></BugFeatureTable>
+        <BugFeatureTable {...props}></BugFeatureTable>
       </Box>
 
       <Box>
