@@ -11,6 +11,7 @@ Times are in minutes
 60 - playing with material-ui and fighting distractions from my wife. Learning how to style the components in the same file rather than use traditional CSS files. Setting up the endpoints on the server to respond with data from the forms I send in for making a new bug.
 30 - got "add-bug" POST endpoint working, adds new document to MongoDB, verified that by logging into the database through the server shell, next need to get the GET "/bugs" endpoint working and loop through the results on the dashboard component page.
 10 - wife is taking a nap so I was able to get the "/bugs" GET endpoint working quickly.
+40 - was reading through the [Redux tutorial](https://redux.js.org/basics/basic-tutorial) and got things working at the most basic level, and I added some default props to the bug table.
 
 ### 12th
 90 - thinking and planning at work, reading on Redux in my React book, sketched premliminary process at a high level how the app will get data back and forth between API server, settled on preliminary data structure for bug document in MongoDB, sketched out the kinds of actions I want to use for the bugs in Redux, and outlined in my notebook how each bug will be displayed when clicking on a list item which expands a little to show some detail and will open an overlay that shows all details on another button click.
