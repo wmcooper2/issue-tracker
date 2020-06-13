@@ -5,11 +5,12 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import {connect} from "react-redux";
 
 const BugFeatureTable = (props) => {
-  console.log("BugFeatureTable props:", props);
+  //   console.log("BugFeatureTable props:", props);
   const { bugs } = props;
-  console.log("bugs:", bugs);
+  //   console.log("bugs:", bugs);
   return (
     <TableContainer>
       <Table stickyHeader>
@@ -35,4 +36,12 @@ const BugFeatureTable = (props) => {
   );
 };
 
-export default BugFeatureTable;
+BugFeatureTable.defaultProps = {
+    bugs: [
+        {name: "bug1", _id:1},
+        {name: "bug2", _id:2},
+        {name: "bug3", _id:3}
+    ]
+};
+
+export default connect()(BugFeatureTable);

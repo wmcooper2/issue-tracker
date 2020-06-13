@@ -7,15 +7,27 @@ import BugFeatureBtnLinks from "./components/bugFeatureBtnLinks";
 import Dashboard from "./components/dashboard";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import fetch from "isomorphic-fetch";
+import { createStore } from "redux";
+import { issueReducer } from "./redux/reducers";
+import { bugList, featureList } from "./redux/actions";
+import { Provider } from "react-redux";
 
-//add redux
+//redux
+const store = createStore(issueReducer);
+console.log("initial store:", store.getState());
+const unsubscribe = store.subscribe(() => console.log(store.getState()));
+store.dispatch(bugList());
+store.dispatch(featureList());
+console.log("final store:", store.getState());
+unsubscribe();
+
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bugs: null,
-    };
-  }
+  // constructor(props) {
+  // super(props);
+  // this.state = {
+  // bugs: null,
+  // };
+  // }
 
   componentDidMount() {
     fetch("https://wmcooper2.com/bug-tracker-api/bugs")
@@ -33,20 +45,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <Box className="App">
-        <AppHeader></AppHeader>
-        <HashRouter>
-          <BugFeatureBtnLinks></BugFeatureBtnLinks>
-          <Switch>
-            <Route path="/add-bug">
-              <AddBug></AddBug>
-            </Route>
-            <Route path="/">
-              <Dashboard {...this.state}></Dashboard>
-            </Route>
-          </Switch>
-        </HashRouter>
-      </Box>
+      <Provider store={store}>
+        <Box className="App">
+          <AppHeader></AppHeader>
+          <HashRouter>
+            <BugFeatureBtnLinks></BugFeatureBtnLinks>
+            <Switch>
+              <Route path="/add-bug">
+                <AddBug></AddBug>
+              </Route>
+              <Route path="/">
+                {/* <Dashboard {...this.state}></Dashboard> */}
+                <Dashboard></Dashboard>
+              </Route>
+            </Switch>
+          </HashRouter>
+        </Box>
+      </Provider>
     );
   }
 }
