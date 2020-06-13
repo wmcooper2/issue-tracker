@@ -1,6 +1,11 @@
-* {
-  outline: 1px solid rgba(0, 0, 0, 0.2);
+:root {
+  --gray: rgba(255, 255, 255, 0.1);
 }
+
+/* @import "./css/login.css"; */
+/* * { */
+/* outline: 1px solid rgba(0, 0, 0, 0.2); */
+/* } */
 
 .project-dashboard {
   background-color: rgba(0, 0, 0, 0.1);

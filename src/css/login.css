@@ -1,0 +1,12 @@
+.loginScreen {
+  background-color: var(--gray);
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100mm;
+  align-items: center;
+  margin: auto auto;
+}
