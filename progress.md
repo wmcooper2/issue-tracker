@@ -3,6 +3,9 @@ Times are in minutes
 
 ## June
 
+### 14th
+120 - after a couple hours of fighting with Redux and trying to implement it in my app, I realized that I need to take a step back and try to understand it better. I will take the rest of the day to map out my understanding of Redux by diving into the docs and tutorials to try and make sense of this thing.
+
 ### 13th 
 20 - reading about passport, setting up passport in web-portfolio server.
 30 - realized I need to make a login and registration form for app to use passport well, I have a lot of distractions every day while I'm doing this at home because my wife doesn't understand or respect my desire to get a better job, so my real working time would be much less if I could work uninterrupted..., I started making a login form using material-ui.

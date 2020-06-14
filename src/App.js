@@ -1,42 +1,30 @@
 import React from "react";
-// import "./App.css";
 import AddBug from "./components/addBug";
 import AppHeader from "./components/appHeader";
 import Box from "@material-ui/core/Box";
 import BugFeatureBtnLinks from "./components/bugFeatureBtnLinks";
 import Dashboard from "./components/dashboard";
-import { HashRouter, Switch, Route } from "react-router-dom";
 import fetch from "isomorphic-fetch";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import { createStore } from "redux";
 import { issueReducer } from "./redux/reducers";
-import { bugList, featureList } from "./redux/actions";
 import { Provider } from "react-redux";
+import { changeToBugs, changeToFeatures, updateIssues } from "./redux/actions";
 
-//redux
 const store = createStore(issueReducer);
-console.log("initial store:", store.getState());
-const unsubscribe = store.subscribe(() => console.log(store.getState()));
-store.dispatch(bugList());
-store.dispatch(featureList());
-console.log("final store:", store.getState());
-unsubscribe();
-
 class App extends React.Component {
-  // constructor(props) {
-  // super(props);
-  // this.state = {
-  // bugs: null,
-  // };
-  // }
-
   componentDidMount() {
+    console.log("App, DidMount, before fetch, store:", store.getState());
     fetch("https://wmcooper2.com/bug-tracker-api/bugs")
       .then((response) => response.json())
       .then((result) => {
-        // console.log("BUGS: ", result);
-        this.setState({
-          bugs: result,
-        });
+        console.log("Action updateIssues, fetch:", result);
+        // pass results to updateIssues action creator?
+        // dispatch updateIssues to store?
+        store.dispatch(updateIssues(result));
+        // store.dispatch(changeToFeatures());
+        // store.dispatch(changeToBugs());
+        console.log("After dispatch, store:", store.getState());
       })
       .catch((error) => {
         console.error(error);
@@ -55,7 +43,6 @@ class App extends React.Component {
                 <AddBug></AddBug>
               </Route>
               <Route path="/">
-                {/* <Dashboard {...this.state}></Dashboard> */}
                 <Dashboard></Dashboard>
               </Route>
             </Switch>

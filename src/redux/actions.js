@@ -1,14 +1,25 @@
-export const BUG_LIST = "BUG_LIST";
-export const FEATURE_LIST = "FEATURE_LIST";
+export const BUGS = "CHANGE_TO_BUGS";
+export const DEFAULT = "INITIALIZED_TO_DEFAULT";
+export const FEATURES = "CHANGE_TO_FEATURES";
+export const UPDATE_ISSUES = "UPDATE_ISSUES";
 
-export const bugList = () => {
+//action creators
+export const changeToBugs = () => {
   return {
-    type: BUG_LIST,
+    type: BUGS,
   };
 };
 
-export const featureList = () => {
+export const changeToFeatures = () => {
   return {
-    type: FEATURE_LIST,
+    type: FEATURES,
+  };
+};
+
+export const updateIssues = (issues) => {
+  console.log("Action Creator, updateIssues:", issues);
+  return {
+    type: UPDATE_ISSUES,
+    issues: issues,
   };
 };

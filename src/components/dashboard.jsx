@@ -1,6 +1,5 @@
 import React from "react";
-// import BugFeatureBtns from "./bugFeatureBtns";
-import BugFeatureTable from "./bugFeatureTable";
+import IssueTable from "./issueTable";
 import Box from "@material-ui/core/Box";
 import List from "@material-ui/core/List";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -19,13 +18,11 @@ const customStyles = makeStyles({
 
 const Dashboard = (props) => {
   const classes = customStyles();
-  //   console.log("Dashboard props:", props);
   return (
     <React.Fragment>
       <Box className={classes.projectDashboard}>
         <PriorityBtns></PriorityBtns>
-        {/* <BugFeatureTable {...props}></BugFeatureTable> */}
-        <BugFeatureTable></BugFeatureTable>
+        <IssueTable></IssueTable>
       </Box>
 
       <Box>
