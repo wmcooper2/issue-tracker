@@ -15,8 +15,7 @@ class IssueTable extends React.Component {
   //   console.log("bugs:", bugs);
   render() {
     let { issues } = this.props;
-    console.log("IssueTable, Issues:", issues);
-    console.log("Typeof issues:", typeof issues);
+    console.log("IssueTable, Type & Issues:", typeof issues, issues);
     return (
       <TableContainer>
         <Table stickyHeader>

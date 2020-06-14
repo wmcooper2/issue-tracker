@@ -1,42 +1,26 @@
-import { BUGS, DEFAULT, FEATURES, UPDATE_ISSUES } from "./actions";
-// import { BUGS_URL, FEATURES_URL } from "../utilities/constants";
-// import { updateIssues } from "./actions";
+import { BUGS, FEATURES, UPDATE_ISSUES } from "./actions";
 
-// const initialState = "empty";
-const initialState = {
-  type: DEFAULT,
-  issueType: "none",
-  issues: [
-    { name: "default1", _id: "1" },
-    { name: "default2", _id: "2" },
-    { name: "default3", _id: "3" },
-  ],
-};
-
-export const issueReducer = (state = initialState, action) => {
+//a reducer can return any type, here they return a string and an array.
+export const issueType = (state = "", action) => {
   switch (action.type) {
     case BUGS:
-      return {
-        ...state,
-        issueType: BUGS,
-      };
+      return { issueType: BUGS };
       break;
-
     case FEATURES:
-      return {
-        ...state,
-        issueType: FEATURES,
-      };
+      return { issueType: FEATURES };
       break;
-
-    case UPDATE_ISSUES:
-      return {
-        ...state,
-        issueType: UPDATE_ISSUES,
-        issues: state,
-      };
-
     default:
-      return state;
+      return "";
+  }
+};
+
+export const issues = (state = [], action) => {
+  switch (action.type) {
+    case UPDATE_ISSUES:
+      return [...action.issues];
+      break;
+    default:
+      //   return [{ name: "default issue reducer bug", _id: "oiuo55" }];
+      return [];
   }
 };

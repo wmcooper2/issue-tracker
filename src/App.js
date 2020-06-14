@@ -5,23 +5,33 @@ import Box from "@material-ui/core/Box";
 import BugFeatureBtnLinks from "./components/bugFeatureBtnLinks";
 import Dashboard from "./components/dashboard";
 import fetch from "isomorphic-fetch";
-import { HashRouter, Switch, Route } from "react-router-dom";
-import { createStore } from "redux";
-import { issueReducer } from "./redux/reducers";
-import { Provider } from "react-redux";
-import { changeToBugs, changeToFeatures, updateIssues } from "./redux/actions";
 
-const store = createStore(issueReducer);
+import { HashRouter, Switch, Route } from "react-router-dom";
+import { initialState } from "./redux/initialState";
+import { changeToBugs, changeToFeatures, updateIssues } from "./redux/actions";
+import { issues, issueType } from "./redux/reducers";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
+
+// const store = createStore(issueReducer);
+const store = createStore(combineReducers({ issues, issueType }), initialState);
+console.log("Initial Store:", store.getState());
+
 class App extends React.Component {
   componentDidMount() {
-    console.log("App, DidMount, before fetch, store:", store.getState());
     fetch("https://wmcooper2.com/bug-tracker-api/bugs")
       .then((response) => response.json())
       .then((result) => {
         console.log("Action updateIssues, fetch:", result);
-        // pass results to updateIssues action creator?
-        // dispatch updateIssues to store?
+
+        console.log("Before dispatch, store:", store.getState());
+        const testaction = [
+          { type: "UPDATE_ISSUES", issues: [{name: "direct test", _id: "fake id" }]},
+        ];
+        // store.dispatch(updateIssues(testaction));
+
         store.dispatch(updateIssues(result));
+
         // store.dispatch(changeToFeatures());
         // store.dispatch(changeToBugs());
         console.log("After dispatch, store:", store.getState());
