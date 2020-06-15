@@ -4,11 +4,11 @@ import { BUGS, PRIORITY_A } from "../utilities/constants";
 export const initialState = {
   issueType: BUGS,
   issues: [
-    { name: "default bug 1", _id: "1" },
-    { name: "default bug 2", _id: "2" },
-    { name: "default bug 3", _id: "3" },
+    { name: "initialState bug 1", _id: "1" },
+    { name: "initialState bug 2", _id: "2" },
+    { name: "initialState bug 3", _id: "3" },
   ],
-  issue: { name: "default selected issue", _id: "lksjfe" },
+  issue: { name: "initialState issue", _id: "1" },
   priority: PRIORITY_A,
 };
 

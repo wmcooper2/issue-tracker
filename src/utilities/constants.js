@@ -1,5 +1,7 @@
-export const BUGS_URL = "https://wmcooper2.com/bug-tracker-api/bugs";
-export const FEATURES_URL = "https://wmcooper2.com/bug-tracker-api/features";
+export const BUGS_URL = "https://wmcooper2.com/issue-tracker-api/bugs";
+export const FEATURES_URL = "https://wmcooper2.com/issue-tracker-api/features";
+export const DELETE_URL =
+  "https://wmcooper2.com/issue-tracker-api/delete-issue";
 
 export const BUGS = "BUGS";
 export const FEATURES = "FEATURES";

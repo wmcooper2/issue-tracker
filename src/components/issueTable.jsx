@@ -9,8 +9,11 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import { changeToBugs, updateIssues, changeToFeatures } from "../redux/actions";
 
 import { connect } from "react-redux";
+
+import { DELETE_URL } from "../utilities/constants";
 // import { selectIssue } from "../redux/actions";
 
 //the maxHeight property forces the scroll ability to show up when the list exceeds the given height
@@ -19,7 +22,9 @@ const customStyles = makeStyles({
 });
 
 const IssueTable = (props) => {
-  const { rowClick, issues } = props;
+  const { rowClick, issues, issueType } = props;
+  const title = issueType.issueType;
+  // console.log("IssueTable:", issueType.issueType);
   const Rows = () => {
     if (issues.issues !== undefined) {
       return issues.issues.map((item, index) => (
@@ -40,7 +45,7 @@ const IssueTable = (props) => {
         <Table stickyHeader>
           <TableHead>
             <TableRow>
-              <TableCell>Bug Name</TableCell>
+              <TableCell>{title}</TableCell>
               <TableCell>View Count</TableCell>
             </TableRow>
           </TableHead>
@@ -56,12 +61,19 @@ const IssueTable = (props) => {
 
 //the issues in the body match the props that the IssueTable uses
 //the destructured issues in the argument are what you want to pull from the store
-const mapStateToProps = ({ issues }) => ({
+const mapStateToProps = ({ issues, issueType }) => ({
   issues,
+  issueType,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  rowClick: (id) => console.log("Row Click:", id),
+  // rowClick: (id) => console.log("Row Click:", id),
+  // rowClick: (id) => fetch(`${DELETE_URL}/${id}`, { method: "POST", issueid: id }),
+  rowClick: (id) => {
+    fetch(`${DELETE_URL}/${id}`, { method: "POST" });
+    dispatch(updateIssues());
+    dispatch(changeToBugs());
+  },
 });
 
 IssueTable.propTypes = {

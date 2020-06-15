@@ -7,11 +7,14 @@ import PriorityBtns from "./priorityBtns";
 import { connect } from "react-redux";
 
 const AddIssue = (props) => {
+  // console.log("Props:", props);
   const issueType = props.issueType.issueType;
+  console.log("Issue Type:", issueType);
   return (
-    <Box onClick={() => props.formClick(issueType)}>
+    // <Box onClick={() => props.formClick(issueType)}>
+    <Box>
       <form
-        action="https://wmcooper2.com/bug-tracker-api/add-bug"
+        action="https://wmcooper2.com/issue-tracker-api/add-issue"
         method="POST"
       >
         <FormGroup>
@@ -19,9 +22,9 @@ const AddIssue = (props) => {
         </FormGroup>
         <FormGroup>
           <Input
-            placeholder="Bug Name"
+            placeholder="Issue Name"
             variant="outlined"
-            name="bugName"
+            name="issueName"
           ></Input>
           <Input
             placeholder="Category"
@@ -40,7 +43,7 @@ const mapStateToProps = ({ issueType }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  formClick: (data) => console.log("Form Click:", data),
+  // formClick: (data) => console.log("Form Click:", data),
 });
 
 // export default AddIssue;

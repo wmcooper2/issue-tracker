@@ -2,14 +2,13 @@ import React from "react";
 import AddIssue from "./components/addIssue";
 import AppHeader from "./components/appHeader";
 import Box from "@material-ui/core/Box";
-import BugFeatureBtnLinks from "./components/bugFeatureBtnLinks";
+import IssueBtnLinks from "./components/issueBtnLinks";
 import Dashboard from "./components/dashboard";
 import fetch from "isomorphic-fetch";
 
 import { HashRouter, Switch, Route } from "react-router-dom";
 import { initialState } from "./redux/initialState";
 import { changeToBugs, updateIssues } from "./redux/actions";
-// import { updateIssues } from "./redux/actions";
 import {
   issuesReducer,
   issueType,
@@ -19,7 +18,6 @@ import {
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 
-// combineReducers({ issuesReducer, issueType, selectIssueReducer }),
 const store = createStore(
   combineReducers({
     issues: issuesReducer,
@@ -32,22 +30,16 @@ const store = createStore(
 
 class App extends React.Component {
   componentDidMount() {
-    fetch("https://wmcooper2.com/bug-tracker-api/bugs")
+    //on first initialization, loads bugs, what about later redirects back here?
+    fetch("https://wmcooper2.com/issue-tracker-api/bugs")
       .then((response) => response.json())
       .then((result) => {
-        // console.log("Fetch result:", result);
-        // let issues = updateIssues(result);
-        // console.log("Fetch issues:", issues);
-        // store.dispatch(issues);
+        store.dispatch(changeToBugs());
         store.dispatch(updateIssues(result));
       })
       .catch((error) => {
         console.error(error);
       });
-    store.dispatch(changeToBugs());
-
-    // console.log("Store1:", store.getState());
-    // setTimeout(() => console.log("Store2:", store.getState()), 3000);
   }
 
   render() {
@@ -55,10 +47,10 @@ class App extends React.Component {
       <Provider store={store}>
         <Box className="App">
           <AppHeader></AppHeader>
-          <HashRouter>
-            <BugFeatureBtnLinks></BugFeatureBtnLinks>
+          <HashRouter basename={process.env.PUBLIC_URL}>
+            <IssueBtnLinks></IssueBtnLinks>
             <Switch>
-              <Route path="/add-bug">
+              <Route path="/add-issue">
                 <AddIssue></AddIssue>
               </Route>
               <Route path="/">
