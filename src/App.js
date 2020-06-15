@@ -8,37 +8,46 @@ import fetch from "isomorphic-fetch";
 
 import { HashRouter, Switch, Route } from "react-router-dom";
 import { initialState } from "./redux/initialState";
-import { changeToBugs, changeToFeatures, updateIssues } from "./redux/actions";
-import { issues, issueType } from "./redux/reducers";
+import { changeToBugs, updateIssues } from "./redux/actions";
+// import { updateIssues } from "./redux/actions";
+import {
+  issuesReducer,
+  issueType,
+  selectIssueReducer,
+  priorityReducer,
+} from "./redux/reducers";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 
-// const store = createStore(issueReducer);
-const store = createStore(combineReducers({ issues, issueType }), initialState);
-console.log("Initial Store:", store.getState());
+// combineReducers({ issuesReducer, issueType, selectIssueReducer }),
+const store = createStore(
+  combineReducers({
+    issues: issuesReducer,
+    issueType: issueType,
+    issue: selectIssueReducer,
+    priority: priorityReducer,
+  }),
+  initialState
+);
 
 class App extends React.Component {
   componentDidMount() {
     fetch("https://wmcooper2.com/bug-tracker-api/bugs")
       .then((response) => response.json())
       .then((result) => {
-        console.log("Action updateIssues, fetch:", result);
-
-        console.log("Before dispatch, store:", store.getState());
-        const testaction = [
-          { type: "UPDATE_ISSUES", issues: [{name: "direct test", _id: "fake id" }]},
-        ];
-        // store.dispatch(updateIssues(testaction));
-
-        store.dispatch(updateIssues(result));
-
-        // store.dispatch(changeToFeatures());
-        // store.dispatch(changeToBugs());
-        console.log("After dispatch, store:", store.getState());
+        // console.log("Fetch result:", result);
+        let issues = updateIssues(result);
+        // console.log("Fetch issues:", issues);
+        store.dispatch(issues);
+        // store.dispatch(updateIssues(result));
       })
       .catch((error) => {
         console.error(error);
       });
+    store.dispatch(changeToBugs());
+
+    // console.log("Store1:", store.getState());
+    // setTimeout(() => console.log("Store2:", store.getState()), 3000);
   }
 
   render() {

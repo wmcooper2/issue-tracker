@@ -5,7 +5,7 @@ import List from "@material-ui/core/List";
 import ListItemText from "@material-ui/core/ListItemText";
 import PriorityBtns from "./priorityBtns";
 import { makeStyles } from "@material-ui/core/styles";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 const customStyles = makeStyles({
   projectDashboard: {},
@@ -49,4 +49,5 @@ const Dashboard = (props) => {
   );
 };
 
-export default connect()(Dashboard);
+// export default connect()(Dashboard);
+export default Dashboard;

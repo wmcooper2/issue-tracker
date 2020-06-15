@@ -3,6 +3,11 @@ Times are in minutes
 
 ## June
 
+### 15th
+180 - I wasted waaaaaaaay too much time because of a simple, stupidly small detail that I forgot. I struggled trying to figure out why I kept getting errors with undefined and trying to map through an undefined object. I was getting two different states of objects as the component's property was being updated from the default to the result from the API. The state would change and the component would update as a result, but the map function in the component would crash the app when it got undefined. Finally, I got suspicious of my understanding of the fundamentals and I remembered something. I went back to the documentation and I felt so stupid. My problem was that undefined is not the same as "undefined". I was getting two different undefined values in the console but that small detail just went right past me. I looked in my books too (the ones that I had when I was just starting out with JavaScript) and I even made a note about that in there. I feel that had I been working on a team, that if I had other people to help catch these small errors, then my progress would be faster in this regard (there are pros and cons with teams, but perhaps the team members would be helpful in finding these lapses in knowledge that form over time).  
+
+I finally got it straightened out and the app works normally. I feel dumb.
+
 ### 14th
 120 - after a couple hours of fighting with Redux and trying to implement it in my app, I realized that I need to take a step back and try to understand it better. I will take the rest of the day to map out my understanding of Redux by diving into the docs and tutorials to try and make sense of this thing.
 

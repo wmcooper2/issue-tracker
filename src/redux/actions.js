@@ -1,7 +1,5 @@
-export const BUGS = "CHANGE_TO_BUGS";
-export const FEATURES = "CHANGE_TO_FEATURES";
-export const UPDATE_ISSUES = "UPDATE_ISSUES";
-
+import { BUGS, FEATURES, SELECT_ISSUE, UPDATE_ISSUES} from "../utilities/constants";
+    
 //ACTION CREATOR, returns an ACTION (JavaScript object)
 export const changeToBugs = () => {
   //this is the ACTION, JavaScript object
@@ -10,7 +8,7 @@ export const changeToBugs = () => {
   };
 };
 
-//ACTION CREATOR, returns an ACTION (JavaScript object)
+//ACTION CREATOR
 export const changeToFeatures = () => {
   //this is the ACTION, JavaScript object
   return {
@@ -18,11 +16,19 @@ export const changeToFeatures = () => {
   };
 };
 
-//ACTION CREATOR, returns an ACTION (JavaScript object)
+//ACTION CREATOR
 export const updateIssues = (payload) => {
-  //this ACTION has a payload of "issues" which is an array of {name: "string", _id: "string"}
+  //this ACTION has a payload of "issues" which is an array of objects [{name: "string", _id: "string"}]
   return {
     type: UPDATE_ISSUES,
     issues: payload,
+  };
+};
+
+//ACTION CREATOR
+export const selectIssue = (issue) => {
+  return {
+    type: SELECT_ISSUE,
+    issue: issue,
   };
 };
