@@ -11,7 +11,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 import { connect } from "react-redux";
-import { selectIssue } from "../redux/actions";
+// import { selectIssue } from "../redux/actions";
 
 //the maxHeight property forces the scroll ability to show up when the list exceeds the given height
 const customStyles = makeStyles({
@@ -19,7 +19,7 @@ const customStyles = makeStyles({
 });
 
 const IssueTable = (props) => {
-  const { rowClick, tableClick, issues } = props;
+  const { rowClick, issues } = props;
   const Rows = () => {
     if (issues.issues !== undefined) {
       return issues.issues.map((item, index) => (
@@ -36,10 +36,7 @@ const IssueTable = (props) => {
   const classes = customStyles();
   return (
     <Paper>
-      <TableContainer
-        onClick={() => tableClick(issues)}
-        className={classes.table}
-      >
+      <TableContainer className={classes.table}>
         <Table stickyHeader>
           <TableHead>
             <TableRow>
@@ -59,14 +56,12 @@ const IssueTable = (props) => {
 
 //the issues in the body match the props that the IssueTable uses
 //the destructured issues in the argument are what you want to pull from the store
-// const mapStateToProps = ({ issues }) => ({
 const mapStateToProps = ({ issues }) => ({
   issues,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   rowClick: (id) => console.log("Row Click:", id),
-  tableClick: (issues) => console.log("Table Click:", issues),
 });
 
 IssueTable.propTypes = {

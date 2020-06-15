@@ -1,5 +1,5 @@
 import React from "react";
-import AddBug from "./components/addBug";
+import AddIssue from "./components/addIssue";
 import AppHeader from "./components/appHeader";
 import Box from "@material-ui/core/Box";
 import BugFeatureBtnLinks from "./components/bugFeatureBtnLinks";
@@ -36,10 +36,10 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((result) => {
         // console.log("Fetch result:", result);
-        let issues = updateIssues(result);
+        // let issues = updateIssues(result);
         // console.log("Fetch issues:", issues);
-        store.dispatch(issues);
-        // store.dispatch(updateIssues(result));
+        // store.dispatch(issues);
+        store.dispatch(updateIssues(result));
       })
       .catch((error) => {
         console.error(error);
@@ -59,7 +59,7 @@ class App extends React.Component {
             <BugFeatureBtnLinks></BugFeatureBtnLinks>
             <Switch>
               <Route path="/add-bug">
-                <AddBug></AddBug>
+                <AddIssue></AddIssue>
               </Route>
               <Route path="/">
                 <Dashboard></Dashboard>
