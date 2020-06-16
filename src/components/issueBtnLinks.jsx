@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import AddIcon from "@material-ui/icons/Add";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import Button from "@material-ui/core/Button";
-import EditIcon from "@material-ui/icons/Edit";
-import Fab from "@material-ui/core/Fab";
-import { changeToBugs, changeToFeatures } from "../redux/actions";
+import FeatureButton from "./featureButton";
+import BugButton from "./bugButton";
+//
+// import Button from "@material-ui/core/Button";
+// import { Link } from "react-router-dom";
+// import { AddButton } from "./addButton";
+// import { EditButton } from "./editButton";
+// import { changeToBugs } from "../redux/actions";
 
 const customStyles = makeStyles({
   buttonGroup: { minHeight: "10mm", margin: "1rem" },
@@ -31,41 +33,14 @@ const customStyles = makeStyles({
 
 const IssueBtns = (props) => {
   const classes = customStyles();
-  const { bugClick, featureClick } = props;
   return (
     <React.Fragment>
       <ButtonGroup className={classes.buttonGroup}>
-        <Button className={classes.bugButton}>
-          <Link
-            to="/bugs"
-            className={classes.linkStyle}
-            onClick={() => bugClick()}
-          >
-            Bugs
-          </Link>
-        </Button>
-
-        <Button className={classes.featureButton}>
-          <Link
-            to="/features"
-            className={classes.linkStyle}
-            onClick={() => featureClick()}
-          >
-            Features
-          </Link>
-        </Button>
+        <BugButton></BugButton>
+        <FeatureButton></FeatureButton>
       </ButtonGroup>
-
-      <Link to="/add-issue">
-        <Fab size="small" aria-label="add">
-          <AddIcon />
-        </Fab>
-      </Link>
-      <Link to="/edit-issue">
-        <Fab size="small" aria-label="edit">
-          <EditIcon />
-        </Fab>
-      </Link>
+      {/* <AddButton></AddButton> */}
+      {/* <EditButton></EditButton> */}
     </React.Fragment>
   );
 };
@@ -74,14 +49,6 @@ const mapStateToProps = ({ issueType }) => ({
   issueType,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  featureClick: () => {
-    dispatch(changeToFeatures());
-  },
-  bugClick: () => {
-    dispatch(changeToBugs());
-  },
-});
+const mapDispatchToProps = (dispatch) => ({});
 
-// export default connect(mapDispatchToProps)(IssueBtns);
 export default connect(mapStateToProps, mapDispatchToProps)(IssueBtns);

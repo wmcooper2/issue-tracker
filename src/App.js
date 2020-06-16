@@ -26,6 +26,8 @@ const store = createStore(
     priority: priorityReducer,
   }),
   initialState
+  /* preloadedState, */
++  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 class App extends React.Component {
@@ -45,18 +47,24 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Box className="App">
+        <Box>
           <AppHeader></AppHeader>
-          <HashRouter basename={process.env.PUBLIC_URL}>
-            <IssueBtnLinks></IssueBtnLinks>
-            <Switch>
-              <Route path="/add-issue">
-                <AddIssue></AddIssue>
-              </Route>
-              <Route path="/">
-                <Dashboard></Dashboard>
-              </Route>
-            </Switch>
+          {/* <HashRouter basename={process.env.PUBLIC_URL}> */}
+          <HashRouter>
+            <Box
+              component="div"
+              className={{ display: "flex", flexDirection: "column" }}
+            >
+              <IssueBtnLinks></IssueBtnLinks>
+              <Switch>
+                <Route path="/add-issue">
+                  <AddIssue></AddIssue>
+                </Route>
+                <Route path="/">
+                  <Dashboard></Dashboard>
+                </Route>
+              </Switch>
+            </Box>
           </HashRouter>
         </Box>
       </Provider>

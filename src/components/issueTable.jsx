@@ -9,11 +9,12 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { changeToBugs, updateIssues, changeToFeatures } from "../redux/actions";
+import { selectIssue } from "../redux/actions";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
-import { DELETE_URL } from "../utilities/constants";
+import { DELETE_URL, DEFAULT_ISSUE } from "../utilities/constants";
 // import { selectIssue } from "../redux/actions";
 
 //the maxHeight property forces the scroll ability to show up when the list exceeds the given height
@@ -22,14 +23,17 @@ const customStyles = makeStyles({
 });
 
 const IssueTable = (props) => {
+  const classes = customStyles();
   const { rowClick, issues, issueType } = props;
   const title = issueType.issueType;
   // console.log("IssueTable:", issueType.issueType);
   const Rows = () => {
     if (issues.issues !== undefined) {
-      return issues.issues.map((item, index) => (
-        <TableRow onClick={() => rowClick(item._id)} key={index}>
-          <TableCell>{item.name}</TableCell>
+      return issues.issues.map((issue, index) => (
+        <TableRow onClick={() => rowClick(issue)} key={index}>
+          <TableCell>
+            <Link to="/add-issue">{issue.name}</Link>
+          </TableCell>
           <TableCell>10</TableCell>
         </TableRow>
       ));
@@ -38,7 +42,6 @@ const IssueTable = (props) => {
     }
   };
 
-  const classes = customStyles();
   return (
     <Paper>
       <TableContainer className={classes.table}>
@@ -67,12 +70,12 @@ const mapStateToProps = ({ issues, issueType }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  // rowClick: (id) => console.log("Row Click:", id),
-  // rowClick: (id) => fetch(`${DELETE_URL}/${id}`, { method: "POST", issueid: id }),
-  rowClick: (id) => {
-    fetch(`${DELETE_URL}/${id}`, { method: "POST" });
-    dispatch(updateIssues());
-    dispatch(changeToBugs());
+  rowClick: (issue) => {
+    // fetch(`${DELETE_URL}/${issue._id}`, { method: "POST" });
+    dispatch(selectIssue(issue));
+    // dispatch(updateIssues());
+    // dispatch(changeToBugs());
+    // console.log("IssueTable, mdtp, issue:", issue);
   },
 });
 
@@ -81,11 +84,7 @@ IssueTable.propTypes = {
 };
 
 IssueTable.defaultProps = {
-  issues: [
-    { name: "local default props 1", _id: "1" },
-    { name: "local default props 2", _id: "2" },
-    { name: "local default props 3", _id: "3" },
-  ],
+  issues: [DEFAULT_ISSUE, DEFAULT_ISSUE, DEFAULT_ISSUE],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(IssueTable);

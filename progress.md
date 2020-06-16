@@ -3,6 +3,9 @@ Times are in minutes
 
 ## June
 
+### 16th
+240 - having a really tough time trying to figure out what the heck is going on with redux's store and why the change to my store is not triggering an update in the component that uses it even though the mapStateToProps and mapDispatchToProps are there and they work fine. I'm really sure that there is no issue with my reducers. wtf.
+
 ### 15th
 180 - I wasted waaaaaaaay too much time because of a simple, stupidly small detail that I forgot. I struggled trying to figure out why I kept getting errors with undefined and trying to map through an undefined object. I was getting two different states of objects as the component's property was being updated from the default to the result from the API. The state would change and the component would update as a result, but the map function in the component would crash the app when it got undefined. Finally, I got suspicious of my understanding of the fundamentals and I remembered something. I went back to the documentation and I felt so stupid. My problem was that undefined is not the same as "undefined". I was getting two different undefined values in the console but that small detail just went right past me. I looked in my books too (the ones that I had when I was just starting out with JavaScript) and I even made a note about that in there. I feel that had I been working on a team, that if I had other people to help catch these small errors, then my progress would be faster in this regard (there are pros and cons with teams, but perhaps the team members would be helpful in finding these lapses in knowledge that form over time).  
 120 - with much distraction (from my wife), I was able to get the database to delete issues through the API endpoint. Next I need to get the state to change and trigger an update on the screen to rerender the new state.
