@@ -13,9 +13,25 @@ import { updateIssues } from "../redux/actions";
 const AddIssue = (props) => {
   const { closeClick, issue, issueType } = props;
   // console.log("AddIssue, props.issue", props.issue);
-  // console.log("AddIssue, props:", props);
-  console.log("AddIssue, issue", issue);
-  console.log("AddIssue, issueType:", issueType);
+  console.log("AddIssue, props:", props);
+  // console.log("AddIssue, issue", issue);
+  // console.log("AddIssue, issueType:", issueType);
+
+  const type = issueType !== undefined ? issueType : null;
+  const description =
+    issue.description !== undefined ? issue.description : null;
+  const category = issue.category !== undefined ? issue.category : null;
+  const version = issue.version !== undefined ? issue.version : null;
+  const id = issue._id !== undefined ? issue._id : null;
+  const dateOpened = issue.dates !== undefined ? issue.dates.opened : null;
+  const dateLastEdited =
+    issue.dates !== undefined ? issue.dates.lastEdited : null;
+  const dateClosed = issue.dates !== undefined ? issue.dates.closed : null;
+  const personOpened = issue.people !== undefined ? issue.people.opened : null;
+  const personLastEdited =
+    issue.people !== undefined ? issue.people.lastEdited : null;
+  const personClosed = issue.people !== undefined ? issue.people.closed : null;
+
   return (
     <Box>
       <form
@@ -24,21 +40,21 @@ const AddIssue = (props) => {
       >
         <FormGroup>
           <Input
-            placeholder={`${issueType.issueType} Name`}
+            placeholder={`${type} Name`}
             variant="outlined"
             name="issueName"
           ></Input>
           <Input
-            placeholder={`${issue.issue.category}`}
+            placeholder={`${category}`}
             variant="outlined"
             name="category"
           ></Input>
           <Input
             disable="true"
-            placeholder={`Version: ${issue.issue.version}`}
+            placeholder={`Version: ${version}`}
             name="version"
           ></Input>
-          <Input disable="true" placeholder={`ID: ${issue.issue._id}`}></Input>
+          <Input disable="true" placeholder={`ID: ${id}`}></Input>
           <Box component="span">
             Priority:
             <PriorityBtns></PriorityBtns>
@@ -51,21 +67,21 @@ const AddIssue = (props) => {
             <Box>
               <Input
                 disable="true"
-                placeholder={`opened: ${issue.issue.dates.opened}`}
+                placeholder={`opened: ${dateOpened}`}
                 name="dateOpened"
               ></Input>
             </Box>
             <Box>
               <Input
                 disable="true"
-                placeholder={`last edited: ${issue.issue.dates.lastEdited}`}
+                placeholder={`last edited: ${dateLastEdited}`}
                 name="dateLastEdited"
               ></Input>
             </Box>
             <Box>
               <Input
                 disable="true"
-                placeholder={`closed: ${issue.issue.dates.closed}`}
+                placeholder={`closed: ${dateClosed}`}
                 name="dateClosed"
               ></Input>
             </Box>
@@ -78,21 +94,21 @@ const AddIssue = (props) => {
             <Box>
               <Input
                 disable="true"
-                placeholder={`opened: ${issue.issue.people.opened}`}
+                placeholder={`opened: ${personOpened}`}
                 name="peopleOpened"
               ></Input>
             </Box>
             <Box>
               <Input
                 disable="true"
-                placeholder={`last edited: ${issue.issue.people.lastEdited}`}
+                placeholder={`last edited: ${personLastEdited}`}
                 name="peopleLastEdited"
               ></Input>
             </Box>
             <Box>
               <Input
                 disable="true"
-                placeholder={`closed: ${issue.issue.people.closed}`}
+                placeholder={`closed: ${personClosed}`}
                 name="peopleClosed"
               ></Input>
             </Box>
@@ -103,7 +119,7 @@ const AddIssue = (props) => {
           <Box>
             Description:
             <TextareaAutosize
-              defaultValue={issue.issue.description}
+              defaultValue={description}
               name="description"
             ></TextareaAutosize>
           </Box>

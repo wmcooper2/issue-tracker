@@ -23,13 +23,15 @@ const customStyles = makeStyles({
 });
 
 const IssueTable = (props) => {
+  console.log("IssueTable, props:", props);
   const classes = customStyles();
   const { rowClick, issues, issueType } = props;
-  const title = issueType.issueType;
+  // const title = issueType.issueType;
   // console.log("IssueTable:", issueType.issueType);
+  console.log("IssueTable, issues:", issues);
   const Rows = () => {
-    if (issues.issues !== undefined) {
-      return issues.issues.map((issue, index) => (
+    if (issues !== undefined) {
+      return issues.map((issue, index) => (
         <TableRow onClick={() => rowClick(issue)} key={index}>
           <TableCell>
             <Link to="/add-issue">{issue.name}</Link>
@@ -48,13 +50,13 @@ const IssueTable = (props) => {
         <Table stickyHeader>
           <TableHead>
             <TableRow>
-              <TableCell>{title}</TableCell>
+              <TableCell>{issueType}</TableCell>
               <TableCell>View Count</TableCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
-            <Rows props={issues.issues}></Rows>
+            <Rows props={issues}></Rows>
           </TableBody>
         </Table>
       </TableContainer>

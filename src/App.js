@@ -15,20 +15,42 @@ import {
   selectIssueReducer,
   priorityReducer,
 } from "./redux/reducers";
+import { reducer } from "./redux/reducers2";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 
-const store = createStore(
+const store2 = createStore(
   combineReducers({
     issues: issuesReducer,
     issueType: issueType,
     issue: selectIssueReducer,
     priority: priorityReducer,
   }),
-  initialState
-  /* preloadedState, */
-+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  initialState +
+    /* preloadedState, */
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+//GOOGLE CHROME, above line
+
+const store3 = createStore(
+  combineReducers({
+    issuesReducer,
+    issueType,
+    selectIssueReducer,
+    priorityReducer,
+  }),
+  initialState +
+    /* preloadedState, */
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+//GOOGLE CHROME, above line
+
+const store = createStore(
+  reducer,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+//GOOGLE CHROME, above line
 
 class App extends React.Component {
   componentDidMount() {
@@ -42,6 +64,7 @@ class App extends React.Component {
       .catch((error) => {
         console.error(error);
       });
+    console.log("App, store:", store.getState());
   }
 
   render() {
