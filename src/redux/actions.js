@@ -1,4 +1,5 @@
 import {
+  ADD_NEW_ISSUE,
   BUGS,
   FEATURES,
   SELECT_ISSUE,
@@ -28,5 +29,12 @@ export const selectIssue = (payload) => {
   return {
     type: SELECT_ISSUE,
     issue: payload,
+  };
+};
+
+export const addNewIssue = (payload) => {
+  return {
+    type: ADD_NEW_ISSUE,
+    issueType: payload,
   };
 };

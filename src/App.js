@@ -1,49 +1,23 @@
 import React from "react";
+import AddButton from "./components/addButton";
 import AddIssue from "./components/addIssue";
 import AppHeader from "./components/appHeader";
 import Box from "@material-ui/core/Box";
-import IssueBtnLinks from "./components/issueBtnLinks";
+// import IssueBtnLinks from "./components/issueBtnLinks";
 import Dashboard from "./components/dashboard";
 import fetch from "isomorphic-fetch";
+
+// import { makeStyles } from "@material-ui/core/styles";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import FeatureButton from "./components/featureButton";
+import BugButton from "./components/bugButton";
 
 import { HashRouter, Switch, Route } from "react-router-dom";
 import { initialState } from "./redux/initialState";
 import { changeToBugs, updateIssues } from "./redux/actions";
-import {
-  issuesReducer,
-  issueType,
-  selectIssueReducer,
-  priorityReducer,
-} from "./redux/reducers";
-import { reducer } from "./redux/reducers2";
-import { createStore, combineReducers } from "redux";
+import { reducer } from "./redux/reducers";
+import { createStore } from "redux";
 import { Provider } from "react-redux";
-
-const store2 = createStore(
-  combineReducers({
-    issues: issuesReducer,
-    issueType: issueType,
-    issue: selectIssueReducer,
-    priority: priorityReducer,
-  }),
-  initialState +
-    /* preloadedState, */
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-//GOOGLE CHROME, above line
-
-const store3 = createStore(
-  combineReducers({
-    issuesReducer,
-    issueType,
-    selectIssueReducer,
-    priorityReducer,
-  }),
-  initialState +
-    /* preloadedState, */
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-//GOOGLE CHROME, above line
 
 const store = createStore(
   reducer,
@@ -78,7 +52,12 @@ class App extends React.Component {
               component="div"
               className={{ display: "flex", flexDirection: "column" }}
             >
-              <IssueBtnLinks></IssueBtnLinks>
+              <ButtonGroup style={{ minHeight: "10mm", margin: "1rem" }}>
+                <BugButton></BugButton>
+                <FeatureButton></FeatureButton>
+              </ButtonGroup>
+
+              <AddButton></AddButton>
               <Switch>
                 <Route path="/add-issue">
                   <AddIssue></AddIssue>

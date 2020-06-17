@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { changeToFeatures } from "../redux/actions";
+// import {BUGS} from "../utilities/constants";
 
 const customStyles = makeStyles({
   featureButton: {
@@ -30,14 +31,17 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const FeatureButton = (props) => {
+const FeatureButton = ({ issueType, featureClick }) => {
   const classes = customStyles();
   return (
-    <Button className={classes.featureButton}>
+    <Button
+      className={classes.featureButton}
+      // disabled={issueType === BUGS ? "true" : "false"}
+    >
       <Link
         to="/features"
         className={classes.linkStyle}
-        onClick={() => props.featureClick()}
+        onClick={() => featureClick()}
       >
         Feature
       </Link>

@@ -1,10 +1,12 @@
 export const BUGS_URL = "https://wmcooper2.com/issue-tracker-api/bugs";
-export const FEATURES_URL = "https://wmcooper2.com/issue-tracker-api/features";
 export const DELETE_URL =
   "https://wmcooper2.com/issue-tracker-api/delete-issue";
+export const FEATURES_URL = "https://wmcooper2.com/issue-tracker-api/features";
 
 export const BUGS = "BUG";
 export const FEATURES = "FEATURE";
+
+export const ADD_NEW_ISSUE = "ADD_NEW_ISSUE";
 export const SELECT_ISSUE = "SELECT_ISSUE";
 export const UPDATE_ISSUES = "UPDATE_ISSUES";
 

@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { DELETE_URL, DEFAULT_ISSUE } from "../utilities/constants";
-// import { selectIssue } from "../redux/actions";
 
 //the maxHeight property forces the scroll ability to show up when the list exceeds the given height
 const customStyles = makeStyles({
@@ -23,12 +22,10 @@ const customStyles = makeStyles({
 });
 
 const IssueTable = (props) => {
-  console.log("IssueTable, props:", props);
+  // console.log("IssueTable, props:", props);
   const classes = customStyles();
   const { rowClick, issues, issueType } = props;
-  // const title = issueType.issueType;
-  // console.log("IssueTable:", issueType.issueType);
-  console.log("IssueTable, issues:", issues);
+  // console.log("IssueTable, issues:", issues);
   const Rows = () => {
     if (issues !== undefined) {
       return issues.map((issue, index) => (

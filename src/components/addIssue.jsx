@@ -12,12 +12,9 @@ import { updateIssues } from "../redux/actions";
 
 const AddIssue = (props) => {
   const { closeClick, issue, issueType } = props;
-  // console.log("AddIssue, props.issue", props.issue);
-  console.log("AddIssue, props:", props);
-  // console.log("AddIssue, issue", issue);
-  // console.log("AddIssue, issueType:", issueType);
+  // console.log("AddIssue, props:", props);
 
-  const type = issueType !== undefined ? issueType : null;
+  const name = issue.name !== undefined ? issue.name : null;
   const description =
     issue.description !== undefined ? issue.description : null;
   const category = issue.category !== undefined ? issue.category : null;
@@ -39,22 +36,18 @@ const AddIssue = (props) => {
         method="POST"
       >
         <FormGroup>
-          <Input
-            placeholder={`${type} Name`}
-            variant="outlined"
-            name="issueName"
-          ></Input>
+          <Input placeholder={name} variant="outlined" name="issueName"></Input>
           <Input
             placeholder={`${category}`}
             variant="outlined"
             name="category"
           ></Input>
           <Input
-            disable="true"
+            disabled="true"
             placeholder={`Version: ${version}`}
             name="version"
           ></Input>
-          <Input disable="true" placeholder={`ID: ${id}`}></Input>
+          <Input disabled="true" placeholder={`ID: ${id}`}></Input>
           <Box component="span">
             Priority:
             <PriorityBtns></PriorityBtns>
@@ -65,23 +58,26 @@ const AddIssue = (props) => {
           <Box component="div">
             Dates:
             <Box>
+              Opened:
               <Input
-                disable="true"
-                placeholder={`opened: ${dateOpened}`}
+                disabled="true"
+                placeholder={dateOpened}
                 name="dateOpened"
               ></Input>
             </Box>
             <Box>
+              Last Edited:
               <Input
-                disable="true"
-                placeholder={`last edited: ${dateLastEdited}`}
+                disabled="true"
+                placeholder={dateLastEdited}
                 name="dateLastEdited"
               ></Input>
             </Box>
             <Box>
+              Closed:
               <Input
-                disable="true"
-                placeholder={`closed: ${dateClosed}`}
+                disabled="true"
+                placeholder={dateClosed}
                 name="dateClosed"
               ></Input>
             </Box>
@@ -92,23 +88,26 @@ const AddIssue = (props) => {
           <Box component="div">
             People:
             <Box>
+              Opened by:
               <Input
-                disable="true"
-                placeholder={`opened: ${personOpened}`}
+                disabled="true"
+                placeholder={personOpened}
                 name="peopleOpened"
               ></Input>
             </Box>
             <Box>
+              Last Edited by:
               <Input
-                disable="true"
-                placeholder={`last edited: ${personLastEdited}`}
+                disabled="true"
+                placeholder={personLastEdited}
                 name="peopleLastEdited"
               ></Input>
             </Box>
             <Box>
+              Closed by:
               <Input
-                disable="true"
-                placeholder={`closed: ${personClosed}`}
+                disabled="true"
+                placeholder={personClosed}
                 name="peopleClosed"
               ></Input>
             </Box>
@@ -140,8 +139,8 @@ const AddIssue = (props) => {
         <FormGroup>
           <Box>Make keywords text area</Box>
         </FormGroup>
-        <Button variant="contained" color="primary" name="close" type="submit">
-          Submit
+        <Button variant="contained" color="primary" name="submit" type="submit">
+          Submit {issueType}
         </Button>
 
         <Button
@@ -150,7 +149,7 @@ const AddIssue = (props) => {
           name="close"
           onClick={() => closeClick()}
         >
-          Close
+          Close {issueType}
         </Button>
       </form>
     </Box>
