@@ -4,13 +4,11 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { changeToFeatures } from "../redux/actions";
+import { FEATURE_GRADIENT } from "../utilities/constants";
 // import {BUGS} from "../utilities/constants";
 
 const customStyles = makeStyles({
-  featureButton: {
-    background:
-      "linear-gradient(300deg, rgba(128,0,128,0.6) 0%, rgba(128,0,128,0.9) 100%)",
-  },
+  featureButton: { background: FEATURE_GRADIENT, },
   linkStyle: {
     border: "none",
     outline: "none",

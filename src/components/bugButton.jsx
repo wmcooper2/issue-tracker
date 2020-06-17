@@ -4,12 +4,10 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { changeToBugs } from "../redux/actions";
+import { BUG_GRADIENT } from "../utilities/constants";
 
 const customStyles = makeStyles({
-  bugButton: {
-    background:
-      "linear-gradient(300deg, rgba(0,0,255,0.6) 0%, rgba(0,0,255,0.9) 100%)",
-  },
+  bugButton: { background: BUG_GRADIENT },
   linkStyle: {
     border: "none",
     outline: "none",

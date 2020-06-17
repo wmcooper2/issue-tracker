@@ -14,6 +14,18 @@ export const PRIORITY_A = "A";
 export const PRIORITY_B = "B";
 export const PRIORITY_C = "C";
 
+//Stylings
+export const PRIORITY_A_GRADIENT =
+  "linear-gradient(300deg, rgba(255,0,0,0.6) 0%, rgba(255,0,0,0.9) 100%)";
+export const PRIORITY_B_GRADIENT =
+  "linear-gradient(300deg, rgba(255,255,0,0.6) 0%, rgba(255,255,0,0.9) 100%)";
+export const PRIORITY_C_GRADIENT =
+  "linear-gradient(300deg, rgba(0,128,0,0.6) 0%, rgba(0,128,0,0.9) 100%)";
+export const BUG_GRADIENT =
+  "linear-gradient(300deg, rgba(0,0,255,0.6) 0%, rgba(0,0,255,0.9) 100%)";
+export const FEATURE_GRADIENT =
+  "linear-gradient(300deg, rgba(128,0,128,0.6) 0%, rgba(128,0,128,0.9) 100%)";
+
 export const DEFAULT_ISSUE = {
   _id: "1",
   name: "default issue",

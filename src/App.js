@@ -41,10 +41,11 @@ class App extends React.Component {
     console.log("App, store:", store.getState());
   }
 
+
   render() {
     return (
       <Provider store={store}>
-        <Box>
+        <Box >
           <AppHeader></AppHeader>
           {/* <HashRouter basename={process.env.PUBLIC_URL}> */}
           <HashRouter>

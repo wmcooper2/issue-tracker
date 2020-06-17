@@ -4,11 +4,13 @@ import Button from "@material-ui/core/Button";
 import FormGroup from "@material-ui/core/FormGroup";
 import Input from "@material-ui/core/Input";
 import List from "@material-ui/core/List";
-import PriorityBtns from "./priorityBtns";
+// import PriorityBtns from "./priorityBtns";
+import PriorityRadio from "./priorityRadio";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 import { connect } from "react-redux";
 import { updateIssues } from "../redux/actions";
+import { dateFormat } from "../utilities/utilities";
 
 const AddIssue = (props) => {
   const { closeClick, issue, issueType } = props;
@@ -29,28 +31,67 @@ const AddIssue = (props) => {
     issue.people !== undefined ? issue.people.lastEdited : null;
   const personClosed = issue.people !== undefined ? issue.people.closed : null;
 
+  const inputStyle = { width: "100%", minWidth: "50vw" };
+  const textAreaStyle = { resize: "vertical", minWidth: "50vw" };
+
   return (
-    <Box>
+    <Box
+      style={{
+        width: "50vw",
+        margin: "auto auto",
+      }}
+    >
       <form
         action="https://wmcooper2.com/issue-tracker-api/add-issue"
         method="POST"
       >
         <FormGroup>
-          <Input placeholder={name} variant="outlined" name="issueName"></Input>
-          <Input
-            placeholder={`${category}`}
-            variant="outlined"
-            name="category"
-          ></Input>
-          <Input
-            disabled="true"
-            placeholder={`Version: ${version}`}
-            name="version"
-          ></Input>
-          <Input disabled="true" placeholder={`ID: ${id}`}></Input>
+          <Box component="div">
+            Name:
+            <Input
+              // placeholder={name}
+              variant="outlined"
+              name="issueName"
+              style={inputStyle}
+              defaultValue={name}
+            ></Input>
+          </Box>
+
+          <Box component="div">
+            Category:
+            <Input
+              // placeholder={category}
+              variant="outlined"
+              name="category"
+              style={inputStyle}
+              defaultValue={category}
+            ></Input>
+          </Box>
+
+          <Box component="div">
+            Version:
+            <Input
+              readOnly="true"
+              defaultValue={version}
+              name="version"
+              style={inputStyle}
+            ></Input>
+          </Box>
+
+          <Box component="div">
+            ID:
+            <Input readOnly="true" value={id} style={inputStyle}></Input>
+          </Box>
+
+          <Box component="div">
+            Type:
+            <Input readOnly="true" value={issueType} style={inputStyle}></Input>
+          </Box>
+
           <Box component="span">
             Priority:
-            <PriorityBtns></PriorityBtns>
+            {/* <PriorityBtns></PriorityBtns> */}
+            <PriorityRadio></PriorityRadio>
           </Box>
         </FormGroup>
 
@@ -61,24 +102,27 @@ const AddIssue = (props) => {
               Opened:
               <Input
                 disabled="true"
-                placeholder={dateOpened}
+                defaultValue={dateFormat(dateOpened)}
                 name="dateOpened"
+                style={inputStyle}
               ></Input>
             </Box>
             <Box>
               Last Edited:
               <Input
                 disabled="true"
-                placeholder={dateLastEdited}
+                defaultValue={dateFormat(dateLastEdited)}
                 name="dateLastEdited"
+                style={inputStyle}
               ></Input>
             </Box>
             <Box>
               Closed:
               <Input
                 disabled="true"
-                placeholder={dateClosed}
+                defaultValue={dateFormat(dateClosed)}
                 name="dateClosed"
+                style={inputStyle}
               ></Input>
             </Box>
           </Box>
@@ -91,24 +135,27 @@ const AddIssue = (props) => {
               Opened by:
               <Input
                 disabled="true"
-                placeholder={personOpened}
+                defaultValue={personOpened}
                 name="peopleOpened"
+                style={inputStyle}
               ></Input>
             </Box>
             <Box>
               Last Edited by:
               <Input
                 disabled="true"
-                placeholder={personLastEdited}
+                defaultValue={personLastEdited}
                 name="peopleLastEdited"
+                style={inputStyle}
               ></Input>
             </Box>
             <Box>
               Closed by:
               <Input
                 disabled="true"
-                placeholder={personClosed}
+                defaultValue={personClosed}
                 name="peopleClosed"
+                style={inputStyle}
               ></Input>
             </Box>
           </Box>
@@ -120,6 +167,7 @@ const AddIssue = (props) => {
             <TextareaAutosize
               defaultValue={description}
               name="description"
+              style={textAreaStyle}
             ></TextareaAutosize>
           </Box>
         </FormGroup>
