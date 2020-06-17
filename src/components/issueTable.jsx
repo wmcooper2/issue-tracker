@@ -37,6 +37,7 @@ const IssueTable = (props) => {
             <Link to="/add-issue">{issue.name}</Link>
           </TableCell>
           <TableCell>10</TableCell>
+          <TableCell>{issue.priority}</TableCell>
         </TableRow>
       ));
     } else {
@@ -59,6 +60,7 @@ const IssueTable = (props) => {
             <TableRow>
               <TableCell>{issueType}</TableCell>
               <TableCell>View Count</TableCell>
+              <TableCell>Priority</TableCell>
             </TableRow>
           </TableHead>
 

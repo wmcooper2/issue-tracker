@@ -28,10 +28,10 @@ export const FEATURE_GRADIENT =
 
 export const DEFAULT_ISSUE = {
   _id: "1",
-  name: "default issue",
-  issueType: "default type",
+  name: "Think of a good name",
+  issueType: "Issue type",
   version: 1,
-  category: "default category",
+  category: "Some category",
   priority: "A",
   dates: {
     opened: Date.now(),

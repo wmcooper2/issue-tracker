@@ -85,7 +85,12 @@ const AddIssue = (props) => {
 
           <Box component="div">
             Type:
-            <Input readOnly="true" value={issueType} style={inputStyle}></Input>
+            <Input
+              readOnly="true"
+              value={issueType}
+              name="issueType"
+              style={inputStyle}
+            ></Input>
           </Box>
 
           <Box component="span">
