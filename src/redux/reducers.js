@@ -28,7 +28,7 @@ export const reducer = (state = initialState, action) => {
       return { ...state, issueType: FEATURE };
       break;
     case ISSUE:
-      return { ...state, issueType: ISSUE};
+      return { ...state, issueType: ISSUE };
       break;
     case UPDATE_ISSUES:
       return { ...state, issues: action.issues };

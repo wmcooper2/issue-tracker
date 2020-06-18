@@ -10,6 +10,7 @@ export const ISSUE = "ISSUE";
 export const ADD_NEW_ISSUE = "ADD_NEW_ISSUE";
 export const CLEAR_ISSUE = "CLEAR_ISSUE";
 export const SELECT_ISSUE = "SELECT_ISSUE";
+export const SHOW_ISSUE_DESCRIPTION = "SHOW_ISSUE_DESCRIPTION";
 export const UPDATE_ISSUES = "UPDATE_ISSUES";
 
 export const PRIORITY_A = "A";
@@ -40,7 +41,7 @@ export const DEFAULT_ISSUE = {
   issueType: "Issue type",
   version: 1,
   category: "Some category",
-  priority: "A",
+  priority: PRIORITY_A,
   dates: {
     opened: Date.now(),
     closed: Date.now(),
@@ -52,7 +53,7 @@ export const DEFAULT_ISSUE = {
     lastEdited: "CAROL",
   },
   hoursSpent: 0,
-  description: "Default description",
+  description: "Click on an issue above to see the description.",
   messages: [
     {
       person: "ALICE",

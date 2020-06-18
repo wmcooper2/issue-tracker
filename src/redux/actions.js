@@ -5,6 +5,7 @@ import {
   FEATURE,
   ISSUE,
   SELECT_ISSUE,
+  SHOW_ISSUE_DESCRIPTION,
   UPDATE_ISSUES,
 } from "../utilities/constants";
 
@@ -52,5 +53,11 @@ export const clearIssue = (payload) => {
     type: CLEAR_ISSUE,
     issueType: "NONE",
     issue: "NONE",
+  };
+};
+
+export const showIssueDescription = (payload) => {
+  return {
+    type: SHOW_ISSUE_DESCRIPTION,
   };
 };

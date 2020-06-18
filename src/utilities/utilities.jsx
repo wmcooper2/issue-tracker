@@ -19,6 +19,7 @@ export const monthName = (time) => {
   ];
 
   const month = new Date(time).getMonth();
+  // console.log("Month:", months[month]);
   return months[month];
 };
 

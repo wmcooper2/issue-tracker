@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { changeToBugs } from "../redux/actions";
-import { BUG_GRADIENT } from "../utilities/constants";
+import { BUG_GRADIENT, BUGS_URL } from "../utilities/constants";
+import { updateIssues } from "../redux/actions";
 
 const customStyles = makeStyles({
   bugButton: { background: BUG_GRADIENT },
@@ -25,6 +26,10 @@ const mapStateToProps = ({ issueType }) => ({
 const mapDispatchToProps = (dispatch) => ({
   bugClick: () => {
     dispatch(changeToBugs());
+    fetch(BUGS_URL)
+      .then((response) => response.json())
+      .then((results) => dispatch(updateIssues(results)))
+      .catch((error) => console.error(error));
   },
 });
 

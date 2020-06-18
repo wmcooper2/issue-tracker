@@ -8,8 +8,8 @@ const AppHeader = (props) => {
   return (
     <AppBar position="relative">
       <Toolbar>
-        <Typography variant="h2">Issue Tracker</Typography>
         <HomeButton></HomeButton>
+        <Typography variant="h2">Issue Tracker</Typography>
       </Toolbar>
     </AppBar>
   );

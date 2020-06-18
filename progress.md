@@ -3,6 +3,12 @@ Times are in minutes
 
 ## June
 
+### 18th
+240 - I moved the the add issue button, added a home button to the app header, put the edit button in the rows for each element, and added more color coding for the priorities and bug/feature issues in the issue table. I added some functionality on the server side by sorting the issues by time on intializing the app. Will fix the /bugs and /features endpoints to return only those issues respectively. I began to use the bug tracker to track my own progress on the app. I've been taking screen shots of the UI progress and it's coming along well.
+
+### 17th
+180 - took the time to play with the stylings a little, shuffle around some components and refactor things. I refactored such that the components I combined were split up again because I feel like having them combined was not necessary and over-abstracted the code.
+
 ### 16th
 240 - having a really tough time trying to figure out what the heck is going on with redux's store and why the change to my store is not triggering an update in the component that uses it even though the mapStateToProps and mapDispatchToProps are there and they work fine. I'm really sure that there is no issue with my reducers. wtf.
 

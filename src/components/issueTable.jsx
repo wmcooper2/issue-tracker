@@ -11,8 +11,9 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { selectIssue } from "../redux/actions";
 import { Link } from "react-router-dom";
-
 import { connect } from "react-redux";
+import { EditButton } from "./editButton";
+// import { showIssueDescription } from "../redux/actions";
 
 import {
   BUG,
@@ -27,6 +28,7 @@ import {
   PRIORITY_B_YELLOW_3,
   PRIORITY_C_GREEN_3,
 } from "../utilities/constants";
+import { dateFormat } from "../utilities/utilities";
 
 //the maxHeight property forces the scroll ability to show up when the list exceeds the given height
 const customStyles = makeStyles({
@@ -53,7 +55,10 @@ const IssueTable = (props) => {
                 : { backgroundColor: FEATURE_PURPLE_3 }
             }
           >
-            <Link to="/add-issue">{issue.name}</Link>
+            <EditButton></EditButton>
+            {/* <Link onClick={() => showDescription()}>{issue.name}</Link> */}
+            {/* <Link>{issue.name}</Link> */}
+            {issue.name}
           </TableCell>
           {/* <TableCell>10</TableCell> */}
           <TableCell
@@ -68,7 +73,7 @@ const IssueTable = (props) => {
             {issue.priority}
           </TableCell>
           <TableCell>
-            {issue.dates === undefined ? null : issue.dates.opened}
+            {issue.dates === undefined ? null : dateFormat(issue.dates.opened)}
           </TableCell>
           <TableCell>
             {issue.people === undefined ? null : issue.people.opened}
@@ -120,6 +125,7 @@ const mapDispatchToProps = (dispatch) => ({
     // dispatch(changeToBugs());
     // console.log("IssueTable, mdtp, issue:", issue);
   },
+  // showDescription: () => dispatch(showIssueDescription()),
 });
 
 IssueTable.propTypes = {
