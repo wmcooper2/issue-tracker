@@ -17,7 +17,7 @@ const IssueBtns = (props) => {
       <Button
         className={classes.bugButton}
         onClick={() =>
-          fetch("https://wmcooper2.com/issue-tracker-api/issues")
+          fetch("https://wmcooper2.com/issue-tracker-api/bugs")
             .then((res) => res.json())
             .then((json) => console.log(json))
             .catch((error) => console.error(error))

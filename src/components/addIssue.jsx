@@ -11,7 +11,8 @@ import IssueRadio from "./issueRadio";
 
 import { connect } from "react-redux";
 import { updateIssues } from "../redux/actions";
-import { dateFormat } from "../utilities/utilities";
+import { dateFormat, monthName } from "../utilities/utilities";
+import { DELETE_URL } from "../utilities/constants";
 
 const AddIssue = (props) => {
   const { closeClick, issue, issueType } = props;
@@ -81,18 +82,17 @@ const AddIssue = (props) => {
 
           <Box component="div">
             ID:
-            <Input readOnly="true" value={id} style={inputStyle}></Input>
+            <Input
+              readOnly="true"
+              value={id}
+              name="issueid"
+              style={inputStyle}
+            ></Input>
           </Box>
 
           <Box component="div">
+            Type:
             <IssueRadio></IssueRadio>
-            {/* Type: */}
-            {/* <Input */}
-            {/* readOnly="true" */}
-            {/* value={issueType} */}
-            {/* name="issueType" */}
-            {/* style={inputStyle} */}
-            {/* ></Input> */}
           </Box>
 
           <Box component="span">
@@ -201,7 +201,7 @@ const AddIssue = (props) => {
           variant="contained"
           color="secondary"
           name="close"
-          onClick={() => closeClick()}
+          onClick={() => closeClick(issue)}
         >
           Close {issueType}
         </Button>
@@ -216,8 +216,9 @@ const mapStateToProps = ({ issueType, issue }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  closeClick: () => {
-    console.log("Close Click");
+  closeClick: (issue) => {
+    // console.log("Close Click");
+    fetch(`${DELETE_URL}/${issue._id}`, { method: "POST" });
     dispatch(updateIssues());
   },
 });

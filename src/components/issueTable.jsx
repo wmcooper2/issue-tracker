@@ -22,7 +22,7 @@ import {
   FEATURE_PURPLE_3,
   PRIORITY_A,
   PRIORITY_B,
-  PRIORITY_C,
+  // PRIORITY_C,
   PRIORITY_A_RED_3,
   PRIORITY_B_YELLOW_3,
   PRIORITY_C_GREEN_3,
@@ -67,6 +67,12 @@ const IssueTable = (props) => {
           >
             {issue.priority}
           </TableCell>
+          <TableCell>
+            {issue.dates === undefined ? null : issue.dates.opened}
+          </TableCell>
+          <TableCell>
+            {issue.people === undefined ? null : issue.people.opened}
+          </TableCell>
         </TableRow>
       ));
     } else {
@@ -85,6 +91,8 @@ const IssueTable = (props) => {
               <TableCell>{issueType}</TableCell>
               {/* <TableCell>View Count</TableCell> */}
               <TableCell>Priority</TableCell>
+              <TableCell>Date Opened</TableCell>
+              <TableCell>Opened by</TableCell>
             </TableRow>
           </TableHead>
 
