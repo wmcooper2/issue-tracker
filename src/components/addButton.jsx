@@ -3,7 +3,7 @@ import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { addNewIssue } from "../redux/actions";
+import { clearIssue } from "../redux/actions";
 
 const AddButton = ({ addBtnClick, issueType }) => {
   return (
@@ -20,7 +20,7 @@ const mapStateToProps = ({ issueType }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addBtnClick: (type) => dispatch(addNewIssue(type)),
+  addBtnClick: (type) => dispatch(clearIssue(type)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddButton);

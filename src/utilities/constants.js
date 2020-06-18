@@ -3,10 +3,11 @@ export const DELETE_URL =
   "https://wmcooper2.com/issue-tracker-api/delete-issue";
 export const FEATURES_URL = "https://wmcooper2.com/issue-tracker-api/features";
 
-export const BUGS = "BUG";
-export const FEATURES = "FEATURE";
+export const BUG = "BUG";
+export const FEATURE = "FEATURE";
 
 export const ADD_NEW_ISSUE = "ADD_NEW_ISSUE";
+export const CLEAR_ISSUE = "CLEAR_ISSUE";
 export const SELECT_ISSUE = "SELECT_ISSUE";
 export const UPDATE_ISSUES = "UPDATE_ISSUES";
 
@@ -25,6 +26,12 @@ export const BUG_GRADIENT =
   "linear-gradient(300deg, rgba(0,0,255,0.6) 0%, rgba(0,0,255,0.9) 100%)";
 export const FEATURE_GRADIENT =
   "linear-gradient(300deg, rgba(128,0,128,0.6) 0%, rgba(128,0,128,0.9) 100%)";
+
+export const BUG_BLUE_3 = "rgba(0,0,255, 0.3)";
+export const FEATURE_PURPLE_3 = "rgba(128,0,128, 0.3)";
+export const PRIORITY_A_RED_3 = "rgba(255,0,0,0.3)";
+export const PRIORITY_B_YELLOW_3 = "rgba(255,255,0,0.3)";
+export const PRIORITY_C_GREEN_3 = "rgba(0,128,0,0.3)";
 
 export const DEFAULT_ISSUE = {
   _id: "1",

@@ -14,13 +14,26 @@ import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
-import { BUGS, DELETE_URL, DEFAULT_ISSUE } from "../utilities/constants";
+import {
+  BUG,
+  // DELETE_URL,
+  DEFAULT_ISSUE,
+  BUG_BLUE_3,
+  FEATURE_PURPLE_3,
+  PRIORITY_A,
+  PRIORITY_B,
+  PRIORITY_C,
+  PRIORITY_A_RED_3,
+  PRIORITY_B_YELLOW_3,
+  PRIORITY_C_GREEN_3,
+} from "../utilities/constants";
 
 //the maxHeight property forces the scroll ability to show up when the list exceeds the given height
 const customStyles = makeStyles({
   table: { maxHeight: "50vh" },
   bug: { backgroundColor: "blue" },
   feature: { backgroundColor: "purple" },
+  test: { backgroundColor: "seagreen" },
 });
 
 const IssueTable = (props) => {
@@ -33,11 +46,27 @@ const IssueTable = (props) => {
     if (issues !== undefined) {
       return issues.map((issue, index) => (
         <TableRow onClick={() => rowClick(issue)} key={index}>
-          <TableCell>
+          <TableCell
+            style={
+              issue.issueType === BUG
+                ? { backgroundColor: BUG_BLUE_3 }
+                : { backgroundColor: FEATURE_PURPLE_3 }
+            }
+          >
             <Link to="/add-issue">{issue.name}</Link>
           </TableCell>
-          <TableCell>10</TableCell>
-          <TableCell>{issue.priority}</TableCell>
+          {/* <TableCell>10</TableCell> */}
+          <TableCell
+            style={
+              issue.priority === PRIORITY_A
+                ? { backgroundColor: PRIORITY_A_RED_3 }
+                : issue.priority === PRIORITY_B
+                ? { backgroundColor: PRIORITY_B_YELLOW_3 }
+                : { backgroundColor: PRIORITY_C_GREEN_3 }
+            }
+          >
+            {issue.priority}
+          </TableCell>
         </TableRow>
       ));
     } else {
@@ -46,20 +75,15 @@ const IssueTable = (props) => {
   };
 
   return (
-    // <Paper style={issueType === BUGS ? styles.bug : styles.feature}>
-    <Paper
-      style={
-        issueType === BUGS
-          ? { backgroundColor: "blue" }
-          : { backgroundColor: "purple" }
-      }
-    >
+    // <Paper style={issueType === BUG ? styles.bug : styles.feature}>
+    // style={ issueType === BUG ? { backgroundColor: "blue" } : { backgroundColor: "purple" } }
+    <Paper>
       <TableContainer className={styles.table}>
         <Table stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell>{issueType}</TableCell>
-              <TableCell>View Count</TableCell>
+              {/* <TableCell>View Count</TableCell> */}
               <TableCell>Priority</TableCell>
             </TableRow>
           </TableHead>

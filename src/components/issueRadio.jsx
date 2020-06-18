@@ -5,72 +5,55 @@ import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
-import {
-  PRIORITY_A,
-  PRIORITY_B,
-  PRIORITY_C,
-  PRIORITY_A_GRADIENT,
-} from "../utilities/constants";
+import { BUG, FEATURE } from "../utilities/constants";
 
 const customStyles = makeStyles({
   buttonGroup: { minHeight: "10mm", margin: "1rem" },
-  priorityA: {
+  bug: {
     background:
-      "linear-gradient(300deg, rgba(255,0,0,0.6) 0%, rgba(255,0,0,0.9) 100%)",
+      "linear-gradient(300deg, rgba(0,0,255,0.6) 0%, rgba(0,0,255,0.9) 100%)",
   },
-  priorityB: {
+  feature: {
     background:
-      "linear-gradient(300deg, rgba(255,255,0,0.6) 0%, rgba(255,255,0,0.9) 100%)",
-  },
-  priorityC: {
-    background:
-      "linear-gradient(300deg, rgba(0,128,0,0.6) 0%, rgba(0,128,0,0.9) 100%)",
+      "linear-gradient(300deg, rgba(128,0,128,0.6) 0%, rgba(128,0,128,0.9) 100%)",
   },
 });
 
-export const PriorityRadio = ({ issue }) => {
+export const IssueRadio = ({ issue }) => {
   const classes = customStyles();
-  console.log("PriorityRad,", issue);
 
   return (
     <FormControl component="fieldset">
-      <RadioGroup row aria-label="priority" name="priority" defaultValue="top">
+      <RadioGroup
+        row
+        aria-label="issueType"
+        name="issueType"
+        defaultValue="top"
+      >
         <FormControlLabel
-          value="A"
+          value={BUG}
           control={
             <Radio
-            // color="primary"
+            //   color="primary"
             //   checked={issue.priority === PRIORITY_A ? "true" : "false"}
             />
           }
-          label="A"
+          label={BUG}
           labelPlacement="bottom"
-          className={classes.priorityA}
+          className={classes.bug}
         ></FormControlLabel>
 
         <FormControlLabel
-          value="B"
+          value={FEATURE}
           control={
             <Radio
-            // color="primary"
+            //   color="primary"
             //   checked={issue.priority === PRIORITY_B ? "true" : "false"}
             />
           }
-          label="B"
+          label={FEATURE}
           labelPlacement="bottom"
-          className={classes.priorityB}
-        ></FormControlLabel>
-
-        <FormControlLabel
-          value="C"
-          control={
-            <Radio
-            // color="primary"
-            />
-          }
-          label="C"
-          labelPlacement="bottom"
-          className={classes.priorityC}
+          className={classes.feature}
         ></FormControlLabel>
       </RadioGroup>
     </FormControl>
@@ -83,4 +66,4 @@ const mapStateToProps = ({ issue }) => ({
 
 const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(PriorityRadio);
+export default connect(mapStateToProps, mapDispatchToProps)(IssueRadio);

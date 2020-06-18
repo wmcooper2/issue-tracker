@@ -1,20 +1,21 @@
 import {
   ADD_NEW_ISSUE,
-  BUGS,
-  FEATURES,
+  BUG,
+  CLEAR_ISSUE,
+  FEATURE,
   SELECT_ISSUE,
   UPDATE_ISSUES,
 } from "../utilities/constants";
 
 export const changeToBugs = () => {
   return {
-    type: BUGS,
+    type: BUG,
   };
 };
 
 export const changeToFeatures = () => {
   return {
-    type: FEATURES,
+    type: FEATURE,
   };
 };
 
@@ -36,5 +37,13 @@ export const addNewIssue = (payload) => {
   return {
     type: ADD_NEW_ISSUE,
     issueType: payload,
+  };
+};
+
+export const clearIssue = (payload) => {
+  return {
+    type: CLEAR_ISSUE,
+    issueType: "NONE",
+    issue: "NONE",
   };
 };

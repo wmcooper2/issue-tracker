@@ -8,9 +8,9 @@ import Dashboard from "./components/dashboard";
 import fetch from "isomorphic-fetch";
 
 // import { makeStyles } from "@material-ui/core/styles";
+import BugButton from "./components/bugButton";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import FeatureButton from "./components/featureButton";
-import BugButton from "./components/bugButton";
 
 import { HashRouter, Switch, Route } from "react-router-dom";
 import { initialState } from "./redux/initialState";
@@ -18,6 +18,7 @@ import { changeToBugs, updateIssues } from "./redux/actions";
 import { reducer } from "./redux/reducers";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import PriorityBtns from "./components/priorityBtns";
 
 const store = createStore(
   reducer,
@@ -41,35 +42,39 @@ class App extends React.Component {
     console.log("App, store:", store.getState());
   }
 
-
   render() {
     return (
       <Provider store={store}>
-        <Box >
+          <HashRouter>
+        <Box>
           <AppHeader></AppHeader>
           {/* <HashRouter basename={process.env.PUBLIC_URL}> */}
-          <HashRouter>
             <Box
               component="div"
               className={{ display: "flex", flexDirection: "column" }}
             >
-              <ButtonGroup style={{ minHeight: "10mm", margin: "1rem" }}>
-                <BugButton></BugButton>
-                <FeatureButton></FeatureButton>
-              </ButtonGroup>
 
-              <AddButton></AddButton>
               <Switch>
                 <Route path="/add-issue">
                   <AddIssue></AddIssue>
                 </Route>
                 <Route path="/">
+
+              <ButtonGroup style={{ minHeight: "10mm", margin: "1rem" }}>
+                <BugButton></BugButton>
+                <FeatureButton></FeatureButton>
+              </ButtonGroup>
+              <ButtonGroup>
+                <PriorityBtns></PriorityBtns>
+              </ButtonGroup>
+              <AddButton></AddButton>
+
                   <Dashboard></Dashboard>
                 </Route>
               </Switch>
             </Box>
-          </HashRouter>
         </Box>
+          </HashRouter>
       </Provider>
     );
   }

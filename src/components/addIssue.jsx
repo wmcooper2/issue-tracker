@@ -7,6 +7,7 @@ import List from "@material-ui/core/List";
 // import PriorityBtns from "./priorityBtns";
 import PriorityRadio from "./priorityRadio";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import IssueRadio from "./issueRadio";
 
 import { connect } from "react-redux";
 import { updateIssues } from "../redux/actions";
@@ -84,18 +85,18 @@ const AddIssue = (props) => {
           </Box>
 
           <Box component="div">
-            Type:
-            <Input
-              readOnly="true"
-              value={issueType}
-              name="issueType"
-              style={inputStyle}
-            ></Input>
+            <IssueRadio></IssueRadio>
+            {/* Type: */}
+            {/* <Input */}
+            {/* readOnly="true" */}
+            {/* value={issueType} */}
+            {/* name="issueType" */}
+            {/* style={inputStyle} */}
+            {/* ></Input> */}
           </Box>
 
           <Box component="span">
             Priority:
-            {/* <PriorityBtns></PriorityBtns> */}
             <PriorityRadio></PriorityRadio>
           </Box>
         </FormGroup>

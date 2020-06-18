@@ -3,7 +3,6 @@ import IssueTable from "./issueTable";
 import Box from "@material-ui/core/Box";
 import List from "@material-ui/core/List";
 import ListItemText from "@material-ui/core/ListItemText";
-import PriorityBtns from "./priorityBtns";
 import { makeStyles } from "@material-ui/core/styles";
 // import { connect } from "react-redux";
 
@@ -21,7 +20,6 @@ const Dashboard = (props) => {
   return (
     <React.Fragment>
       <Box className={classes.projectDashboard}>
-        <PriorityBtns></PriorityBtns>
         <IssueTable></IssueTable>
       </Box>
 
