@@ -3,6 +3,7 @@ import {
   BUG,
   CLEAR_ISSUE,
   FEATURE,
+  ISSUE,
   SELECT_ISSUE,
   UPDATE_ISSUES,
 } from "../utilities/constants";
@@ -16,6 +17,12 @@ export const changeToBugs = () => {
 export const changeToFeatures = () => {
   return {
     type: FEATURE,
+  };
+};
+
+export const changeToIssues = () => {
+  return {
+    type: ISSUE,
   };
 };
 

@@ -5,6 +5,7 @@ export const FEATURES_URL = "https://wmcooper2.com/issue-tracker-api/features";
 
 export const BUG = "BUG";
 export const FEATURE = "FEATURE";
+export const ISSUE = "ISSUE";
 
 export const ADD_NEW_ISSUE = "ADD_NEW_ISSUE";
 export const CLEAR_ISSUE = "CLEAR_ISSUE";

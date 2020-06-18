@@ -3,6 +3,7 @@ import {
   BUG,
   CLEAR_ISSUE,
   FEATURE,
+  ISSUE,
   SELECT_ISSUE,
   UPDATE_ISSUES,
 } from "../utilities/constants";
@@ -25,6 +26,9 @@ export const reducer = (state = initialState, action) => {
       break;
     case FEATURE:
       return { ...state, issueType: FEATURE };
+      break;
+    case ISSUE:
+      return { ...state, issueType: ISSUE};
       break;
     case UPDATE_ISSUES:
       return { ...state, issues: action.issues };

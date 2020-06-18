@@ -30,10 +30,9 @@ const store = createStore(
 class App extends React.Component {
   componentDidMount() {
     //on first initialization, loads bugs, what about later redirects back here?
-    fetch("https://wmcooper2.com/issue-tracker-api/bugs")
+    fetch("https://wmcooper2.com/issue-tracker-api/issues")
       .then((response) => response.json())
       .then((result) => {
-        store.dispatch(changeToBugs());
         store.dispatch(updateIssues(result));
       })
       .catch((error) => {
@@ -45,36 +44,34 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-          <HashRouter>
-        <Box>
-          <AppHeader></AppHeader>
-          {/* <HashRouter basename={process.env.PUBLIC_URL}> */}
+        <HashRouter>
+          <Box>
+            <AppHeader></AppHeader>
+            {/* <HashRouter basename={process.env.PUBLIC_URL}> */}
             <Box
               component="div"
               className={{ display: "flex", flexDirection: "column" }}
             >
-
               <Switch>
                 <Route path="/add-issue">
                   <AddIssue></AddIssue>
                 </Route>
                 <Route path="/">
-
-              <ButtonGroup style={{ minHeight: "10mm", margin: "1rem" }}>
-                <BugButton></BugButton>
-                <FeatureButton></FeatureButton>
-              </ButtonGroup>
-              <ButtonGroup>
-                <PriorityBtns></PriorityBtns>
-              </ButtonGroup>
-              <AddButton></AddButton>
+                  <ButtonGroup style={{ minHeight: "10mm", margin: "1rem" }}>
+                    <BugButton></BugButton>
+                    <FeatureButton></FeatureButton>
+                  </ButtonGroup>
+                  <ButtonGroup>
+                    <PriorityBtns></PriorityBtns>
+                  </ButtonGroup>
+                  <AddButton></AddButton>
 
                   <Dashboard></Dashboard>
                 </Route>
               </Switch>
             </Box>
-        </Box>
-          </HashRouter>
+          </Box>
+        </HashRouter>
       </Provider>
     );
   }
