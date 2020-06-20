@@ -4,45 +4,43 @@ import Button from "@material-ui/core/Button";
 import FormGroup from "@material-ui/core/FormGroup";
 import Input from "@material-ui/core/Input";
 import List from "@material-ui/core/List";
-// import PriorityBtns from "./priorityBtns";
 import PriorityRadio from "./priorityRadio";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import IssueRadio from "./issueRadio";
 
 import { connect } from "react-redux";
 import { updateIssues } from "../redux/actions";
-import { dateFormat, monthName } from "../utilities/utilities";
 import { DELETE_URL } from "../utilities/constants";
+import { makeStyles } from "@material-ui/styles";
+
+const customStyles = makeStyles({
+  bugFeatureBox: { display: "flex" },
+  inputStyle: { width: "100%", minWidth: "50vw" },
+  textAreaStyle: { resize: "vertical", minWidth: "50vw" },
+  issueForm: {
+    width: "50vw",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "1rem",
+  },
+});
 
 const AddIssue = (props) => {
+  const styles = customStyles();
   const { closeClick, issue, issueType } = props;
-  // console.log("AddIssue, props:", props);
-
-  const name = issue.name !== undefined ? issue.name : null;
+  const name = issue.name !== undefined ? issue.name : undefined;
   const description =
-    issue.description !== undefined ? issue.description : null;
-  const category = issue.category !== undefined ? issue.category : null;
-  const version = issue.version !== undefined ? issue.version : null;
-  const id = issue._id !== undefined ? issue._id : null;
-  const dateOpened = issue.dates !== undefined ? issue.dates.opened : null;
-  const dateLastEdited =
-    issue.dates !== undefined ? issue.dates.lastEdited : null;
-  const dateClosed = issue.dates !== undefined ? issue.dates.closed : null;
-  const personOpened = issue.people !== undefined ? issue.people.opened : null;
-  const personLastEdited =
-    issue.people !== undefined ? issue.people.lastEdited : null;
-  const personClosed = issue.people !== undefined ? issue.people.closed : null;
+    issue.description !== undefined ? issue.description : undefined;
+  const category = issue.category !== undefined ? issue.category : undefined;
+  const version = issue.version !== undefined ? issue.version : undefined;
+  const id = issue._id !== undefined ? issue._id : undefined;
 
-  const inputStyle = { width: "100%", minWidth: "50vw" };
-  const textAreaStyle = { resize: "vertical", minWidth: "50vw" };
+  // const inputStyle = { width: "100%", minWidth: "50vw" };
+  // const textAreaStyle = { resize: "vertical", minWidth: "50vw" };
+  // const issueForm = { width: "50vw", marginLeft: "auto", marginRight: "auto", marginTop: "1rem", };
 
   return (
-    <Box
-      style={{
-        width: "50vw",
-        margin: "auto auto",
-      }}
-    >
+    <Box className={styles.issueForm}>
       <form
         action="https://wmcooper2.com/issue-tracker-api/add-issue"
         method="POST"
@@ -51,10 +49,9 @@ const AddIssue = (props) => {
           <Box component="div">
             Name:
             <Input
-              // placeholder={name}
               variant="outlined"
               name="issueName"
-              style={inputStyle}
+              className={styles.inputStyle}
               defaultValue={name}
             ></Input>
           </Box>
@@ -62,10 +59,9 @@ const AddIssue = (props) => {
           <Box component="div">
             Category:
             <Input
-              // placeholder={category}
               variant="outlined"
               name="category"
-              style={inputStyle}
+              className={styles.inputStyle}
               defaultValue={category}
             ></Input>
           </Box>
@@ -73,96 +69,32 @@ const AddIssue = (props) => {
           <Box component="div">
             Version:
             <Input
-              readOnly="true"
+              readOnly={true}
               defaultValue={version}
               name="version"
-              style={inputStyle}
+              className={styles.inputStyle}
             ></Input>
           </Box>
 
           <Box component="div">
             ID:
             <Input
-              readOnly="true"
+              readOnly={true}
               value={id}
               name="issueid"
-              style={inputStyle}
+              className={styles.inputStyle}
             ></Input>
           </Box>
 
-          <Box component="div">
-            Type:
-            <IssueRadio></IssueRadio>
-          </Box>
+          <Box className={styles.bugFeatureBox}>
+            <Box component="div">
+              Type:
+              <IssueRadio></IssueRadio>
+            </Box>
 
-          <Box component="span">
-            Priority:
-            <PriorityRadio></PriorityRadio>
-          </Box>
-        </FormGroup>
-
-        <FormGroup>
-          <Box component="div">
-            Dates:
-            <Box>
-              Opened:
-              <Input
-                disabled="true"
-                defaultValue={dateFormat(dateOpened)}
-                name="dateOpened"
-                style={inputStyle}
-              ></Input>
-            </Box>
-            <Box>
-              Last Edited:
-              <Input
-                disabled="true"
-                defaultValue={dateFormat(dateLastEdited)}
-                name="dateLastEdited"
-                style={inputStyle}
-              ></Input>
-            </Box>
-            <Box>
-              Closed:
-              <Input
-                disabled="true"
-                defaultValue={dateFormat(dateClosed)}
-                name="dateClosed"
-                style={inputStyle}
-              ></Input>
-            </Box>
-          </Box>
-        </FormGroup>
-
-        <FormGroup>
-          <Box component="div">
-            People:
-            <Box>
-              Opened by:
-              <Input
-                disabled="true"
-                defaultValue={personOpened}
-                name="peopleOpened"
-                style={inputStyle}
-              ></Input>
-            </Box>
-            <Box>
-              Last Edited by:
-              <Input
-                disabled="true"
-                defaultValue={personLastEdited}
-                name="peopleLastEdited"
-                style={inputStyle}
-              ></Input>
-            </Box>
-            <Box>
-              Closed by:
-              <Input
-                disabled="true"
-                defaultValue={personClosed}
-                name="peopleClosed"
-                style={inputStyle}
-              ></Input>
+            <Box component="div">
+              Priority:
+              <PriorityRadio></PriorityRadio>
             </Box>
           </Box>
         </FormGroup>
@@ -173,16 +105,12 @@ const AddIssue = (props) => {
             <TextareaAutosize
               defaultValue={description}
               name="description"
-              style={textAreaStyle}
+              className={styles.textAreaStyle}
             ></TextareaAutosize>
           </Box>
         </FormGroup>
 
-        <FormGroup>
-          <Box>
-            <List>Make message list</List>
-          </Box>
-        </FormGroup>
+        {/* <FormGroup> <Box> <List>Make message list</List> </Box> </FormGroup> */}
 
         <FormGroup>
           <Box>
@@ -217,7 +145,6 @@ const mapStateToProps = ({ issueType, issue }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   closeClick: (issue) => {
-    // console.log("Close Click");
     fetch(`${DELETE_URL}/${issue._id}`, { method: "POST" });
     dispatch(updateIssues());
   },

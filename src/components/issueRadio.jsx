@@ -11,11 +11,13 @@ const customStyles = makeStyles({
   buttonGroup: { minHeight: "10mm", margin: "1rem" },
   bug: {
     background:
-      "linear-gradient(300deg, rgba(0,0,255,0.6) 0%, rgba(0,0,255,0.9) 100%)",
+      "linear-gradient(300deg, rgba(0,0,255,0.3) 0%, rgba(0,0,255,0.6) 100%)",
+    borderRadius: "10%",
   },
   feature: {
     background:
-      "linear-gradient(300deg, rgba(128,0,128,0.6) 0%, rgba(128,0,128,0.9) 100%)",
+      "linear-gradient(300deg, rgba(128,0,128,0.3) 0%, rgba(128,0,128,0.6) 100%)",
+    borderRadius: "10%",
   },
 });
 
@@ -34,8 +36,8 @@ export const IssueRadio = ({ issue }) => {
           value={BUG}
           control={
             <Radio
-            //   color="primary"
-            //   checked={issue.priority === PRIORITY_A ? "true" : "false"}
+              color="default"
+              //   checked={issue.priority === PRIORITY_A ? "true" : "false"}
             />
           }
           label={BUG}
@@ -47,8 +49,8 @@ export const IssueRadio = ({ issue }) => {
           value={FEATURE}
           control={
             <Radio
-            //   color="primary"
-            //   checked={issue.priority === PRIORITY_B ? "true" : "false"}
+              color="default"
+              //   checked={issue.priority === PRIORITY_B ? "true" : "false"}
             />
           }
           label={FEATURE}

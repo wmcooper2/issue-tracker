@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -10,20 +9,17 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { selectIssue } from "../redux/actions";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { EditButton } from "./editButton";
-// import { showIssueDescription } from "../redux/actions";
+import { makeStyles } from "@material-ui/core/styles";
 
 import {
   BUG,
-  // DELETE_URL,
   DEFAULT_ISSUE,
   BUG_BLUE_3,
   FEATURE_PURPLE_3,
   PRIORITY_A,
   PRIORITY_B,
-  // PRIORITY_C,
   PRIORITY_A_RED_3,
   PRIORITY_B_YELLOW_3,
   PRIORITY_C_GREEN_3,
@@ -39,15 +35,12 @@ const customStyles = makeStyles({
 });
 
 const IssueTable = (props) => {
-  // console.log("IssueTable, props:", props);
   const styles = customStyles();
   const { rowClick, issues, issueType } = props;
-  // console.log("IssueTable, issues:", issues);
-
   const Rows = () => {
     if (issues !== undefined) {
       return issues.map((issue, index) => (
-        <TableRow onClick={() => rowClick(issue)} key={index}>
+        <TableRow className="issueRow" onClick={() => rowClick(issue)} key={index}>
           <TableCell
             style={
               issue.issueType === BUG
@@ -56,11 +49,8 @@ const IssueTable = (props) => {
             }
           >
             <EditButton></EditButton>
-            {/* <Link onClick={() => showDescription()}>{issue.name}</Link> */}
-            {/* <Link>{issue.name}</Link> */}
             {issue.name}
           </TableCell>
-          {/* <TableCell>10</TableCell> */}
           <TableCell
             style={
               issue.priority === PRIORITY_A
@@ -86,15 +76,12 @@ const IssueTable = (props) => {
   };
 
   return (
-    // <Paper style={issueType === BUG ? styles.bug : styles.feature}>
-    // style={ issueType === BUG ? { backgroundColor: "blue" } : { backgroundColor: "purple" } }
     <Paper>
       <TableContainer className={styles.table}>
         <Table stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell>{issueType}</TableCell>
-              {/* <TableCell>View Count</TableCell> */}
               <TableCell>Priority</TableCell>
               <TableCell>Date Opened</TableCell>
               <TableCell>Opened by</TableCell>
@@ -121,11 +108,7 @@ const mapDispatchToProps = (dispatch) => ({
   rowClick: (issue) => {
     // fetch(`${DELETE_URL}/${issue._id}`, { method: "POST" });
     dispatch(selectIssue(issue));
-    // dispatch(updateIssues());
-    // dispatch(changeToBugs());
-    // console.log("IssueTable, mdtp, issue:", issue);
   },
-  // showDescription: () => dispatch(showIssueDescription()),
 });
 
 IssueTable.propTypes = {

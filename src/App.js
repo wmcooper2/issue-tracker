@@ -3,18 +3,16 @@ import AddButton from "./components/addButton";
 import AddIssue from "./components/addIssue";
 import AppHeader from "./components/appHeader";
 import Box from "@material-ui/core/Box";
-// import IssueBtnLinks from "./components/issueBtnLinks";
 import Dashboard from "./components/dashboard";
 import fetch from "isomorphic-fetch";
 
-// import { makeStyles } from "@material-ui/core/styles";
 import BugButton from "./components/bugButton";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import FeatureButton from "./components/featureButton";
 
 import { HashRouter, Switch, Route } from "react-router-dom";
 import { initialState } from "./redux/initialState";
-import { changeToBugs, updateIssues } from "./redux/actions";
+import { updateIssues } from "./redux/actions";
 import { reducer } from "./redux/reducers";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
@@ -39,7 +37,6 @@ class App extends React.Component {
       .catch((error) => {
         console.error(error);
       });
-    console.log("App, store:", store.getState());
   }
 
   render() {
@@ -48,7 +45,6 @@ class App extends React.Component {
         <HashRouter>
           <Box>
             <AppHeader></AppHeader>
-            {/* <HashRouter basename={process.env.PUBLIC_URL}> */}
             <Box
               component="div"
               className={{ display: "flex", flexDirection: "column" }}
