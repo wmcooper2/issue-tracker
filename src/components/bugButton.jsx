@@ -7,6 +7,7 @@ import { changeToBugs } from "../redux/actions";
 import { BUG_GRADIENT, BUGS_URL } from "../utilities/constants";
 import { updateIssues } from "../redux/actions";
 
+
 const customStyles = makeStyles({
   bugButton: { background: BUG_GRADIENT },
   linkStyle: {

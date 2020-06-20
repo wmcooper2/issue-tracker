@@ -37,7 +37,7 @@ export const IssueRadio = ({ issue }) => {
           control={
             <Radio
               color="default"
-              //   checked={issue.priority === PRIORITY_A ? "true" : "false"}
+              checked={issue.issueType === BUG ? true : false}
             />
           }
           label={BUG}
@@ -50,7 +50,7 @@ export const IssueRadio = ({ issue }) => {
           control={
             <Radio
               color="default"
-              //   checked={issue.priority === PRIORITY_B ? "true" : "false"}
+              checked={issue.issueType === FEATURE ? true : false}
             />
           }
           label={FEATURE}

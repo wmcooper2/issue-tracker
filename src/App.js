@@ -1,6 +1,7 @@
 import React from "react";
 import AddButton from "./components/addButton";
 import AddIssue from "./components/addIssue";
+import EditIssue from "./components/editIssue";
 import AppHeader from "./components/appHeader";
 import Box from "@material-ui/core/Box";
 import Dashboard from "./components/dashboard";
@@ -53,8 +54,12 @@ class App extends React.Component {
                 <Route path="/add-issue">
                   <AddIssue></AddIssue>
                 </Route>
+                <Route path="/edit-issue">
+                  <EditIssue></EditIssue>
+                </Route>
                 <Route path="/">
-                  <ButtonGroup style={{ minHeight: "10mm", margin: "1rem" }}>
+                  {/* <ButtonGroup style={{ minHeight: "10mm", margin: "1rem" }}> */}
+                  <ButtonGroup>
                     <BugButton></BugButton>
                     <FeatureButton></FeatureButton>
                   </ButtonGroup>

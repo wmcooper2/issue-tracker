@@ -34,13 +34,16 @@ const customStyles = makeStyles({
   test: { backgroundColor: "seagreen" },
 });
 
-const IssueTable = (props) => {
+const IssueTable = ({ rowClick, issues, issueType }) => {
   const styles = customStyles();
-  const { rowClick, issues, issueType } = props;
   const Rows = () => {
     if (issues !== undefined) {
       return issues.map((issue, index) => (
-        <TableRow className="issueRow" onClick={() => rowClick(issue)} key={index}>
+        <TableRow
+          className="issueRow"
+          onClick={() => rowClick(issue)}
+          key={index}
+        >
           <TableCell
             style={
               issue.issueType === BUG

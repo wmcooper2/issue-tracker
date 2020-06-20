@@ -17,7 +17,7 @@ export const EditButton = () => {
   // const styles = customStyles();
   return (
     // <Link to="/add-issue" className={styles.btnStyle}>
-    <Link to="/add-issue">
+    <Link to="/edit-issue">
       <Fab size="small" aria-label="add">
         <EditIcon />
       </Fab>

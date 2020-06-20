@@ -33,7 +33,16 @@ export const PriorityRadio = ({ issue }) => {
       <RadioGroup row aria-label="priority" name="priority" defaultValue="top">
         <FormControlLabel
           value={PRIORITY_A}
-          control={<Radio color="default" />}
+          control={
+            issue === "NONE" ? (
+              <Radio color="default" />
+            ) : (
+              <Radio
+                color="default"
+                checked={issue.priority === PRIORITY_A ? true : false}
+              />
+            )
+          }
           label={PRIORITY_A}
           labelPlacement="bottom"
           className={classes.priorityA}
@@ -41,7 +50,16 @@ export const PriorityRadio = ({ issue }) => {
 
         <FormControlLabel
           value={PRIORITY_B}
-          control={<Radio color="default" />}
+          control={
+            issue === "NONE" ? (
+              <Radio color="default" />
+            ) : (
+              <Radio
+                color="default"
+                checked={issue.priority === PRIORITY_B ? true : false}
+              />
+            )
+          }
           label={PRIORITY_B}
           labelPlacement="bottom"
           className={classes.priorityB}
@@ -49,7 +67,16 @@ export const PriorityRadio = ({ issue }) => {
 
         <FormControlLabel
           value={PRIORITY_C}
-          control={<Radio color="default" />}
+          control={
+            issue === "NONE" ? (
+              <Radio color="default" />
+            ) : (
+              <Radio
+                color="default"
+                checked={issue.priority === PRIORITY_C ? true : false}
+              />
+            )
+          }
           label={PRIORITY_C}
           labelPlacement="bottom"
           className={classes.priorityC}
