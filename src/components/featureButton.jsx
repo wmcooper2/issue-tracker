@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { changeToFeatures } from "../redux/actions";
-import { FEATURE_GRADIENT, FEATURES_URL } from "../utilities/constants";
+import { FEATURE_GRADIENT, FEATURES_URL, FEATURES_ENDPOINT } from "../utilities/constants";
 import { updateIssues } from "../redux/actions";
 
 const customStyles = makeStyles({
@@ -24,7 +24,7 @@ const FeatureButton = (props) => {
   return (
     <Button className={classes.featureButton}>
       <Link
-        to="/features"
+        to={FEATURES_ENDPOINT}
         className={classes.linkStyle}
         onClick={() => props.featureClick()}
       >

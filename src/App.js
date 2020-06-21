@@ -18,6 +18,7 @@ import { reducer } from "./redux/reducers";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import PriorityBtns from "./components/priorityBtns";
+import { BASE_URL, ISSUES_URL, EDIT_ISSUE_ENDPOINT, ADD_ISSUE_ENDPOINT } from "./utilities/constants";
 
 const store = createStore(
   reducer,
@@ -28,7 +29,7 @@ const store = createStore(
 
 class App extends React.Component {
   componentDidMount() {
-    fetch("https://wmcooper2.com/issue-tracker-api/issues")
+    fetch(ISSUES_URL)
       .then((response) => response.json())
       .then((result) => {
         store.dispatch(updateIssues(result));
@@ -41,7 +42,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <HashRouter>
+        <HashRouter basename={BASE_URL}>
           <Box>
             <AppHeader></AppHeader>
             <Box
@@ -49,10 +50,10 @@ class App extends React.Component {
               className={{ display: "flex", flexDirection: "column" }}
             >
               <Switch>
-                <Route path="/add-issue">
+                <Route path={ADD_ISSUE_ENDPOINT}>
                   <AddIssue></AddIssue>
                 </Route>
-                <Route path="/edit-issue">
+                <Route path={EDIT_ISSUE_ENDPOINT}>
                   <EditIssue></EditIssue>
                 </Route>
                 <Route path="/">

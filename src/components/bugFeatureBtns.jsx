@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { makeStyles } from "@material-ui/core/styles";
 import fetch from "isomorphic-fetch";
+import { BUGS_URL, FEATURES_URL } from "../utilities/constants";
 
 const customStyles = makeStyles({
   projectDashboard: {},
@@ -17,7 +18,7 @@ const IssueBtns = (props) => {
       <Button
         className={classes.bugButton}
         onClick={() =>
-          fetch("https://wmcooper2.com/issue-tracker-api/bugs")
+          fetch(BUGS_URL)
             .then((res) => res.json())
             .then((json) => console.log(json))
             .catch((error) => console.error(error))
@@ -28,7 +29,7 @@ const IssueBtns = (props) => {
       <Button
         className={classes.featureButton}
         onClick={() =>
-          fetch("https://wmcooper2.com/issue-tracker-api/features")
+          fetch(FEATURES_URL)
             .then((res) => res.json())
             .then((json) => console.log(json))
             .catch((error) => console.error(error))

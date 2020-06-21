@@ -7,10 +7,11 @@ import List from "@material-ui/core/List";
 import PriorityRadio from "./priorityRadio";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import IssueRadio from "./issueRadio";
+import { EDIT_ISSUE_URL } from "../utilities/constants";
 
 import { connect } from "react-redux";
 import { updateIssues } from "../redux/actions";
-import { DELETE_URL } from "../utilities/constants";
+// import { DELETE_URL } from "../utilities/constants";
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 
@@ -49,7 +50,7 @@ const EditIssue = (props) => {
         Edit Issue
       </Typography>
       <form
-        action="https://wmcooper2.com/issue-tracker-api/add-issue"
+        action={EDIT_ISSUE_URL}
         method="POST"
       >
         <FormGroup>
@@ -152,7 +153,7 @@ const mapStateToProps = ({ issueType, issue }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   closeClick: (issue) => {
-    fetch(`${DELETE_URL}/${issue._id}`, { method: "POST" });
+    fetch(`${EDIT_ISSUE_URL}/${issue._id}`, { method: "POST" });
     dispatch(updateIssues());
   },
 });

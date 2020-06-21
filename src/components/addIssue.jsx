@@ -7,6 +7,7 @@ import List from "@material-ui/core/List";
 import PriorityRadio from "./priorityRadio";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import IssueRadio from "./issueRadio";
+import { ADD_ISSUE_URL } from "../utilities/constants";
 
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/styles";
@@ -40,7 +41,7 @@ const AddIssue = (props) => {
   return (
     <Box className={styles.issueForm}>
       <form
-        action="https://wmcooper2.com/issue-tracker-api/add-issue"
+        action={ADD_ISSUE_URL}
         method="POST"
       >
         <Typography variant="h3" className={styles.pageTitle}>

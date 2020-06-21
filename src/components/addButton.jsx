@@ -4,10 +4,11 @@ import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { clearIssue } from "../redux/actions";
+import { ADD_ISSUE_ENDPOINT } from "../utilities/constants";
 
 const AddButton = ({ addBtnClick, issueType }) => {
   return (
-    <Link to="/add-issue" onClick={() => addBtnClick(issueType)}>
+    <Link to={ADD_ISSUE_ENDPOINT} onClick={() => addBtnClick(issueType)}>
       <Fab size="small" aria-label="add">
         <AddIcon />
       </Fab>

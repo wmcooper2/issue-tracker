@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { changeToBugs } from "../redux/actions";
-import { BUG_GRADIENT, BUGS_URL } from "../utilities/constants";
+import { BUG_GRADIENT, BUGS_URL, BUGS_ENDPOINT } from "../utilities/constants";
 import { updateIssues } from "../redux/actions";
 
 
@@ -39,7 +39,7 @@ const BugButton = (props) => {
   return (
     <Button className={classes.bugButton}>
       <Link
-        to="/features"
+        to={BUGS_ENDPOINT}
         className={classes.linkStyle}
         onClick={() => props.bugClick()}
       >
