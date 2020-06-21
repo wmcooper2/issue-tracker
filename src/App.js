@@ -24,12 +24,10 @@ const store = createStore(
   initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-
 //GOOGLE CHROME, above line
 
 class App extends React.Component {
   componentDidMount() {
-    //on first initialization, loads bugs, what about later redirects back here?
     fetch("https://wmcooper2.com/issue-tracker-api/issues")
       .then((response) => response.json())
       .then((result) => {
@@ -58,7 +56,6 @@ class App extends React.Component {
                   <EditIssue></EditIssue>
                 </Route>
                 <Route path="/">
-                  {/* <ButtonGroup style={{ minHeight: "10mm", margin: "1rem" }}> */}
                   <ButtonGroup>
                     <BugButton></BugButton>
                     <FeatureButton></FeatureButton>

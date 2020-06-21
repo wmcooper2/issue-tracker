@@ -3,6 +3,15 @@ Times are in minutes
 
 ## June
 
+### 21st
+30 - Didn't do much today. The wife and I went shopping for the new baby coming and I did chores all day. I did start to set the app up for putting on my AWS Lightsail instance, but without a project tile on my website so I can test out the functionality without exposing it to vistors.
+
+### 20th
+120 - Added an edit issue form and started to differentiate between the data that is preloaded (or not) between the add-issue form and the edit-issue form. Read the docs for MongoDB to add an update ability endpoint for the edit-issue form.
+
+### 19th
+30 - Refactored a little, didn't do much today.
+
 ### 18th
 240 - I moved the the add issue button, added a home button to the app header, put the edit button in the rows for each element, and added more color coding for the priorities and bug/feature issues in the issue table. I added some functionality on the server side by sorting the issues by time on intializing the app. Will fix the /bugs and /features endpoints to return only those issues respectively. I began to use the bug tracker to track my own progress on the app. I've been taking screen shots of the UI progress and it's coming along well.
 
