@@ -20,7 +20,7 @@ None yet.
 * AWS Lightsail
 
 ## Problems/Solutions
-N/A
+Redux was a huge pain, but I figured it out. I will add the links that helped me to figure it out later.
 
 ## More Information
 Initial idea for the color palette; [Color Palette](https://paletton.com/#uid=72L1v0kYO++d5FSpKAmVit9++ka)

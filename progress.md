@@ -3,8 +3,11 @@ Times are in minutes
 
 ## June
 
+
 ### 21st
-30 - Didn't do much today. The wife and I went shopping for the new baby coming and I did chores all day. I did start to set the app up for putting on my AWS Lightsail instance, but without a project tile on my website so I can test out the functionality without exposing it to vistors.
+30 - The wife and I went shopping for the new baby coming and I did chores all day. I did start to set the app up for putting on my AWS Lightsail instance, but without a project tile on my website so I can test out the functionality without exposing it to vistors.
+60 - Put the app up on my server and fixed the endpoints to work with the server's current setup. Redirected the user after the edit-issue and add-issue forms back to the dashboard. I need to add a confirmation page inbetween with a timeout that send the user to the dashboard. Right now, the endpoints work, the database works, the buttons work, but I need to get the dates to format properly. Later I can add a project selection menu then a way to require users to login. The project tile has not been added to my portfolio page, but the app is accessible by directly entering the url in the address bar.
+
 
 ### 20th
 120 - Added an edit issue form and started to differentiate between the data that is preloaded (or not) between the add-issue form and the edit-issue form. Read the docs for MongoDB to add an update ability endpoint for the edit-issue form.
