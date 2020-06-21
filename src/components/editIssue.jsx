@@ -61,6 +61,9 @@ const EditIssue = (props) => {
               name="issueName"
               className={styles.inputStyle}
               defaultValue={name}
+              inputProps={{
+                maxLength: 200,
+              }}
             ></Input>
           </Box>
 
@@ -71,6 +74,9 @@ const EditIssue = (props) => {
               name="category"
               className={styles.inputStyle}
               defaultValue={category}
+              inputProps={{
+                maxLength: 50,
+              }}
             ></Input>
           </Box>
 
@@ -81,6 +87,9 @@ const EditIssue = (props) => {
               defaultValue={version}
               name="version"
               className={styles.inputStyle}
+              inputProps={{
+                maxLength: 10,
+              }}
             ></Input>
           </Box>
 
@@ -91,6 +100,9 @@ const EditIssue = (props) => {
               value={id}
               name="issueid"
               className={styles.inputStyle}
+              inputProps={{
+                maxLength: 30,
+              }}
             ></Input>
           </Box>
 
@@ -114,6 +126,9 @@ const EditIssue = (props) => {
               defaultValue={description}
               name="description"
               className={styles.textAreaStyle}
+              inputProps={{
+                maxLength: 1000,
+              }}
             ></TextareaAutosize>
           </Box>
         </FormGroup>

@@ -21,6 +21,7 @@ const customStyles = makeStyles({
   },
 });
 
+
 export const IssueRadio = ({ issue }) => {
   const classes = customStyles();
 
@@ -32,13 +33,18 @@ export const IssueRadio = ({ issue }) => {
         name="issueType"
         defaultValue="top"
       >
+
         <FormControlLabel
           value={BUG}
           control={
-            <Radio
-              color="default"
-              checked={issue.issueType === BUG ? true : false}
-            />
+            issue === "NONE" ? (
+              <Radio color="default" />
+            ) : (
+                <Radio
+                  color="default"
+                  checked={issue.issueType === BUG ? true : false}
+                />
+              )
           }
           label={BUG}
           labelPlacement="bottom"
@@ -48,10 +54,14 @@ export const IssueRadio = ({ issue }) => {
         <FormControlLabel
           value={FEATURE}
           control={
-            <Radio
-              color="default"
-              checked={issue.issueType === FEATURE ? true : false}
-            />
+            issue === "NONE" ? (
+              <Radio color="default" />
+            ) : (
+                <Radio
+                  color="default"
+                  checked={issue.issueType === FEATURE ? true : false}
+                />
+              )
           }
           label={FEATURE}
           labelPlacement="bottom"

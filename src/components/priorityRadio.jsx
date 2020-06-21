@@ -37,16 +37,17 @@ export const PriorityRadio = ({ issue }) => {
             issue === "NONE" ? (
               <Radio color="default" />
             ) : (
-              <Radio
-                color="default"
-                checked={issue.priority === PRIORITY_A ? true : false}
-              />
-            )
+                <Radio
+                  color="default"
+                  checked={issue.priority === PRIORITY_A ? true : false}
+                />
+              )
           }
           label={PRIORITY_A}
           labelPlacement="bottom"
           className={classes.priorityA}
         ></FormControlLabel>
+
 
         <FormControlLabel
           value={PRIORITY_B}
@@ -54,11 +55,11 @@ export const PriorityRadio = ({ issue }) => {
             issue === "NONE" ? (
               <Radio color="default" />
             ) : (
-              <Radio
-                color="default"
-                checked={issue.priority === PRIORITY_B ? true : false}
-              />
-            )
+                <Radio
+                  color="default"
+                  checked={issue.priority === PRIORITY_B ? true : false}
+                />
+              )
           }
           label={PRIORITY_B}
           labelPlacement="bottom"
@@ -71,11 +72,11 @@ export const PriorityRadio = ({ issue }) => {
             issue === "NONE" ? (
               <Radio color="default" />
             ) : (
-              <Radio
-                color="default"
-                checked={issue.priority === PRIORITY_C ? true : false}
-              />
-            )
+                <Radio
+                  color="default"
+                  checked={issue.priority === PRIORITY_C ? true : false}
+                />
+              )
           }
           label={PRIORITY_C}
           labelPlacement="bottom"

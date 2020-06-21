@@ -3,13 +3,22 @@ export const BUGS_ENDPOINT = "/bugs";
 export const EDIT_ISSUE_ENDPOINT = "/edit-issue";
 export const FEATURES_ENDPOINT = "/features";
 
-export const ADD_ISSUE_URL = "https://wmcooper2.com/issue-tracker/add-issue";
 export const BASE_URL = "https://wmcooper2.com/";
-export const BUGS_URL = "https://wmcooper2.com/issue-tracker/bugs";
-export const DELETE_URL = "https://wmcooper2.com/issue-tracker/delete-issue";
-export const EDIT_ISSUE_URL = "https://wmcooper2.com/issue-tracker/edit-issue";
-export const FEATURES_URL = "https://wmcooper2.com/issue-tracker/features";
-export const ISSUES_URL = "https://wmcooper2.com/issue-tracker/issues";
+export const APP_URL = "https://wmcooper2.com/issue-tracker";
+
+// export const ADD_ISSUE_URL = "https://wmcooper2.com/issue-tracker/add-issue";
+// export const BUGS_URL = "https://wmcooper2.com/issue-tracker/bugs";
+// export const DELETE_URL = "https://wmcooper2.com/issue-tracker/delete-issue";
+// export const EDIT_ISSUE_URL = "https://wmcooper2.com/issue-tracker/edit-issue";
+// export const FEATURES_URL = "https://wmcooper2.com/issue-tracker/features";
+// export const ISSUES_URL = "https://wmcooper2.com/issue-tracker/issues";
+
+export const ADD_ISSUE_URL = "/issue-tracker/add-issue";
+export const BUGS_URL = "/issue-tracker/bugs";
+export const DELETE_URL = "/issue-tracker/delete-issue";
+export const EDIT_ISSUE_URL = "/issue-tracker/edit-issue";
+export const FEATURES_URL = "/issue-tracker/features";
+export const ISSUES_URL = "/issue-tracker/issues";
 
 
 
