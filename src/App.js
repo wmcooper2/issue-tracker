@@ -39,11 +39,22 @@ class App extends React.Component {
       });
   }
 
+  shouldComponentUpdate() {
+    fetch(ISSUES_URL)
+      .then((response) => response.json())
+      .then((result) => {
+        store.dispatch(updateIssues(result));
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+  }
+
   render() {
     return (
-      <Provider store={store}>
+      <Provider store={store} >
         {/* <HashRouter basename={BASE_URL}> */}
-        <HashRouter>
+        < HashRouter >
           <Box>
             <AppHeader></AppHeader>
             <Box
@@ -73,7 +84,7 @@ class App extends React.Component {
             </Box>
           </Box>
         </HashRouter>
-      </Provider>
+      </Provider >
     );
   }
 }

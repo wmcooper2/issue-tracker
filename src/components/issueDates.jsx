@@ -1,9 +1,11 @@
 import React from "react";
-import { dateFormat } from "../utilities/utilities";
-import FormGroup from "@material-ui/core/FormGroup";
+
 import Box from "@material-ui/core/Box";
+import FormGroup from "@material-ui/core/FormGroup";
 import Input from "@material-ui/core/Input";
+
 import { connect } from "react-redux";
+import { dateFormat } from "../utilities/utilities";
 
 const IssueDates = ({ issue }) => {
   const dateLastEdited =
@@ -11,6 +13,7 @@ const IssueDates = ({ issue }) => {
   const dateClosed = issue.dates !== undefined ? issue.dates.closed : null;
   const inputStyle = { width: "100%", minWidth: "50vw" };
   return (
+
     <FormGroup>
       <Box component="div">
         Dates:
@@ -43,6 +46,7 @@ const IssueDates = ({ issue }) => {
         </Box>
       </Box>
     </FormGroup>
+
   );
 };
 

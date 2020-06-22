@@ -12,6 +12,7 @@ const IssuePeople = (props) => {
     issue.people !== undefined ? issue.people.lastEdited : null;
   const personClosed = issue.people !== undefined ? issue.people.closed : null;
   return (
+
     <FormGroup>
       <Box component="div">
         People:
@@ -44,6 +45,7 @@ const IssuePeople = (props) => {
         </Box>
       </Box>
     </FormGroup>
+
   );
 };
 

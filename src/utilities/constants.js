@@ -76,19 +76,19 @@ export const DEFAULT_ISSUE = {
   description: "Click on an issue above to see the description.",
   messages: [
     {
-      person: "ALICE",
-      message: "Default message from Alice.",
-      date: Date.now(),
+      person: null,
+      message: null,
+      date: null,
     },
     {
-      person: "BOB",
-      message: "Default message from Bob.",
-      date: Date.now(),
+      person: null,
+      message: null,
+      date: null,
     },
     {
-      person: "CAROL",
-      message: "Default message from Carol.",
-      date: Date.now(),
+      person: null,
+      message: null,
+      date: null,
     },
   ],
   similarIssues: ["1111111", "2222222", "3333333"],

@@ -30,7 +30,7 @@ export const PriorityRadio = ({ issue }) => {
   const classes = customStyles();
   return (
     <FormControl component="fieldset">
-      <RadioGroup row aria-label="priority" name="priority" defaultValue="top">
+      <RadioGroup row aria-label="priority" name="priority" defaultValue={PRIORITY_A}>
         <FormControlLabel
           value={PRIORITY_A}
           control={

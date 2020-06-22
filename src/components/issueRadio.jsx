@@ -31,7 +31,7 @@ export const IssueRadio = ({ issue }) => {
         row
         aria-label="issueType"
         name="issueType"
-        defaultValue="top"
+        defaultValue={BUG}
       >
 
         <FormControlLabel

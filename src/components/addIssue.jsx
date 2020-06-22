@@ -127,6 +127,7 @@ const AddIssue = (props) => {
               inputProps={{
                 maxLength: 1000,
               }}
+              required
             ></TextareaAutosize>
           </Box>
         </FormGroup>
