@@ -3,6 +3,12 @@ Times are in minutes
 
 ## June
 
+### 22nd
+30 - Fixed endpoints to not accept cors anymore as I don't need to allow it for development on my localhost (to allow access to the endpoints and the database).
+10 - Got the edit-issue endpoint working so now the issues can be updated, added an "open" field to filter out inactive issues on initialization, made input fields required for edit-issue and add-issue.
+20 - converted close issue button to checkbox in edit-issue form.
+15 - got the database to update the open status to "false" when the checkbox for closing is checked.
+
 
 ### 21st
 30 - The wife and I went shopping for the new baby coming and I did chores all day. I did start to set the app up for putting on my AWS Lightsail instance, but without a project tile on my website so I can test out the functionality without exposing it to vistors.

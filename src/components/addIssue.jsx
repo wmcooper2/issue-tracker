@@ -58,6 +58,7 @@ const AddIssue = (props) => {
               inputProps={{
                 maxLength: 200,
               }}
+              required
             ></Input>
           </Box>
 
@@ -71,6 +72,7 @@ const AddIssue = (props) => {
               inputProps={{
                 maxLength: 50,
               }}
+              required
             ></Input>
           </Box>
 
@@ -84,6 +86,7 @@ const AddIssue = (props) => {
               inputProps={{
                 maxLength: 10,
               }}
+              required
             ></Input>
           </Box>
 
@@ -97,6 +100,7 @@ const AddIssue = (props) => {
               inputProps={{
                 maxLength: 30,
               }}
+              required
             ></Input>
           </Box>
 

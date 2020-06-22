@@ -1,17 +1,20 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from "@material-ui/core/FormGroup";
 import Input from "@material-ui/core/Input";
+
 import List from "@material-ui/core/List";
 import PriorityRadio from "./priorityRadio";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import IssueRadio from "./issueRadio";
+// import { EDIT_ISSUE_URL, CLOSE_ISSUE_URL } from "../utilities/constants";
 import { EDIT_ISSUE_URL } from "../utilities/constants";
 
 import { connect } from "react-redux";
-import { updateIssues } from "../redux/actions";
-// import { DELETE_URL } from "../utilities/constants";
+// import { updateIssues } from "../redux/actions";
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 
@@ -32,17 +35,14 @@ const customStyles = makeStyles({
 
 const EditIssue = (props) => {
   const styles = customStyles();
-  const { closeClick, issue, issueType } = props;
+  // const { closeClick, issue, issueType } = props;
+  const { issue, issueType } = props;
   const name = issue.name !== undefined ? issue.name : undefined;
   const description =
     issue.description !== undefined ? issue.description : undefined;
   const category = issue.category !== undefined ? issue.category : undefined;
   const version = issue.version !== undefined ? issue.version : undefined;
   const id = issue._id !== undefined ? issue._id : undefined;
-
-  // const inputStyle = { width: "100%", minWidth: "50vw" };
-  // const textAreaStyle = { resize: "vertical", minWidth: "50vw" };
-  // const issueForm = { width: "50vw", marginLeft: "auto", marginRight: "auto", marginTop: "1rem", };
 
   return (
     <Box className={styles.issueForm}>
@@ -64,6 +64,7 @@ const EditIssue = (props) => {
               inputProps={{
                 maxLength: 200,
               }}
+              required
             ></Input>
           </Box>
 
@@ -77,6 +78,7 @@ const EditIssue = (props) => {
               inputProps={{
                 maxLength: 50,
               }}
+              required
             ></Input>
           </Box>
 
@@ -90,6 +92,7 @@ const EditIssue = (props) => {
               inputProps={{
                 maxLength: 10,
               }}
+              required
             ></Input>
           </Box>
 
@@ -103,6 +106,7 @@ const EditIssue = (props) => {
               inputProps={{
                 maxLength: 30,
               }}
+              required
             ></Input>
           </Box>
 
@@ -144,18 +148,22 @@ const EditIssue = (props) => {
         <FormGroup>
           <Box>Make keywords text area</Box>
         </FormGroup>
-        <Button variant="contained" color="primary" name="submit" type="submit">
-          Submit {issueType}
-        </Button>
+        <FormGroup>
 
-        <Button
-          variant="contained"
-          color="secondary"
-          name="close"
-          onClick={() => closeClick(issue)}
-        >
-          Close {issueType}
-        </Button>
+          <FormControlLabel
+            control={
+              <Checkbox
+                color="Secondary"
+                value="true"
+                name="closeIssue"
+              ></Checkbox>
+            }
+            label="Close Issue"
+          ></FormControlLabel>
+          <Button variant="contained" color="primary" name="submit" type="submit">
+            Submit {issueType}
+          </Button>
+        </FormGroup>
       </form>
     </Box>
   );
@@ -167,10 +175,10 @@ const mapStateToProps = ({ issueType, issue }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  closeClick: (issue) => {
-    fetch(`${EDIT_ISSUE_URL}/${issue._id}`, { method: "POST" });
-    dispatch(updateIssues());
-  },
+  // closeClick: (issue) => {
+  // fetch(`${CLOSE_ISSUE_URL}`, { method: "POST" });
+  // dispatch(updateIssues());
+  // },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditIssue);

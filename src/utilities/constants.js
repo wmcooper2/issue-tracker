@@ -15,6 +15,7 @@ export const APP_URL = "https://wmcooper2.com/issue-tracker";
 
 export const ADD_ISSUE_URL = "/issue-tracker/add-issue";
 export const BUGS_URL = "/issue-tracker/bugs";
+export const CLOSE_ISSUE_URL = "/issue-tracker/close-issue";
 export const DELETE_URL = "/issue-tracker/delete-issue";
 export const EDIT_ISSUE_URL = "/issue-tracker/edit-issue";
 export const FEATURES_URL = "/issue-tracker/features";
