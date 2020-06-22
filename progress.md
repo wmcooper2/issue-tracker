@@ -8,6 +8,7 @@ Times are in minutes
 10 - Got the edit-issue endpoint working so now the issues can be updated, added an "open" field to filter out inactive issues on initialization, made input fields required for edit-issue and add-issue.
 20 - converted close issue button to checkbox in edit-issue form.
 15 - got the database to update the open status to "false" when the checkbox for closing is checked.
+20 - figured out that what I was doing in one endpoint was not updating in another endpoint. Duh... just a brainfart.
 
 
 ### 21st

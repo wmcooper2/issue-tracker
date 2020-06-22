@@ -154,7 +154,7 @@ const EditIssue = (props) => {
             control={
               <Checkbox
                 color="Secondary"
-                value="true"
+                value={true}
                 name="closeIssue"
               ></Checkbox>
             }
