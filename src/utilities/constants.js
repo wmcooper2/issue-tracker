@@ -94,3 +94,9 @@ export const DEFAULT_ISSUE = {
   similarIssues: ["1111111", "2222222", "3333333"],
   keywords: ["keyword1", "keyword2", "keyword3"],
 };
+
+export const PROJECTS = [
+  "Issue tracker",
+  "Directions game",
+  "Freelance site",
+];

@@ -2,12 +2,11 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import FormGroup from "@material-ui/core/FormGroup";
 import Input from "@material-ui/core/Input";
-// import IssueDetails from "./issueDetails";
 import IssueTable from "./issueTable";
 import Paper from "@material-ui/core/Paper";
 
 import { connect } from "react-redux";
-import { dateFormat } from "../utilities/utilities";
+import { dateFormat3 } from "../utilities/utilities";
 import { makeStyles } from "@material-ui/core/styles";
 
 const customStyles = makeStyles({
@@ -27,11 +26,6 @@ const customStyles = makeStyles({
 const Dashboard = ({ issue }) => {
   const styles = customStyles();
   const inputStyle = { width: "100%", minWidth: "50vw" };
-  // const dateLastEdited = issue.dates !== undefined ? issue.dates.lastEdited : null;
-  // const dateClosed = issue.dates !== undefined ? issue.dates.closed : null;
-  // const personOpened = issue.people !== undefined ? issue.people.opened : null;
-  // const personLastEdited = issue.people !== undefined ? issue.people.lastEdited : null;
-  // const personClosed = issue.people !== undefined ? issue.people.closed : null;
   return (
     <React.Fragment>
       <Box className={styles.projectDashboard}>
@@ -39,7 +33,6 @@ const Dashboard = ({ issue }) => {
       </Box>
       <Paper className={styles.description}>
         <Box component="div">{issue.description}</Box>
-        {/* <IssueDetails></IssueDetails> */}
 
         <Box component="div" className={styles.details}>
           {/* Dates */}
@@ -50,7 +43,7 @@ const Dashboard = ({ issue }) => {
                 Opened:
                 <Input
                   disabled={true}
-                  defaultValue={dateFormat(issue.dates.opened)}
+                  defaultValue={dateFormat3(issue.dates.opened)}
                   name="dateOpened"
                   style={inputStyle}
                 ></Input>
@@ -59,7 +52,7 @@ const Dashboard = ({ issue }) => {
                 Last Edited:
                 <Input
                   disabled={true}
-                  defaultValue={dateFormat(issue.dates.lastEdited)}
+                  defaultValue={dateFormat3(issue.dates.lastEdited)}
                   name="dateLastEdited"
                   style={inputStyle}
                 ></Input>
@@ -68,7 +61,7 @@ const Dashboard = ({ issue }) => {
                 Closed:
                 <Input
                   disabled={true}
-                  defaultValue={dateFormat(issue.dates.closed)}
+                  defaultValue={dateFormat3(issue.dates.closed)}
                   name="dateClosed"
                   style={inputStyle}
                 ></Input>

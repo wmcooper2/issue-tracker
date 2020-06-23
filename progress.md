@@ -3,6 +3,11 @@ Times are in minutes
 
 ## June
 
+### 23rd
+60 - working with dates in javascript is one of those things that causes headaches. I went over it in detail a year ago, but haven't used it since. I remember a lot, but there are still some quirks that escape memory. That and I need to figure out why my detail pane's datesare not calculating properly (been putting it off because dates are so wierd in javascript).
+20 - read about selection menus and added one to <AppHeader> component.
+60 - spent a while thinking about freelancing and how to make it (teaching code in English) appeal to the English teaching companies in Tokyo.
+
 ### 22nd
 30 - Fixed endpoints to not accept cors anymore as I don't need to allow it for development on my localhost (to allow access to the endpoints and the database).
 10 - Got the edit-issue endpoint working so now the issues can be updated, added an "open" field to filter out inactive issues on initialization, made input fields required for edit-issue and add-issue.

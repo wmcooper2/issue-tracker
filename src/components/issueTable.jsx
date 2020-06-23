@@ -25,7 +25,7 @@ import {
   PRIORITY_B_YELLOW_3,
   PRIORITY_C_GREEN_3,
 } from "../utilities/constants";
-import { dateFormat } from "../utilities/utilities";
+import { dateFormat3 } from "../utilities/utilities";
 
 //the maxHeight property forces the scroll ability to show up when the list exceeds the given height
 const customStyles = makeStyles({
@@ -60,14 +60,14 @@ const IssueTable = ({ rowClick, issues, issueType }) => {
               issue.priority === PRIORITY_A
                 ? { backgroundColor: PRIORITY_A_RED_3 }
                 : issue.priority === PRIORITY_B
-                ? { backgroundColor: PRIORITY_B_YELLOW_3 }
-                : { backgroundColor: PRIORITY_C_GREEN_3 }
+                  ? { backgroundColor: PRIORITY_B_YELLOW_3 }
+                  : { backgroundColor: PRIORITY_C_GREEN_3 }
             }
           >
             {issue.priority}
           </TableCell>
           <TableCell>
-            {issue.dates === undefined ? null : dateFormat(issue.dates.opened)}
+            {issue.dates === undefined ? null : dateFormat3(issue.dates.opened)}
           </TableCell>
           <TableCell>
             {issue.people === undefined ? null : issue.people.opened}

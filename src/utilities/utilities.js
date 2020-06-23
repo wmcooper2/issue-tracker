@@ -33,3 +33,24 @@ export const dateFormat = (time) => {
   const second = new Date(time).getSeconds();
   return `${month} ${day}, ${year} ${hour}:${minute}:${second}`;
 };
+
+export const dateFormat2 = (timestamp) => {
+  const now = new Date(timestamp * 1000);
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const year = now.getFullYear();
+  const month = months[now.getMonth()];
+  const date = now.getDate();
+  const hour = now.getHours();
+  const min = now.getMinutes();
+  const sec = now.getSeconds();
+  return `${date} ${month} ${year} ${hour}:${min}:${sec}`;
+}
+
+export const dateFormat3 = (timestamp) => {
+  // const date = new Date(timestamp).toLocaleDateString("en-US");
+  // const time = new Date(timestamp).toLocaleTimeString("en-US");
+  const date = new Date(timestamp).toUTCString();
+  // const time = new Date(timestamp).toUTCString();
+  // return `${date} ${time}`;
+  return date;
+}

@@ -53,7 +53,6 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store} >
-        {/* <HashRouter basename={BASE_URL}> */}
         < HashRouter >
           <Box>
             <AppHeader></AppHeader>
