@@ -3,6 +3,9 @@ Times are in minutes
 
 ## June
 
+### 24th
+60 - Dealing with interruptions every 5 to 8 minutes, I think I was able to get something done in this hour. The biggest obstacle to progress is these small interruptions (wife) because they break concentration and the "flow" that you get into. It takes a lot of effort to get back into that... I think I was able to get half way to a working solution on the dates updating properly in the details below the issues table. The date format is correct, but the times update to the point where you refresh the page, but don't update when you click the home button from the edit-issue form page (they are blank). I edited the code to try and get it to show the dates based on the saved/created times, but that's not working (...distractions) however the app does not crash anymore when clicking the home button from the edit-issue or add-issue form pages.
+
 ### 23rd
 60 - working with dates in javascript is one of those things that causes headaches. I went over it in detail a year ago, but haven't used it since. I remember a lot, but there are still some quirks that escape memory. That and I need to figure out why my detail pane's datesare not calculating properly (been putting it off because dates are so wierd in javascript).
 20 - read about selection menus and added one to <AppHeader> component.

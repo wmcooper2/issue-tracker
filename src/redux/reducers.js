@@ -10,13 +10,10 @@ import {
 
 import initialState from "./initialState";
 
-//a reducer can return any type, here they return a string and an array.
-//these arent needed, maybe
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_NEW_ISSUE:
       return { ...state, issueType: action.issueType };
-      //change this issueType, "new ?"
       break;
     case BUG:
       return { ...state, issueType: BUG };
@@ -30,12 +27,14 @@ export const reducer = (state = initialState, action) => {
     case ISSUE:
       return { ...state, issueType: ISSUE };
       break;
-    case UPDATE_ISSUES:
-      return { ...state, issues: action.issues };
     case SELECT_ISSUE:
       return { ...state, issue: action.issue };
+      break;
+    case UPDATE_ISSUES:
+      return { ...state, issues: action.issues };
       break;
     default:
       return { ...state };
   }
 };
+
