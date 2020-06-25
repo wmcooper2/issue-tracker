@@ -4,76 +4,84 @@ Times are in minutes
 ## June
 
 ### 25th
-60 - I'm stuck on too many styling issues with Material-ui. I think I need to dive deeper into how it works and build my understanding of it works before I continue. I've wasted a lot of time already trying different ways of getting the stylings to work and things that I don't expect are happening. This is a sign that I need to take a step back and read the documentation more.
-30 - The issue with the dates not updating properly in the server has me a little confused. I need to play with that more before I tackle it again. I feel like I'm wasting too much time with the Date objects.
+60 - I'm stuck on too many styling issues with Material-ui. I think I need to dive deeper into how it works and build my understanding of it works before I continue. I've wasted a lot of time already trying different ways of getting the stylings to work and things that I don't expect are happening. This is a sign that I need to take a step back and read the documentation more.  
+30 - The issue with the dates not updating properly in the server has me a little confused. I need to play with that more before I tackle it again. I feel like I'm wasting too much time with the Date objects.  
 20 - This feels wierd. When I think I don't understand something it starts to work, and then I have to study it to figure out what I did... The date fields are working now (sort of). They overwrite the fields in the API's endpoint, but I think that can be solved just by adding the other fields in the object passed to the MongoDB method when updating. I will do that tomorrow. The wife is home my productivity is taking a nosedive because of the constant talking.
 
 ### 24th
 60 - Dealing with interruptions every 5 to 8 minutes, I think I was able to get something done in this hour. The biggest obstacle to progress is these small interruptions (wife) because they break concentration and the "flow" that you get into. It takes a lot of effort to get back into that... I think I was able to get half way to a working solution on the dates updating properly in the details below the issues table. The date format is correct, but the times update to the point where you refresh the page, but don't update when you click the home button from the edit-issue form page (they are blank). I edited the code to try and get it to show the dates based on the saved/created times, but that's not working (...distractions) however the app does not crash anymore when clicking the home button from the edit-issue or add-issue form pages.
 
 ### 23rd
-60 - working with dates in javascript is one of those things that causes headaches. I went over it in detail a year ago, but haven't used it since. I remember a lot, but there are still some quirks that escape memory. That and I need to figure out why my detail pane's datesare not calculating properly (been putting it off because dates are so wierd in javascript).
-20 - read about selection menus and added one to <AppHeader> component.
-60 - spent a while thinking about freelancing and how to make it (teaching code in English) appeal to the English teaching companies in Tokyo.
+60 - working with dates in javascript is one of those things that causes headaches. I went over it in detail a year ago, but haven't used it since. I remember a lot, but there are still some quirks that escape memory. That and I need to figure out why my detail pane's datesare not calculating properly (been putting it off because dates are so wierd in javascript).  
+20 - read about selection menus and added one to <AppHeader> component.  
+60 - spent a while thinking about freelancing and how to make it (teaching code in English) appeal to the English teaching companies in Tokyo.  
+
 
 ### 22nd
-30 - Fixed endpoints to not accept cors anymore as I don't need to allow it for development on my localhost (to allow access to the endpoints and the database).
-10 - Got the edit-issue endpoint working so now the issues can be updated, added an "open" field to filter out inactive issues on initialization, made input fields required for edit-issue and add-issue.
-20 - converted close issue button to checkbox in edit-issue form.
-15 - got the database to update the open status to "false" when the checkbox for closing is checked.
-20 - figured out that what I was doing in one endpoint was not updating in another endpoint. Duh... just a brainfart.
-10 - thought about what to do next, what I need to work on and added issues accordingly to the app (about the app).
-20 - It's late... too tired to make sense of why the details below the <Dashboard> component don't update on issue click.
+30 - Fixed endpoints to not accept cors anymore as I don't need to allow it for development on my localhost (to allow access to the endpoints and the database).  
+10 - Got the edit-issue endpoint working so now the issues can be updated, added an "open" field to filter out inactive issues on initialization, made input fields required for edit-issue and add-issue.  
+20 - converted close issue button to checkbox in edit-issue form.  
+15 - got the database to update the open status to "false" when the checkbox for closing is checked.  
+20 - figured out that what I was doing in one endpoint was not updating in another endpoint. Duh... just a brainfart.  
+10 - thought about what to do next, what I need to work on and added issues accordingly to the app (about the app).  
+20 - It's late... too tired to make sense of why the details below the <Dashboard> component don't update on issue click.  
 
 
 ### 21st
-30 - The wife and I went shopping for the new baby coming and I did chores all day. I did start to set the app up for putting on my AWS Lightsail instance, but without a project tile on my website so I can test out the functionality without exposing it to vistors.
-60 - Put the app up on my server and fixed the endpoints to work with the server's current setup. Redirected the user after the edit-issue and add-issue forms back to the dashboard. I need to add a confirmation page inbetween with a timeout that send the user to the dashboard. Right now, the endpoints work, the database works, the buttons work, but I need to get the dates to format properly. Later I can add a project selection menu then a way to require users to login. The project tile has not been added to my portfolio page, but the app is accessible by directly entering the url in the address bar.
+30 - The wife and I went shopping for the new baby coming and I did chores all day. I did start to set the app up for putting on my AWS Lightsail instance, but without a project tile on my website so I can test out the functionality without exposing it to vistors.  
+60 - Put the app up on my server and fixed the endpoints to work with the server's current setup. Redirected the user after the edit-issue and add-issue forms back to the dashboard. I need to add a confirmation page inbetween with a timeout that send the user to the dashboard. Right now, the endpoints work, the database works, the buttons work, but I need to get the dates to format properly. Later I can add a project selection menu then a way to require users to login. The project tile has not been added to my portfolio page, but the app is accessible by directly entering the url in the address bar.  
 
 
 ### 20th
-120 - Added an edit issue form and started to differentiate between the data that is preloaded (or not) between the add-issue form and the edit-issue form. Read the docs for MongoDB to add an update ability endpoint for the edit-issue form.
+120 - Added an edit issue form and started to differentiate between the data that is preloaded (or not) between the add-issue form and the edit-issue form. Read the docs for MongoDB to add an update ability endpoint for the edit-issue form.  
+
 
 ### 19th
-30 - Refactored a little, didn't do much today.
+30 - Refactored a little, didn't do much today.  
+
 
 ### 18th
-240 - I moved the the add issue button, added a home button to the app header, put the edit button in the rows for each element, and added more color coding for the priorities and bug/feature issues in the issue table. I added some functionality on the server side by sorting the issues by time on intializing the app. Will fix the /bugs and /features endpoints to return only those issues respectively. I began to use the bug tracker to track my own progress on the app. I've been taking screen shots of the UI progress and it's coming along well.
+240 - I moved the the add issue button, added a home button to the app header, put the edit button in the rows for each element, and added more color coding for the priorities and bug/feature issues in the issue table. I added some functionality on the server side by sorting the issues by time on intializing the app. Will fix the /bugs and /features endpoints to return only those issues respectively. I began to use the bug tracker to track my own progress on the app. I've been taking screen shots of the UI progress and it's coming along well.  
+
 
 ### 17th
-180 - took the time to play with the stylings a little, shuffle around some components and refactor things. I refactored such that the components I combined were split up again because I feel like having them combined was not necessary and over-abstracted the code.
+180 - took the time to play with the stylings a little, shuffle around some components and refactor things. I refactored such that the components I combined were split up again because I feel like having them combined was not necessary and over-abstracted the code.  
+
 
 ### 16th
-240 - having a really tough time trying to figure out what the heck is going on with redux's store and why the change to my store is not triggering an update in the component that uses it even though the mapStateToProps and mapDispatchToProps are there and they work fine. I'm really sure that there is no issue with my reducers. wtf.
+240 - having a really tough time trying to figure out what the heck is going on with redux's store and why the change to my store is not triggering an update in the component that uses it even though the mapStateToProps and mapDispatchToProps are there and they work fine. I'm really sure that there is no issue with my reducers. wtf.  
 
 ### 15th
-180 - I wasted waaaaaaaay too much time because of a simple, stupidly small detail that I forgot. I struggled trying to figure out why I kept getting errors with undefined and trying to map through an undefined object. I was getting two different states of objects as the component's property was being updated from the default to the result from the API. The state would change and the component would update as a result, but the map function in the component would crash the app when it got undefined. Finally, I got suspicious of my understanding of the fundamentals and I remembered something. I went back to the documentation and I felt so stupid. My problem was that undefined is not the same as "undefined". I was getting two different undefined values in the console but that small detail just went right past me. I looked in my books too (the ones that I had when I was just starting out with JavaScript) and I even made a note about that in there. I feel that had I been working on a team, that if I had other people to help catch these small errors, then my progress would be faster in this regard (there are pros and cons with teams, but perhaps the team members would be helpful in finding these lapses in knowledge that form over time).  
-120 - with much distraction (from my wife), I was able to get the database to delete issues through the API endpoint. Next I need to get the state to change and trigger an update on the screen to rerender the new state.
+180 - I wasted waaaaaaaay too much time because of a simple, stupidly small detail that I forgot. I struggled trying to figure out why I kept getting errors with undefined and trying to map through an undefined object. I was getting two different states of objects as the component's property was being updated from the default to the result from the API. The state would change and the component would update as a result, but the map function in the component would crash the app when it got undefined. Finally, I got suspicious of my understanding of the fundamentals and I remembered something. I went back to the documentation and I felt so stupid. My problem was that undefined is not the same as "undefined". I was getting two different undefined values in the console but that small detail just went right past me. I looked in my books too (the ones that I had when I was just starting out with JavaScript) and I even made a note about that in there. I feel that had I been working on a team, that if I had other people to help catch these small errors, then my progress would be faster in this regard (there are pros and cons with teams, but perhaps the team members would be helpful in finding these lapses in knowledge that form over time).    
+120 - with much distraction (from my wife), I was able to get the database to delete issues through the API endpoint. Next I need to get the state to change and trigger an update on the screen to rerender the new state.  
 
-I finally got it straightened out and the app works normally. I feel dumb.
+I finally got it straightened out and the app works normally. I feel dumb.  
+
 
 ### 14th
-120 - after a couple hours of fighting with Redux and trying to implement it in my app, I realized that I need to take a step back and try to understand it better. I will take the rest of the day to map out my understanding of Redux by diving into the docs and tutorials to try and make sense of this thing.
+120 - after a couple hours of fighting with Redux and trying to implement it in my app, I realized that I need to take a step back and try to understand it better. I will take the rest of the day to map out my understanding of Redux by diving into the docs and tutorials to try and make sense of this thing.  
 
 ### 13th 
-20 - reading about passport, setting up passport in web-portfolio server.
-30 - realized I need to make a login and registration form for app to use passport well, I have a lot of distractions every day while I'm doing this at home because my wife doesn't understand or respect my desire to get a better job, so my real working time would be much less if I could work uninterrupted..., I started making a login form using material-ui.
-20 - rethought about the passport and login thing. I think its scope creep. I will ignore the login thing for now. I need to focus on the app and not over complicate it by connecting to another server for the bug api. I can use the same server I use for my web-portfolio. The collection of endpoints is growing but its still manageable.
-60 - being very distracted by my wife's TV program and nagging (because we live in a small 1K apartment in Tokyo), I refactored the Dashboard into more manageable components and started reading again on redux. The concept is easy to understand, but the vocabulary (action/reducer) is just another thing that confuses me among the many other things where the language is made by different groups of people with their own ideas about how things should be named. I think redux is not necessary for this app. I should just use the basic database functionality (CRUD) to maintain state as the only state that matters here is the bug and feature lists.
-60 - playing with material-ui and fighting distractions from my wife. Learning how to style the components in the same file rather than use traditional CSS files. Setting up the endpoints on the server to respond with data from the forms I send in for making a new bug.
-30 - got "add-bug" POST endpoint working, adds new document to MongoDB, verified that by logging into the database through the server shell, next need to get the GET "/bugs" endpoint working and loop through the results on the dashboard component page.
-10 - wife is taking a nap so I was able to get the "/bugs" GET endpoint working quickly.
-40 - was reading through the [Redux tutorial](https://redux.js.org/basics/basic-tutorial) and got things working at the most basic level, and I added some default props to the bug table.
+20 - reading about passport, setting up passport in web-portfolio server.  
+30 - realized I need to make a login and registration form for app to use passport well, I have a lot of distractions every day while I'm doing this at home because my wife doesn't understand or respect my desire to get a better job, so my real working time would be much less if I could work uninterrupted..., I started making a login form using material-ui.  
+20 - rethought about the passport and login thing. I think its scope creep. I will ignore the login thing for now. I need to focus on the app and not over complicate it by connecting to another server for the bug api. I can use the same server I use for my web-portfolio. The collection of endpoints is growing but its still manageable.  
+60 - being very distracted by my wife's TV program and nagging (because we live in a small 1K apartment in Tokyo), I refactored the Dashboard into more manageable components and started reading again on redux. The concept is easy to understand, but the vocabulary (action/reducer) is just another thing that confuses me among the many other things where the language is made by different groups of people with their own ideas about how things should be named. I think redux is not necessary for this app. I should just use the basic database functionality (CRUD) to maintain state as the only state that matters here is the bug and feature lists.  
+60 - playing with material-ui and fighting distractions from my wife. Learning how to style the components in the same file rather than use traditional CSS files. Setting up the endpoints on the server to respond with data from the forms I send in for making a new bug.  
+30 - got "add-bug" POST endpoint working, adds new document to MongoDB, verified that by logging into the database through the server shell, next need to get the GET "/bugs" endpoint working and loop through the results on the dashboard component page.  
+10 - wife is taking a nap so I was able to get the "/bugs" GET endpoint working quickly.  
+40 - was reading through the [Redux tutorial](https://redux.js.org/basics/basic-tutorial) and got things working at the most basic level, and I added some default props to the bug table.  
+
 
 ### 12th
-90 - thinking and planning at work, reading on Redux in my React book, sketched premliminary process at a high level how the app will get data back and forth between API server, settled on preliminary data structure for bug document in MongoDB, sketched out the kinds of actions I want to use for the bugs in Redux, and outlined in my notebook how each bug will be displayed when clicking on a list item which expands a little to show some detail and will open an overlay that shows all details on another button click.
-15 - reading on passport.js and how to implement local strategy.
-10 - read up on CORS again and set it up on my API server
+90 - thinking and planning at work, reading on Redux in my React book, sketched premliminary process at a high level how the app will get data back and forth between API server, settled on preliminary data structure for bug document in MongoDB, sketched out the kinds of actions I want to use for the bugs in Redux, and outlined in my notebook how each bug will be displayed when clicking on a list item which expands a little to show some detail and will open an overlay that shows all details on another button click.  
+15 - reading on passport.js and how to implement local strategy.  
+10 - read up on CORS again and set it up on my API server.  
+
 
 ### 11th
-10 - thought about simple design choices like what kind of button design, whether or not to group buttons, and how to use color to differentiate between bugs and features.  
-5 - looking at material ui on smart phone during commute.  
-30 - reading through material ui component docs and adding them to the wireframe.  
+10 - thought about simple design choices like what kind of button design, whether or not to group buttons, and how to use color to differentiate between bugs and features.    
+5 - looking at material ui on smart phone during commute.    
+30 - reading through material ui component docs and adding them to the wireframe.    
 5 - setting up API server and testing it. Hit a snag with CORS issue. Need to read up on that. Something about "withCredentials" ...   
 
 ### 10th
