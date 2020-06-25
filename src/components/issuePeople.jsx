@@ -11,7 +11,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 
-//the maxHeight property forces the scroll ability to show up when the list exceeds the given height
 const customStyles = makeStyles({
   table: { width: "100%", minWidth: "50vw" },
 });
