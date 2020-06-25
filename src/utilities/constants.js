@@ -63,9 +63,9 @@ export const DEFAULT_ISSUE = {
   category: "Some category",
   priority: PRIORITY_A,
   dates: {
-    opened: Date.now(),
-    closed: Date.now(),
-    lastEdited: Date.now(),
+    opened: new Date(),
+    closed: new Date(),
+    lastEdited: new Date(),
   },
   people: {
     opened: "ALICE",

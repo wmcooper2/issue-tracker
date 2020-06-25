@@ -3,6 +3,10 @@ Times are in minutes
 
 ## June
 
+### 25th
+60 - I'm stuck on too many styling issues with Material-ui. I think I need to dive deeper into how it works and build my understanding of it works before I continue. I've wasted a lot of time already trying different ways of getting the stylings to work and things that I don't expect are happening. This is a sign that I need to take a step back and read the documentation more.
+30 - The issue with the dates not updating properly in the server has me a little confused. I need to play with that more before I tackle it again. I feel like I'm wasting too much time with the Date objects.
+
 ### 24th
 60 - Dealing with interruptions every 5 to 8 minutes, I think I was able to get something done in this hour. The biggest obstacle to progress is these small interruptions (wife) because they break concentration and the "flow" that you get into. It takes a lot of effort to get back into that... I think I was able to get half way to a working solution on the dates updating properly in the details below the issues table. The date format is correct, but the times update to the point where you refresh the page, but don't update when you click the home button from the edit-issue form page (they are blank). I edited the code to try and get it to show the dates based on the saved/created times, but that's not working (...distractions) however the app does not crash anymore when clicking the home button from the edit-issue or add-issue form pages.
 

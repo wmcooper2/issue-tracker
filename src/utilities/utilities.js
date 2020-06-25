@@ -47,10 +47,5 @@ export const dateFormat2 = (timestamp) => {
 }
 
 export const dateFormat3 = (timestamp) => {
-  // const date = new Date(timestamp).toLocaleDateString("en-US");
-  // const time = new Date(timestamp).toLocaleTimeString("en-US");
-  const date = new Date(timestamp).toUTCString();
-  // const time = new Date(timestamp).toUTCString();
-  // return `${date} ${time}`;
-  return date;
+  return new Date(timestamp).toUTCString();
 }
