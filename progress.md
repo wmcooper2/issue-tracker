@@ -3,6 +3,14 @@ Times are in minutes
 
 ## June
 
+### 27th
+60 - I spent time working on refactoring and just general clean up of the express server app as it's getting a little messy.  
+180 - I didn't spend this time directly on the app. Instead I was using this time to figure out how to pass around the MongoDB while using express Router, but I couldn't figure that out on my own by reading the docs and many blogs. The blogs were not very helpful...  
+30 - It took a while to find the clue to properly updating a nested filed in a document in MongoDB. [This link](https://choicetechlab.com/blog/monk-driver-mongodb-update-existing-documents/) gave me the clue. Basically, "dates.lastEdited" not "dates : { lastEdited: ... }"is what should be used within the $set object when updating a document. You have to use dot notation within a string to get the nested field.  
+
+### 26th
+Did nothing today. Need to rest after long day of teaching 2nd graders...
+
 ### 25th
 60 - I'm stuck on too many styling issues with Material-ui. I think I need to dive deeper into how it works and build my understanding of it works before I continue. I've wasted a lot of time already trying different ways of getting the stylings to work and things that I don't expect are happening. This is a sign that I need to take a step back and read the documentation more.  
 30 - The issue with the dates not updating properly in the server has me a little confused. I need to play with that more before I tackle it again. I feel like I'm wasting too much time with the Date objects.  

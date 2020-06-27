@@ -29,15 +29,13 @@ const Dashboard = ({ issue }) => {
       <Box className={styles.projectDashboard}>
         <IssueTable></IssueTable>
       </Box>
-      <Paper className={styles.description}>
-        <Box component="div">{issue.description}</Box>
-
-        <Box component="div" className={styles.details}>
-          <IssueDates></IssueDates>
-          <IssuePeople></IssuePeople>
-        </Box>
+      <Paper component="div">{issue.description}
       </Paper>
-    </React.Fragment>
+      <Paper component="div" className={styles.details}>
+        <IssueDates></IssueDates>
+        <IssuePeople></IssuePeople>
+      </Paper>
+    </React.Fragment >
   );
 };
 
