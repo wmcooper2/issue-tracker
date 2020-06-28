@@ -12,7 +12,6 @@ const customStyles = makeStyles({
   projectDashboard: {},
   description: {
     display: "flex",
-    flexDirection: "column",
     padding: "1rem",
   },
   details: {
@@ -29,7 +28,8 @@ const Dashboard = ({ issue }) => {
       <Box className={styles.projectDashboard}>
         <IssueTable></IssueTable>
       </Box>
-      <Paper component="div">{issue.description}
+      <Paper component="div" className={styles.description}>
+        {issue.description}
       </Paper>
       <Paper component="div" className={styles.details}>
         <IssueDates></IssueDates>

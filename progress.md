@@ -8,6 +8,7 @@ Times are in minutes
 60 - Added some styling changes to the details component to fix the wierd alignments. Added some different default states to help with different functionality when developing on the localhost. Added a toggle ability to the priority buttons and it now updates in the Redux store. I need to work on the sort ability next for the priority buttons in the issue table component.  
 30 - Added filter ability to the issue table.  
 60 - After reading through the docs and trying to decide on the best way to present the projects for selection, I decided on how I want ot present the project menu and updated its stylings accordingly. Now it's functional, but I need to add an endpoint in the server with a database query to get the issues for a selected project.
+20 - Changed the stylings of the Details component a little, and got the project dialog window to close after selecting a project.
 
 
 ### 27th

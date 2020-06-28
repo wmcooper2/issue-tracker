@@ -9,10 +9,11 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Typography from "@material-ui/core/Typography";
 
 
 const customStyles = makeStyles({
-  table: { width: "100%", minWidth: "40vw"},
+    table: { width: "100%", minWidth: "40vw" },
 });
 
 
@@ -25,8 +26,10 @@ const IssueDates = ({ issue }) => {
 
                     <TableHead>
                         <TableRow>
-                            <TableCell>
-                                Dates:
+                            <TableCell colSpan={2}>
+                                <Typography variant="h6">
+                                    Dates:
+                                </Typography>
                             </TableCell>
                         </TableRow>
                     </TableHead>
