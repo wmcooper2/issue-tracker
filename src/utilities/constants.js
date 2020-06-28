@@ -20,12 +20,16 @@ export const EDIT_ISSUE_URL = "/issue-tracker/edit-issue";
 export const FEATURES_URL = "/issue-tracker/features";
 export const ISSUES_URL = "/issue-tracker/issues";
 
+
+//issueTypes
 export const BUG = "BUG";
 export const FEATURE = "FEATURE";
 export const ISSUE = "ISSUE";
 
+//Action types
 export const ADD_NEW_ISSUE = "ADD_NEW_ISSUE";
 export const CLEAR_ISSUE = "CLEAR_ISSUE";
+export const CHOOSE_PROJECT = "CHOOSE_PROJECT";
 export const SELECT_ISSUE = "SELECT_ISSUE";
 export const SHOW_ISSUE_DESCRIPTION = "SHOW_ISSUE_DESCRIPTION";
 export const TOGGLE_PRIORITY_A = "TOGGLE_PRIORITY_A";

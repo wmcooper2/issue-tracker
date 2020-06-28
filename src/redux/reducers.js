@@ -1,6 +1,7 @@
 import {
   ADD_NEW_ISSUE,
   BUG,
+  CHOOSE_PROJECT,
   CLEAR_ISSUE,
   FEATURE,
   ISSUE,
@@ -10,9 +11,10 @@ import {
   TOGGLE_PRIORITY_C,
   UPDATE_ISSUES,
 } from "../utilities/constants";
-
 import initialState from "./initialState";
 
+
+//remove priority toggles after fixing local state in function
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_NEW_ISSUE:
@@ -20,6 +22,9 @@ export const reducer = (state = initialState, action) => {
       break;
     case BUG:
       return { ...state, issueType: BUG };
+      break;
+    case CHOOSE_PROJECT:
+      return { ...state, project: action.project };
       break;
     case CLEAR_ISSUE:
       return { ...state, issue: action.issue };

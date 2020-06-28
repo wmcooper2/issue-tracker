@@ -1,6 +1,7 @@
 import {
   ADD_NEW_ISSUE,
   BUG,
+  CHOOSE_PROJECT,
   CLEAR_ISSUE,
   FEATURE,
   ISSUE,
@@ -67,6 +68,9 @@ export const updateIssues = (payload) => {
   };
 };
 
+
+
+//remove these later, move priority button state local to function
 export const togglePriorityA = () => {
   return {
     type: TOGGLE_PRIORITY_A,
@@ -82,5 +86,14 @@ export const togglePriorityB = () => {
 export const togglePriorityC = () => {
   return {
     type: TOGGLE_PRIORITY_C,
+  }
+}
+
+
+
+export const chooseProject = (payload) => {
+  return {
+    type: CHOOSE_PROJECT,
+    project: payload,
   }
 }
