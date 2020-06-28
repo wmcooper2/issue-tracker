@@ -54,21 +54,21 @@ const filterPriorities = (issue, priorityASelected, priorityBSelected, priorityC
   }
 }
 
-const IssueTable = ({ rowClick, issues, issueType, priorityASelected, priorityBSelected, priorityCSelected }) => {
-
-  //add priority button sorting here?
-  // console.log("A:", priorityASelected);
-  // console.log("B:", priorityBSelected);
-  // console.log("C:", priorityCSelected);
+const IssueTable = ({
+  rowClick,
+  issues,
+  issueType,
+  priorityASelected,
+  priorityBSelected,
+  priorityCSelected }) => {
 
   const filteredIssues = issues.filter(issue => filterPriorities(issue, priorityASelected, priorityBSelected, priorityCSelected) === true);
-
-  console.log("FILTERED", filteredIssues);
 
   const styles = customStyles();
   const Rows = () => {
     if (filteredIssues !== undefined) {
       return filteredIssues.map((issue, index) => (
+
         <TableRow
           className="issueRow"
           onClick={() => rowClick(issue)}
@@ -84,6 +84,7 @@ const IssueTable = ({ rowClick, issues, issueType, priorityASelected, priorityBS
             <EditButton></EditButton>
             {issue.name}
           </TableCell>
+
           <TableCell
             style={
               issue.priority === PRIORITY_A
@@ -95,9 +96,11 @@ const IssueTable = ({ rowClick, issues, issueType, priorityASelected, priorityBS
           >
             {issue.priority}
           </TableCell>
+
           <TableCell>
             {issue.dates === undefined ? null : dateFormat3(issue.dates.opened)}
           </TableCell>
+
           <TableCell>
             {issue.people === undefined ? null : issue.people.opened}
           </TableCell>
@@ -113,6 +116,7 @@ const IssueTable = ({ rowClick, issues, issueType, priorityASelected, priorityBS
       <TableContainer className={styles.table}>
         <Table stickyHeader>
           <TableHead>
+
             <TableRow>
               <TableCell>{issueType}</TableCell>
               <TableCell>Priority</TableCell>
@@ -124,6 +128,7 @@ const IssueTable = ({ rowClick, issues, issueType, priorityASelected, priorityBS
           <TableBody>
             <Rows></Rows>
           </TableBody>
+
         </Table>
       </TableContainer>
     </Paper>
