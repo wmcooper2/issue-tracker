@@ -5,6 +5,9 @@ import {
   FEATURE,
   ISSUE,
   SELECT_ISSUE,
+  TOGGLE_PRIORITY_A,
+  TOGGLE_PRIORITY_B,
+  TOGGLE_PRIORITY_C,
   UPDATE_ISSUES,
 } from "../utilities/constants";
 
@@ -33,8 +36,18 @@ export const reducer = (state = initialState, action) => {
     case UPDATE_ISSUES:
       return { ...state, issues: action.issues };
       break;
+    case TOGGLE_PRIORITY_A:
+      return { ...state, priorityASelected: !state.priorityASelected };
+      break;
+    case TOGGLE_PRIORITY_B:
+      return { ...state, priorityBSelected: !state.priorityBSelected };
+      break;
+    case TOGGLE_PRIORITY_C:
+      return { ...state, priorityCSelected: !state.priorityCSelected };
+      break;
     default:
       return { ...state };
+
   }
 };
 

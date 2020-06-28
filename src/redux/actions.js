@@ -1,4 +1,3 @@
-import { dateFormat3 } from "../utilities/utilities";
 import {
   ADD_NEW_ISSUE,
   BUG,
@@ -7,6 +6,9 @@ import {
   ISSUE,
   SELECT_ISSUE,
   SHOW_ISSUE_DESCRIPTION,
+  TOGGLE_PRIORITY_A,
+  TOGGLE_PRIORITY_B,
+  TOGGLE_PRIORITY_C,
   UPDATE_ISSUES,
 } from "../utilities/constants";
 
@@ -65,3 +67,20 @@ export const updateIssues = (payload) => {
   };
 };
 
+export const togglePriorityA = () => {
+  return {
+    type: TOGGLE_PRIORITY_A,
+  }
+}
+
+export const togglePriorityB = () => {
+  return {
+    type: TOGGLE_PRIORITY_B,
+  }
+}
+
+export const togglePriorityC = () => {
+  return {
+    type: TOGGLE_PRIORITY_C,
+  }
+}

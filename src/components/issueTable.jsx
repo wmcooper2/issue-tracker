@@ -1,3 +1,4 @@
+
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -16,7 +17,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import {
   BUG,
-  DEFAULT_ISSUE,
   BUG_BLUE_3,
   FEATURE_PURPLE_3,
   PRIORITY_A,
@@ -25,6 +25,7 @@ import {
   PRIORITY_B_YELLOW_3,
   PRIORITY_C_GREEN_3,
 } from "../utilities/constants";
+import { initialState } from "../redux/initialState";
 import { dateFormat3 } from "../utilities/utilities";
 
 //the maxHeight property forces the scroll ability to show up when the list exceeds the given height
@@ -119,7 +120,7 @@ IssueTable.propTypes = {
 };
 
 IssueTable.defaultProps = {
-  issues: [DEFAULT_ISSUE, DEFAULT_ISSUE, DEFAULT_ISSUE],
+  issues: initialState.issues,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(IssueTable);

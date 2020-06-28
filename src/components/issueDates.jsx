@@ -1,13 +1,6 @@
 import React from "react";
-
-import Box from "@material-ui/core/Box";
-import FormGroup from "@material-ui/core/FormGroup";
-import Input from "@material-ui/core/Input";
 import { connect } from "react-redux";
 import { dateFormat3 } from "../utilities/utilities";
-
-
-
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -18,55 +11,61 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 
+const customStyles = makeStyles({
+  table: { width: "100%", minWidth: "40vw"},
+});
+
 
 const IssueDates = ({ issue }) => {
-    const inputStyle = { width: "100%", minWidth: "50vw" };
+    const styles = customStyles();
     return (
         <Paper>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>
-                            Dates:
-                    </TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    <TableRow>
-                        <TableCell>
-                            Opened:
-                        </TableCell>
-                        <TableCell>
-                            {issue.dates === undefined ? null : dateFormat3(issue.dates.opened)}
-                        </TableCell>
-                    </TableRow>
-                    <TableCell>
-                        Last Edited:
-                    </TableCell>
-                    <TableCell>
-                        {issue.dates === undefined ? null : dateFormat3(issue.dates.lastEdited)}
-                    </TableCell>
-                    <TableRow>
-                        <TableCell>
-                            Closed:
-                    </TableCell>
-                    </TableRow>
-                    <TableCell>
-                        {issue.dates === undefined ? null : dateFormat3(issue.dates.closed)}
-                    </TableCell>
-                </TableBody>
-            </Table>
+            <TableContainer className={styles.table}>
+                <Table>
+
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>
+                                Dates:
+                            </TableCell>
+                        </TableRow>
+                    </TableHead>
+
+                    <TableBody>
+
+                        <TableRow>
+                            <TableCell>
+                                Opened:
+                            </TableCell>
+                            <TableCell>
+                                {issue.dates === undefined ? null : dateFormat3(issue.dates.opened)}
+                            </TableCell>
+                        </TableRow>
+
+                        <TableRow>
+                            <TableCell>
+                                Last Edited:
+                            </TableCell>
+                            <TableCell>
+                                {issue.dates === undefined ? null : dateFormat3(issue.dates.lastEdited)}
+                            </TableCell>
+                        </TableRow>
+
+                        <TableRow>
+                            <TableCell>
+                                Closed:
+                            </TableCell>
+                            <TableCell>
+                                {issue.dates === undefined ? null : dateFormat3(issue.dates.closed)}
+                            </TableCell>
+                        </TableRow>
+                    </TableBody>
+
+                </Table>
+            </TableContainer>
         </Paper >
     );
 };
-
-//the maxHeight property forces the scroll ability to show up when the list exceeds the given height
-const customStyles = makeStyles({
-    table: { maxHeight: "50vh" },
-    bug: { backgroundColor: "blue" },
-    feature: { backgroundColor: "purple" },
-    test: { backgroundColor: "seagreen" },
-});
 
 
 const mapStateToProps = ({ issue }) => ({
