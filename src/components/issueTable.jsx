@@ -1,4 +1,3 @@
-
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -21,6 +20,7 @@ import {
   FEATURE_PURPLE_3,
   PRIORITY_A,
   PRIORITY_B,
+  PRIORITY_C,
   PRIORITY_A_RED_3,
   PRIORITY_B_YELLOW_3,
   PRIORITY_C_GREEN_3,
@@ -28,19 +28,47 @@ import {
 import { initialState } from "../redux/initialState";
 import { dateFormat3 } from "../utilities/utilities";
 
-//the maxHeight property forces the scroll ability to show up when the list exceeds the given height
 const customStyles = makeStyles({
   table: { maxHeight: "50vh" },
-  bug: { backgroundColor: "blue" },
-  feature: { backgroundColor: "purple" },
-  test: { backgroundColor: "seagreen" },
 });
 
-const IssueTable = ({ rowClick, issues, issueType }) => {
+const filterPriorities = (issue, priorityASelected, priorityBSelected, priorityCSelected) => {
+  switch (issue.priority) {
+    case PRIORITY_A:
+      if (priorityASelected) {
+        return true;
+      }
+      break;
+    case PRIORITY_B:
+      if (priorityBSelected) {
+        return true;
+      }
+      break;
+    case PRIORITY_C:
+      if (priorityCSelected) {
+        return true;
+      }
+      break;
+    default:
+      return false;
+  }
+}
+
+const IssueTable = ({ rowClick, issues, issueType, priorityASelected, priorityBSelected, priorityCSelected }) => {
+
+  //add priority button sorting here?
+  // console.log("A:", priorityASelected);
+  // console.log("B:", priorityBSelected);
+  // console.log("C:", priorityCSelected);
+
+  const filteredIssues = issues.filter(issue => filterPriorities(issue, priorityASelected, priorityBSelected, priorityCSelected) === true);
+
+  console.log("FILTERED", filteredIssues);
+
   const styles = customStyles();
   const Rows = () => {
-    if (issues !== undefined) {
-      return issues.map((issue, index) => (
+    if (filteredIssues !== undefined) {
+      return filteredIssues.map((issue, index) => (
         <TableRow
           className="issueRow"
           onClick={() => rowClick(issue)}
@@ -94,7 +122,7 @@ const IssueTable = ({ rowClick, issues, issueType }) => {
           </TableHead>
 
           <TableBody>
-            <Rows props={issues}></Rows>
+            <Rows></Rows>
           </TableBody>
         </Table>
       </TableContainer>
@@ -104,9 +132,12 @@ const IssueTable = ({ rowClick, issues, issueType }) => {
 
 //the issues in the body match the props that the IssueTable uses
 //the destructured issues in the argument are what you want to pull from the store
-const mapStateToProps = ({ issues, issueType }) => ({
+const mapStateToProps = ({ issues, issueType, priorityASelected, priorityBSelected, priorityCSelected }) => ({
   issues,
   issueType,
+  priorityASelected,
+  priorityBSelected,
+  priorityCSelected,
 });
 
 const mapDispatchToProps = (dispatch) => ({

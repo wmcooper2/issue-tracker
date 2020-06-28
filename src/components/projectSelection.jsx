@@ -21,7 +21,6 @@ const ProjectSelection = () => {
                 <MenuItems></MenuItems>
             </Select>
         </FormControl >
-
     )
 };
 
