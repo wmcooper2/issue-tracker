@@ -47,5 +47,5 @@ Click on ... to;
 
 
 ## More Information
-Initial idea for the color palette; [Color Palette](https://paletton.com/#uid=72L1v0kYO++d5FSpKAmVit9++ka)
-Read ![progress.md](progress.md) to see a timeline of the app's development.
+Initial idea for the color palette; [Color Palette](https://paletton.com/#uid=72L1v0kYO++d5FSpKAmVit9++ka)  
+Read [progress.md](progress.md) to see a timeline of the app's development.
