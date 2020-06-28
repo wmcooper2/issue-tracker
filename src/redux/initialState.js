@@ -7,6 +7,7 @@ export const initialState = {
   priorityASelected: true,
   priorityBSelected: true,
   priorityCSelected: true,
+  project: "Issue Tracker"
 };
 
 export default initialState;

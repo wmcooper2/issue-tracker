@@ -6,9 +6,9 @@ import { connect } from "react-redux";
 import { changeToIssues, updateIssues } from "../redux/actions";
 import { ISSUES_URL } from "../utilities/constants";
 
-const HomeButton = ({ homeClick }) => {
+const HomeButton = ({ homeClick, project }) => {
   return (
-    <Link to="/" onClick={() => homeClick()}>
+    <Link to="/" onClick={() => homeClick(project)}>
       <Fab size="small" aria-label="home">
         <HomeIcon />
       </Fab>
@@ -16,12 +16,14 @@ const HomeButton = ({ homeClick }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = ({ project }) => ({
+  project,
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  homeClick: () => {
+  homeClick: (project) => {
     dispatch(changeToIssues())
-    fetch(ISSUES_URL)
+    fetch(`${ISSUES_URL}/${project}`)
       .then((response) => response.json())
       .then((results) => dispatch(updateIssues(results)))
       .catch((error) => console.error(error))

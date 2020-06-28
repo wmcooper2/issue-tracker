@@ -1,9 +1,10 @@
 export const PROJECTS = [
-  "Issue tracker",
-  "Directions game",
-  "Freelance site",
+  "Issue Tracker",
+  "Directions Game",
+  "Freelance Site",
 ];
 
+//endpoints within this app
 export const ADD_ISSUE_ENDPOINT = "/add-issue";
 export const BUGS_ENDPOINT = "/bugs";
 export const EDIT_ISSUE_ENDPOINT = "/edit-issue";
@@ -12,6 +13,7 @@ export const FEATURES_ENDPOINT = "/features";
 export const BASE_URL = "https://wmcooper2.com/";
 export const APP_URL = "https://wmcooper2.com/issue-tracker";
 
+//endpoints on the server
 export const ADD_ISSUE_URL = "/issue-tracker/add-issue";
 export const BUGS_URL = "/issue-tracker/bugs";
 export const CLOSE_ISSUE_URL = "/issue-tracker/close-issue";

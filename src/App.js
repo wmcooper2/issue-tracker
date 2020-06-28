@@ -18,7 +18,7 @@ import { reducer } from "./redux/reducers";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import PriorityBtns from "./components/priorityBtns";
-import { BASE_URL, ISSUES_URL, EDIT_ISSUE_ENDPOINT, ADD_ISSUE_ENDPOINT } from "./utilities/constants";
+import { ISSUES_URL, EDIT_ISSUE_ENDPOINT, ADD_ISSUE_ENDPOINT } from "./utilities/constants";
 
 const store = createStore(
   reducer,
@@ -29,7 +29,10 @@ const store = createStore(
 
 class App extends React.Component {
   componentDidMount() {
-    fetch(ISSUES_URL)
+    // fetch(ISSUES_URL)
+    const project = store.getState().project;
+    console.log("project:", project);
+    fetch(`${ISSUES_URL}/${project}`)
       .then((response) => response.json())
       .then((result) => {
         store.dispatch(updateIssues(result));
@@ -40,7 +43,10 @@ class App extends React.Component {
   }
 
   shouldComponentUpdate() {
-    fetch(ISSUES_URL)
+    // fetch(ISSUES_URL)
+    const project = store.getState().project;
+    console.log("project:", project);
+    fetch(`${ISSUES_URL}/${project}`)
       .then((response) => response.json())
       .then((result) => {
         store.dispatch(updateIssues(result));

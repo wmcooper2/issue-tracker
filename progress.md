@@ -2,13 +2,15 @@
 Times are in minutes
 
 ## June
+Total time so far: ~ 47 hours which includes reading documentation, sketching in notebook, refactoring, and many other small details... 
 
 ### 28th
 60 - I figured out what bonehead thing I was doing to cause so much trouble when refactoring the server app. I've been staying up late to try and work on this stuff and I think the lack of sleep is the most significant problem as it causes me to overlook small details. I was trying to import constants from the wrong module. I've been trying so hard to squeeze out some (uniterrupted) free time that I end up working during the worst times to try and make progress, but that ends up causing more problems as the time I do get is not quality focus-time. I was firm in my position when I asked my wife to let me concentrate today. She was a little angry (whatever... I need to focus) but after I was able to focus, I caught that stupid error.  
 60 - Added some styling changes to the details component to fix the wierd alignments. Added some different default states to help with different functionality when developing on the localhost. Added a toggle ability to the priority buttons and it now updates in the Redux store. I need to work on the sort ability next for the priority buttons in the issue table component.  
 30 - Added filter ability to the issue table.  
 60 - After reading through the docs and trying to decide on the best way to present the projects for selection, I decided on how I want ot present the project menu and updated its stylings accordingly. Now it's functional, but I need to add an endpoint in the server with a database query to get the issues for a selected project.
-20 - Changed the stylings of the Details component a little, and got the project dialog window to close after selecting a project.
+20 - Changed the stylings of the Details component a little, and got the project dialog window to close after selecting a project.  
+30 - I've been playing with getting the endpoints to work with the state of project selection in Redux, but it's redirecting right for some reason. I will work on this at another time. For now I will review what I know about URLs and see if the problem is in there.
 
 
 ### 27th
@@ -109,3 +111,4 @@ I finally got it straightened out and the app works normally. I feel dumb.
 ### 9th
 15 - took notes about what to include in a bug tracker from online article/blog.  
 15 - sketched preliminary UI in notebook and thought about data structure in MongoDB.  
+

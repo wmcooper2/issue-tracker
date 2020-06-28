@@ -19,14 +19,14 @@ const customStyles = makeStyles({
   },
 });
 
-const FeatureButton = (props) => {
+const FeatureButton = ({ featureClick, project }) => {
   const classes = customStyles();
   return (
     <Button className={classes.featureButton}>
       <Link
         to={FEATURES_ENDPOINT}
         className={classes.linkStyle}
-        onClick={() => props.featureClick()}
+        onClick={() => featureClick(project)}
       >
         Feature
       </Link>
@@ -34,12 +34,14 @@ const FeatureButton = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = ({ project }) => ({
+  project,
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  featureClick: () => {
+  featureClick: (project) => {
     dispatch(changeToFeatures());
-    fetch(FEATURES_URL)
+    fetch(`${FEATURES_URL}/${project}`)
       .then((response) => response.json())
       .then((results) => dispatch(updateIssues(results)))
       .catch((error) => console.error(error));

@@ -30,7 +30,7 @@ const customStyles = makeStyles({
 
 const AddIssue = (props) => {
   const styles = customStyles();
-  const { issue, issueType } = props;
+  const { issue, issueType, project } = props;
   const name = issue.name !== undefined ? issue.name : undefined;
   const description =
     issue.description !== undefined ? issue.description : undefined;
@@ -38,10 +38,12 @@ const AddIssue = (props) => {
   const version = issue.version !== undefined ? issue.version : undefined;
   const id = issue._id !== undefined ? issue._id : undefined;
 
+  console.log("project:", project);
   return (
-    <Box className={styles.issueForm}>
+
+    < Box className={styles.issueForm} >
       <form
-        action={ADD_ISSUE_URL}
+        action={`${ADD_ISSUE_URL}/${project}`}
         method="POST"
       >
         <Typography variant="h3" className={styles.pageTitle}>
@@ -146,13 +148,14 @@ const AddIssue = (props) => {
           Submit {issueType}
         </Button>
       </form>
-    </Box>
+    </Box >
   );
 };
 
-const mapStateToProps = ({ issueType, issue }) => ({
+const mapStateToProps = ({ issueType, issue, project }) => ({
   issueType,
   issue,
+  project,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

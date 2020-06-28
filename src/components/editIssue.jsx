@@ -10,11 +10,9 @@ import List from "@material-ui/core/List";
 import PriorityRadio from "./priorityRadio";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import IssueRadio from "./issueRadio";
-// import { EDIT_ISSUE_URL, CLOSE_ISSUE_URL } from "../utilities/constants";
 import { EDIT_ISSUE_URL } from "../utilities/constants";
 
 import { connect } from "react-redux";
-// import { updateIssues } from "../redux/actions";
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 
@@ -35,8 +33,7 @@ const customStyles = makeStyles({
 
 const EditIssue = (props) => {
   const styles = customStyles();
-  // const { closeClick, issue, issueType } = props;
-  const { issue, issueType } = props;
+  const { issue, issueType, project } = props;
   const name = issue.name !== undefined ? issue.name : undefined;
   const description =
     issue.description !== undefined ? issue.description : undefined;
@@ -50,7 +47,7 @@ const EditIssue = (props) => {
         Edit Issue
       </Typography>
       <form
-        action={EDIT_ISSUE_URL}
+        action={`${EDIT_ISSUE_URL}/${project}`}
         method="POST"
       >
         <FormGroup>
@@ -138,7 +135,6 @@ const EditIssue = (props) => {
           </Box>
         </FormGroup>
 
-        {/* <FormGroup> <Box> <List>Make message list</List> </Box> </FormGroup> */}
 
         <FormGroup>
           <Box>
@@ -170,9 +166,10 @@ const EditIssue = (props) => {
   );
 };
 
-const mapStateToProps = ({ issueType, issue }) => ({
+const mapStateToProps = ({ issueType, issue, project }) => ({
   issueType,
   issue,
+  project,
 });
 
 const mapDispatchToProps = (dispatch) => ({
