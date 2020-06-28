@@ -1,7 +1,7 @@
 export const PROJECTS = [
-  "Issue Tracker",
-  "Directions Game",
-  "Freelance Site",
+    "Issue Tracker",
+    "Directions Game",
+    "Freelance Site",
 ];
 
 //endpoints within this app
@@ -62,121 +62,121 @@ export const PRIORITY_B_YELLOW_3 = "rgba(255,255,0,0.3)";
 export const PRIORITY_C_GREEN_3 = "rgba(0,128,0,0.3)";
 
 export const DEFAULT_ISSUE1 = {
-  _id: "1",
-  name: "Default issue 1",
-  issueType: BUG,
-  version: 1,
-  category: "Some category",
-  priority: PRIORITY_A,
-  dates: {
-    opened: new Date(),
-    closed: new Date(),
-    lastEdited: new Date(),
-  },
-  people: {
-    opened: "BOB",
-    closed: "BOB",
-    lastEdited: "BOB",
-  },
-  hoursSpent: 0,
-  description: "Click on an issue above to see the description.",
-  messages: [
-    {
-      person: null,
-      message: null,
-      date: null,
+    _id: "1",
+    name: "Default issue 1",
+    issueType: BUG,
+    version: 1,
+    category: "Some category",
+    priority: PRIORITY_A,
+    dates: {
+        opened: new Date(),
+        closed: new Date(),
+        lastEdited: new Date(),
     },
-    {
-      person: null,
-      message: null,
-      date: null,
+    people: {
+        opened: "BOB",
+        closed: "BOB",
+        lastEdited: "BOB",
     },
-    {
-      person: null,
-      message: null,
-      date: null,
-    },
-  ],
-  similarIssues: ["444444", "555555", "666666"],
-  keywords: ["keyword4", "keyword5", "keyword6"],
+    hoursSpent: 0,
+    description: "Click on an issue above to see the description.",
+    messages: [
+        {
+            person: null,
+            message: null,
+            date: null,
+        },
+        {
+            person: null,
+            message: null,
+            date: null,
+        },
+        {
+            person: null,
+            message: null,
+            date: null,
+        },
+    ],
+    similarIssues: ["444444", "555555", "666666"],
+    keywords: ["keyword4", "keyword5", "keyword6"],
 };
 
 export const DEFAULT_ISSUE2 = {
-  _id: "2",
-  name: "Default issue 2",
-  issueType: BUG,
-  version: 1,
-  category: "Some category",
-  priority: PRIORITY_B,
-  dates: {
-    opened: new Date(),
-    closed: new Date(),
-    lastEdited: new Date(),
-  },
-  people: {
-    opened: "ALICE",
-    closed: "ALICE",
-    lastEdited: "ALICE",
-  },
-  hoursSpent: 0,
-  description: "Click on an issue above to see the description.",
-  messages: [
-    {
-      person: null,
-      message: null,
-      date: null,
+    _id: "2",
+    name: "Default issue 2",
+    issueType: BUG,
+    version: 1,
+    category: "Some category",
+    priority: PRIORITY_B,
+    dates: {
+        opened: new Date(),
+        closed: new Date(),
+        lastEdited: new Date(),
     },
-    {
-      person: null,
-      message: null,
-      date: null,
+    people: {
+        opened: "ALICE",
+        closed: "ALICE",
+        lastEdited: "ALICE",
     },
-    {
-      person: null,
-      message: null,
-      date: null,
-    },
-  ],
-  similarIssues: ["1111111", "2222222", "3333333"],
-  keywords: ["keyword1", "keyword2", "keyword3"],
+    hoursSpent: 0,
+    description: "Click on an issue above to see the description.",
+    messages: [
+        {
+            person: null,
+            message: null,
+            date: null,
+        },
+        {
+            person: null,
+            message: null,
+            date: null,
+        },
+        {
+            person: null,
+            message: null,
+            date: null,
+        },
+    ],
+    similarIssues: ["1111111", "2222222", "3333333"],
+    keywords: ["keyword1", "keyword2", "keyword3"],
 };
 
 export const DEFAULT_ISSUE3 = {
-  _id: "3",
-  name: "Default issue 3",
-  issueType: FEATURE,
-  version: 1,
-  category: "Some category",
-  priority: PRIORITY_C,
-  dates: {
-    opened: new Date(),
-    closed: new Date(),
-    lastEdited: new Date(),
-  },
-  people: {
-    opened: "CAROL",
-    closed: "CAROL",
-    lastEdited: "CAROL",
-  },
-  hoursSpent: 0,
-  description: "Click on an issue above to see the description.",
-  messages: [
-    {
-      person: null,
-      message: null,
-      date: null,
+    _id: "3",
+    name: "Default issue 3",
+    issueType: FEATURE,
+    version: 1,
+    category: "Some category",
+    priority: PRIORITY_C,
+    dates: {
+        opened: new Date(),
+        closed: new Date(),
+        lastEdited: new Date(),
     },
-    {
-      person: null,
-      message: null,
-      date: null,
+    people: {
+        opened: "CAROL",
+        closed: "CAROL",
+        lastEdited: "CAROL",
     },
-    {
-      person: null,
-      message: null,
-      date: null,
-    },
-  ],
-  similarIssues: ["777777", "888888", "999999"],
-  keywords: ["keyword7", "keyword8", "keyword9"],
+    hoursSpent: 0,
+    description: "Click on an issue above to see the description.",
+    messages: [
+        {
+            person: null,
+            message: null,
+            date: null,
+        },
+        {
+            person: null,
+            message: null,
+            date: null,
+        },
+        {
+            person: null,
+            message: null,
+            date: null,
+        },
+    ],
+    similarIssues: ["777777", "888888", "999999"],
+    keywords: ["keyword7", "keyword8", "keyword9"],
 };

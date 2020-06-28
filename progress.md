@@ -10,7 +10,8 @@ Total time so far: ~ 47 hours which includes reading documentation, sketching in
 30 - Added filter ability to the issue table.  
 60 - After reading through the docs and trying to decide on the best way to present the projects for selection, I decided on how I want ot present the project menu and updated its stylings accordingly. Now it's functional, but I need to add an endpoint in the server with a database query to get the issues for a selected project.
 20 - Changed the stylings of the Details component a little, and got the project dialog window to close after selecting a project.  
-30 - I've been playing with getting the endpoints to work with the state of project selection in Redux, but it's redirecting right for some reason. I will work on this at another time. For now I will review what I know about URLs and see if the problem is in there.
+30 - I've been playing with getting the endpoints to work with the state of project selection in Redux, but it's redirecting right for some reason. I will work on this at another time. For now I will review what I know about URLs and see if the problem is in there.  
+20 - Added eslint and started working on cleaning up the code, adding propTypes and will add default props too. Really need to focus on testing as the app is getting way to big to keep doing things they way I've been doing it. I know about TDD and have used it with Python a lot, but for whatever reason I have neglected it with my JavaScript code.
 
 
 ### 27th

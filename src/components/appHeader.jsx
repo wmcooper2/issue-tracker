@@ -7,26 +7,28 @@ import HomeButton from "./homeButton";
 import { makeStyles } from "@material-ui/core/styles";
 
 const customStyles = makeStyles({
-  header: {
-    backgroundColor: "seagreen",
-  },
-  toolbar: {
-    display: "flex",
-    justifyContent: "space-between"
-  }
+    header: {
+        backgroundColor: "seagreen",
+    },
+    toolbar: {
+        display: "flex",
+        justifyContent: "space-between"
+    }
 });
 
-const AppHeader = (props) => {
-  const styles = customStyles();
-  return (
-    <AppBar position="relative" className={styles.header}>
-      <Toolbar className={styles.toolbar}>
-        <HomeButton></HomeButton>
-        <Typography variant="h2">Issue Tracker</Typography>
-        <ProjectSelection></ProjectSelection>
-      </Toolbar>
-    </AppBar>
-  );
+const AppHeader = () => {
+    const styles = customStyles();
+    return (
+        <AppBar position="relative" className={styles.header}>
+            <Toolbar className={styles.toolbar}>
+                <HomeButton></HomeButton>
+                <Typography variant="h2">Issue Tracker</Typography>
+                <ProjectSelection></ProjectSelection>
+            </Toolbar>
+        </AppBar>
+    );
 };
+
+AppHeader.propTypes = { };
 
 export default AppHeader;

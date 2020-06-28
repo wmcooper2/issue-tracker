@@ -7,37 +7,37 @@ import { LOGIN_URL } from "../constants";
 
 
 const customStyles = makeStyles({
-  loginScreen: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
-    height: "100vh",
-  },
+    loginScreen: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.1)",
+        height: "100vh",
+    },
 
-  loginForm: {
-    display: "flex",
-    flexDirection: "column",
-    maxWidth: "100mm",
-    maxHeight: "100mm",
-    alignItems: "center",
-    margin: "auto auto",
-  },
+    loginForm: {
+        display: "flex",
+        flexDirection: "column",
+        maxWidth: "100mm",
+        maxHeight: "100mm",
+        alignItems: "center",
+        margin: "auto auto",
+    },
 });
 
-const LogIn = (props) => {
-  const classes = customStyles();
-  return (
-    <Box className={classes.loginScreen} fixed="true">
-      <form className={classes.loginForm} action={LOGIN_URL} method="POST">
-        <FormGroup>
-          <Input defaultValue="User Name" variant="outlined"></Input>
-          <Input defaultValue="Password" variant="outlined"></Input>
-        </FormGroup>
-        <Input type="submit" value="Login"></Input>
-      </form>
-    </Box>
-  );
+const LogIn = () => {
+    const classes = customStyles();
+    return (
+        <Box className={classes.loginScreen} fixed="true">
+            <form className={classes.loginForm} action={LOGIN_URL} method="POST">
+                <FormGroup>
+                    <Input defaultValue="User Name" variant="outlined"></Input>
+                    <Input defaultValue="Password" variant="outlined"></Input>
+                </FormGroup>
+                <Input type="submit" value="Login"></Input>
+            </form>
+        </Box>
+    );
 };
 
 export default LogIn;

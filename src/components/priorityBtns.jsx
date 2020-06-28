@@ -2,6 +2,7 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -73,5 +74,14 @@ const mapDispatchToProps = (dispatch) => ({
     priorityBClick: () => dispatch(togglePriorityB()),
     priorityCClick: () => dispatch(togglePriorityC()),
 });
+
+PriorityBtns.propTypes = {
+    priorityAClick: PropTypes.func,
+    priorityBClick: PropTypes.func,
+    priorityCClick: PropTypes.func,
+    priorityASelected: PropTypes.bool,
+    priorityBSelected: PropTypes.bool,
+    priorityCSelected: PropTypes.bool,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PriorityBtns);

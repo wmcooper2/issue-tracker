@@ -1,8 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
-import { dateFormat3 } from "../utilities/utilities";
-import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import PropTypes from "prop-types";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -10,6 +8,9 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Typography from "@material-ui/core/Typography";
+import { connect } from "react-redux";
+import { dateFormat3 } from "../utilities/utilities";
+import { makeStyles } from "@material-ui/core/styles";
 
 
 const customStyles = makeStyles({
@@ -75,6 +76,10 @@ const mapStateToProps = ({ issue }) => ({
     issue,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = () => ({});
+
+IssueDates.propTypes = {
+    issue: PropTypes.object,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(IssueDates);
