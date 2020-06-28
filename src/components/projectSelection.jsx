@@ -4,16 +4,12 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-import MenuItem from '@material-ui/core/MenuItem';
+import MenuItem from "@material-ui/core/MenuItem";
+import PropTypes from "prop-types";
 import { PROJECTS } from "../utilities/constants";
-import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { chooseProject } from "../redux/actions";
 
-const customStyles = makeStyles({
-    menuName: { width: "100mm" },
-    item: {},
-});
 
 const MenuItems = (props) => {
     const { handleClick, closeDialog } = props;
@@ -33,11 +29,11 @@ const ProjectSelection = ({ projectClick }) => {
     // const styles = customStyles();
     const openDialog = () => {
         showDialog(true);
-    }
+    };
 
     const closeDialog = () => {
         showDialog(false);
-    }
+    };
 
     return (
         <Box>
@@ -51,18 +47,21 @@ const ProjectSelection = ({ projectClick }) => {
 
             </Dialog>
         </Box>
-    )
+    );
 };
 
-const mapStateToProps = (state) => ({
-
-});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch) => ({
     projectClick: (project) => {
         dispatch(chooseProject(project));
     },
 });
+
+ProjectSelection.propTypes = {
+    projectClick: PropTypes.func,
+};
+
 
 // export default ProjectSelection;
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectSelection);
