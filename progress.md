@@ -2,7 +2,9 @@
 Times are in minutes
 
 ## June
-Total time so far: ~ 47 hours which includes reading documentation, sketching in notebook, refactoring, and many other small details... 
+
+### 29th
+30 - Working on a different Lightsail instance to tinker with passing around the MongoDB through express router or the endpoint callbacks. Can't seem to work around it nicely...
 
 ### 28th
 60 - I figured out what bonehead thing I was doing to cause so much trouble when refactoring the server app. I've been staying up late to try and work on this stuff and I think the lack of sleep is the most significant problem as it causes me to overlook small details. I was trying to import constants from the wrong module. I've been trying so hard to squeeze out some (uniterrupted) free time that I end up working during the worst times to try and make progress, but that ends up causing more problems as the time I do get is not quality focus-time. I was firm in my position when I asked my wife to let me concentrate today. She was a little angry (whatever... I need to focus) but after I was able to focus, I caught that stupid error.  
@@ -11,7 +13,8 @@ Total time so far: ~ 47 hours which includes reading documentation, sketching in
 60 - After reading through the docs and trying to decide on the best way to present the projects for selection, I decided on how I want ot present the project menu and updated its stylings accordingly. Now it's functional, but I need to add an endpoint in the server with a database query to get the issues for a selected project.
 20 - Changed the stylings of the Details component a little, and got the project dialog window to close after selecting a project.  
 30 - I've been playing with getting the endpoints to work with the state of project selection in Redux, but it's redirecting right for some reason. I will work on this at another time. For now I will review what I know about URLs and see if the problem is in there.  
-20 - Added eslint and started working on cleaning up the code, adding propTypes and will add default props too. Really need to focus on testing as the app is getting way to big to keep doing things they way I've been doing it. I know about TDD and have used it with Python a lot, but for whatever reason I have neglected it with my JavaScript code.
+20 - Added eslint and started working on cleaning up the code, adding propTypes and will add default props too. Really need to focus on testing as the app is getting way to big to keep doing things they way I've been doing it. I know about TDD and have used it with Python a lot, but for whatever reason I have neglected it with my JavaScript code.  
+__Total time so far: ~ 47.5 hours which includes reading documentation, sketching in notebook, refactoring, and many other small details...__
 
 
 ### 27th
