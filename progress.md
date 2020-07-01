@@ -1,10 +1,20 @@
 # Progress
 Times are in minutes
 
+
+## July
+### 1st
+10 - Worked on refactoring the endpoints on the server app. Was able to get one endpoint working after that, but the issue now is incorporating the project selection into the endpoints. I will do more chores today and think about that.
+
+
 ## June
+### 30th
+Did nothing today. Chores that I put off in order to code more finally reached a point where they got in the way of my coding.  
+
 
 ### 29th
 30 - Working on a different Lightsail instance to tinker with passing around the MongoDB through express router or the endpoint callbacks. Can't seem to work around it nicely...
+
 
 ### 28th
 60 - I figured out what bonehead thing I was doing to cause so much trouble when refactoring the server app. I've been staying up late to try and work on this stuff and I think the lack of sleep is the most significant problem as it causes me to overlook small details. I was trying to import constants from the wrong module. I've been trying so hard to squeeze out some (uniterrupted) free time that I end up working during the worst times to try and make progress, but that ends up causing more problems as the time I do get is not quality focus-time. I was firm in my position when I asked my wife to let me concentrate today. She was a little angry (whatever... I need to focus) but after I was able to focus, I caught that stupid error.  
@@ -22,16 +32,20 @@ __Total time so far: ~ 47.5 hours which includes reading documentation, sketchin
 180 - I didn't spend this time directly on the app. Instead I was using this time to figure out how to pass around the MongoDB while using express Router, but I couldn't figure that out on my own by reading the docs and many blogs. The blogs were not very helpful...  
 30 - It took a while to find the clue to properly updating a nested filed in a document in MongoDB. [This link](https://choicetechlab.com/blog/monk-driver-mongodb-update-existing-documents/) gave me the clue. Basically, "dates.lastEdited" not "dates : { lastEdited: ... }"is what should be used within the $set object when updating a document. You have to use dot notation within a string to get the nested field.  
 
+
 ### 26th
 Did nothing today. Need to rest after long day of teaching 2nd graders...
+
 
 ### 25th
 60 - I'm stuck on too many styling issues with Material-ui. I think I need to dive deeper into how it works and build my understanding of it works before I continue. I've wasted a lot of time already trying different ways of getting the stylings to work and things that I don't expect are happening. This is a sign that I need to take a step back and read the documentation more.  
 30 - The issue with the dates not updating properly in the server has me a little confused. I need to play with that more before I tackle it again. I feel like I'm wasting too much time with the Date objects.  
 20 - This feels wierd. When I think I don't understand something it starts to work, and then I have to study it to figure out what I did... The date fields are working now (sort of). They overwrite the fields in the API's endpoint, but I think that can be solved just by adding the other fields in the object passed to the MongoDB method when updating. I will do that tomorrow. The wife is home my productivity is taking a nosedive because of the constant talking.
 
+
 ### 24th
 60 - Dealing with interruptions every 5 to 8 minutes, I think I was able to get something done in this hour. The biggest obstacle to progress is these small interruptions (wife) because they break concentration and the "flow" that you get into. It takes a lot of effort to get back into that... I think I was able to get half way to a working solution on the dates updating properly in the details below the issues table. The date format is correct, but the times update to the point where you refresh the page, but don't update when you click the home button from the edit-issue form page (they are blank). I edited the code to try and get it to show the dates based on the saved/created times, but that's not working (...distractions) however the app does not crash anymore when clicking the home button from the edit-issue or add-issue form pages.
+
 
 ### 23rd
 60 - working with dates in javascript is one of those things that causes headaches. I went over it in detail a year ago, but haven't used it since. I remember a lot, but there are still some quirks that escape memory. That and I need to figure out why my detail pane's datesare not calculating properly (been putting it off because dates are so wierd in javascript).  
@@ -83,6 +97,7 @@ I finally got it straightened out and the app works normally. I feel dumb.
 ### 14th
 120 - after a couple hours of fighting with Redux and trying to implement it in my app, I realized that I need to take a step back and try to understand it better. I will take the rest of the day to map out my understanding of Redux by diving into the docs and tutorials to try and make sense of this thing.  
 
+
 ### 13th 
 20 - reading about passport, setting up passport in web-portfolio server.  
 30 - realized I need to make a login and registration form for app to use passport well, I have a lot of distractions every day while I'm doing this at home because my wife doesn't understand or respect my desire to get a better job, so my real working time would be much less if I could work uninterrupted..., I started making a login form using material-ui.  
@@ -106,11 +121,13 @@ I finally got it straightened out and the app works normally. I feel dumb.
 30 - reading through material ui component docs and adding them to the wireframe.    
 5 - setting up API server and testing it. Hit a snag with CORS issue. Need to read up on that. Something about "withCredentials" ...   
 
+
 ### 10th
 75 - sketched better UI desing in notebook at work and made user stories about what the app should do.  
 30 - prepared AWS Lightsail instance by moving old project out of it.  
 15 - prepared new React app, set up GitHub repo for bug tracker, and made a simple wireframe.  
 5 - found some articles to read tomorrow about possible libraries I want to use in this app.  
+
 
 ### 9th
 15 - took notes about what to include in a bug tracker from online article/blog.  
