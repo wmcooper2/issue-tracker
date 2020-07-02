@@ -21,39 +21,44 @@ const customStyles = makeStyles({
     },
 });
 
-const mapStateToProps = ({ issueType, project }) => ({
-    issueType,
-    project,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    bugClick: (project) => {
-        dispatch(changeToBugs());
-        fetch(`${BUGS_URL}/${project}`)
-            .then((response) => response.json())
-            .then((results) => dispatch(updateIssues(results)))
-            .catch((error) => console.error(error));
-    },
-});
-
-const BugButton = ({ bugClick, project }) => {
+// const BugButton = ({ bugClick, project }) => {
+const BugButton = ({ bugClick }) => {
     const classes = customStyles();
     return (
         <Button className={classes.bugButton}>
             <Link
                 to={BUGS_ENDPOINT}
                 className={classes.linkStyle}
-                onClick={() => bugClick(project)}
+                // onClick={() => bugClick(project)}
+                onClick={() => bugClick()}
             >
-        Bug
+                Bug
             </Link>
         </Button>
     );
 };
 
+// const mapStateToProps = ({ issueType, project }) => ({
+const mapStateToProps = () => ({
+    // issueType,
+    // project,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    // bugClick: (project) => {
+    bugClick: () => {
+        dispatch(changeToBugs());
+        // fetch(`${BUGS_URL}/${project}`)
+        fetch(BUGS_URL)
+            .then((response) => response.json())
+            .then((results) => dispatch(updateIssues(results)))
+            .catch((error) => console.error(error));
+    },
+});
+
 BugButton.propTypes = {
     bugClick: PropTypes.func,
-    project: PropTypes.string,
+    // project: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BugButton);

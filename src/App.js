@@ -27,12 +27,15 @@ const store = createStore(
 );
 //GOOGLE CHROME, above line
 
+
+//componentDidMount and shoulcComponentUpdate can be refactored...
 class App extends React.Component {
     componentDidMount() {
-    // fetch(ISSUES_URL)
-        const project = store.getState().project;
-        console.log("project:", project);
-        fetch(`${ISSUES_URL}/${project}`)
+        // fetch(ISSUES_URL)
+        // const project = store.getState().project;
+        // console.log("project:", project);
+        // fetch(`${ISSUES_URL}/${project}`)
+        fetch(ISSUES_URL)
             .then((response) => response.json())
             .then((result) => {
                 store.dispatch(updateIssues(result));
@@ -43,10 +46,11 @@ class App extends React.Component {
     }
 
     shouldComponentUpdate() {
-    // fetch(ISSUES_URL)
-        const project = store.getState().project;
-        console.log("project:", project);
-        fetch(`${ISSUES_URL}/${project}`)
+        // fetch(ISSUES_URL)
+        // const project = store.getState().project;
+        // console.log("project:", project);
+        // fetch(`${ISSUES_URL}/${project}`)
+        fetch(ISSUES_URL)
             .then((response) => response.json())
             .then((result) => {
                 store.dispatch(updateIssues(result));

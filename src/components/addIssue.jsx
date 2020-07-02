@@ -31,7 +31,8 @@ const customStyles = makeStyles({
 
 const AddIssue = (props) => {
     const styles = customStyles();
-    const { issue, issueType, project } = props;
+    // const { issue, issueType, project } = props;
+    const { issue, issueType } = props;
     const name = issue.name !== undefined ? issue.name : undefined;
     const description =
         issue.description !== undefined ? issue.description : undefined;
@@ -39,12 +40,13 @@ const AddIssue = (props) => {
     const version = issue.version !== undefined ? issue.version : undefined;
     const id = issue._id !== undefined ? issue._id : undefined;
 
-    console.log("project:", project);
+    // console.log("project:", project);
     return (
 
         < Box className={styles.issueForm} >
             <form
-                action={`${ADD_ISSUE_URL}/${project}`}
+                // action={`${ADD_ISSUE_URL}/${project}`}
+                action={ADD_ISSUE_URL}
                 method="POST"
             >
                 <Typography variant="h3" className={styles.pageTitle}>
@@ -153,10 +155,11 @@ const AddIssue = (props) => {
     );
 };
 
-const mapStateToProps = ({ issueType, issue, project }) => ({
+// const mapStateToProps = ({ issueType, issue, project }) => ({
+const mapStateToProps = ({ issueType, issue }) => ({
     issueType,
     issue,
-    project,
+    // project,
 });
 
 const mapDispatchToProps = () => ({});
@@ -164,7 +167,7 @@ const mapDispatchToProps = () => ({});
 AddIssue.propTypes = {
     issueType: PropTypes.string,
     issue: PropTypes.object,
-    project: PropTypes.string,
+    // project: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddIssue);

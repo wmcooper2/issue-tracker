@@ -3,6 +3,11 @@ Times are in minutes
 
 
 ## July
+
+### 2nd
+20 - Reverted the changes I made to try and add the project menu's functionality to the endpoints. I need to rethink how I am going to work those in to the existing setup. I think that I should first refactor the existing server code to make it simpler to understand (to help keep my eyes from getting lost in the text) and then transfer the notes I've written into code. I still need to write tests for this kind of thing.  
+
+
 ### 1st
 10 - Worked on refactoring the endpoints on the server app. Was able to get one endpoint working after that, but the issue now is incorporating the project selection into the endpoints. I will do more chores today and think about that.
 

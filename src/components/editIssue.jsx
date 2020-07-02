@@ -33,7 +33,8 @@ const customStyles = makeStyles({
 
 const EditIssue = (props) => {
     const styles = customStyles();
-    const { issue, issueType, project } = props;
+    // const { issue, issueType, project } = props;
+    const { issue, issueType } = props;
     const name = issue.name !== undefined ? issue.name : undefined;
     const description =
         issue.description !== undefined ? issue.description : undefined;
@@ -47,7 +48,8 @@ const EditIssue = (props) => {
                 Edit Issue
             </Typography>
             <form
-                action={`${EDIT_ISSUE_URL}/${project}`}
+                // action={`${EDIT_ISSUE_URL}/${project}`}
+                action={EDIT_ISSUE_URL}
                 method="POST"
             >
                 <FormGroup>
@@ -166,10 +168,11 @@ const EditIssue = (props) => {
     );
 };
 
-const mapStateToProps = ({ issueType, issue, project }) => ({
+// const mapStateToProps = ({ issueType, issue, project }) => ({
+const mapStateToProps = ({ issueType, issue }) => ({
     issueType,
     issue,
-    project,
+    // project,
 });
 
 const mapDispatchToProps = () => ({});
@@ -177,7 +180,7 @@ const mapDispatchToProps = () => ({});
 EditIssue.propTypes = {
     issueType: PropTypes.string,
     issue: PropTypes.object,
-    project: PropTypes.string,
+    // project: PropTypes.string,
 };
 
 
