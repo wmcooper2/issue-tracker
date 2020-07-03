@@ -4,6 +4,10 @@ Times are in minutes
 
 ## July
 
+### 3rd
+120 - refactored the server app, to put the database logic into its own module for simple-survey-v2 and issue-tracker. Now the file is much easier to read. I will put the endpoints that remain in the server file into their own router file later.  
+
+
 ### 2nd
 20 - Reverted the changes I made to try and add the project menu's functionality to the endpoints. I need to rethink how I am going to work those in to the existing setup. I think that I should first refactor the existing server code to make it simpler to understand (to help keep my eyes from getting lost in the text) and then transfer the notes I've written into code. I still need to write tests for this kind of thing.  
 
