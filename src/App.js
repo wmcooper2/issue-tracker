@@ -31,26 +31,17 @@ const store = createStore(
 //componentDidMount and shoulcComponentUpdate can be refactored...
 class App extends React.Component {
     componentDidMount() {
-        // fetch(ISSUES_URL)
-        // const project = store.getState().project;
-        // console.log("project:", project);
-        // fetch(`${ISSUES_URL}/${project}`)
-        fetch(ISSUES_URL)
-            .then((response) => response.json())
-            .then((result) => {
-                store.dispatch(updateIssues(result));
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        this.loadIssues();
     }
 
     shouldComponentUpdate() {
-        // fetch(ISSUES_URL)
-        // const project = store.getState().project;
-        // console.log("project:", project);
-        // fetch(`${ISSUES_URL}/${project}`)
-        fetch(ISSUES_URL)
+        this.loadIssues();
+    }
+
+    loadIssues() {
+        const project = store.getState().project;
+        console.log("App, loadIssues, project:", project);
+        fetch(`${ISSUES_URL}/${project}`)
             .then((response) => response.json())
             .then((result) => {
                 store.dispatch(updateIssues(result));
@@ -63,7 +54,7 @@ class App extends React.Component {
     render() {
         return (
             <Provider store={store} >
-                < HashRouter >
+                <HashRouter>
                     <Box>
                         <AppHeader></AppHeader>
                         <Box

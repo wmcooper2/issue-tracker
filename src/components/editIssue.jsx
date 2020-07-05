@@ -33,9 +33,9 @@ const customStyles = makeStyles({
 
 const EditIssue = (props) => {
     const styles = customStyles();
-    // const { issue, issueType, project } = props;
-    const { issue, issueType } = props;
+    const { issue, issueType, project } = props;
     const name = issue.name !== undefined ? issue.name : undefined;
+    const projectName = project !== undefined ? project : undefined;
     const description =
         issue.description !== undefined ? issue.description : undefined;
     const category = issue.category !== undefined ? issue.category : undefined;
@@ -48,11 +48,11 @@ const EditIssue = (props) => {
                 Edit Issue
             </Typography>
             <form
-                // action={`${EDIT_ISSUE_URL}/${project}`}
                 action={EDIT_ISSUE_URL}
                 method="POST"
             >
                 <FormGroup>
+
                     <Box component="div">
                         Name:
                         <Input
@@ -60,6 +60,20 @@ const EditIssue = (props) => {
                             name="issueName"
                             className={styles.inputStyle}
                             defaultValue={name}
+                            inputProps={{
+                                maxLength: 200,
+                            }}
+                            required
+                        ></Input>
+                    </Box>
+
+                    <Box component="div">
+                        Project:
+                        <Input
+                            variant="outlined"
+                            name="projectName"
+                            className={styles.inputStyle}
+                            defaultValue={projectName}
                             inputProps={{
                                 maxLength: 200,
                             }}
@@ -168,11 +182,10 @@ const EditIssue = (props) => {
     );
 };
 
-// const mapStateToProps = ({ issueType, issue, project }) => ({
-const mapStateToProps = ({ issueType, issue }) => ({
+const mapStateToProps = ({ issueType, issue, project }) => ({
     issueType,
     issue,
-    // project,
+    project,
 });
 
 const mapDispatchToProps = () => ({});
@@ -180,7 +193,7 @@ const mapDispatchToProps = () => ({});
 EditIssue.propTypes = {
     issueType: PropTypes.string,
     issue: PropTypes.object,
-    // project: PropTypes.string,
+    project: PropTypes.string,
 };
 
 

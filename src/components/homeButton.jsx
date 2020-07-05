@@ -7,11 +7,11 @@ import { changeToIssues, updateIssues } from "../redux/actions";
 import { ISSUES_URL } from "../utilities/constants";
 import { Link } from "react-router-dom";
 
-// const HomeButton = ({ homeClick, project }) => {
-const HomeButton = ({ homeClick }) => {
+const HomeButton = ({ homeClick, project }) => {
+// const HomeButton = ({ homeClick }) => {
     return (
-        // <Link to="/" onClick={() => homeClick(project)}>
-        <Link to="/" onClick={() => homeClick()}>
+        <Link to="/" onClick={() => homeClick(project)}>
+            {/* <Link to="/" onClick={() => homeClick()}> */}
             <Fab size="small" aria-label="home">
                 <HomeIcon />
             </Fab>
@@ -19,17 +19,17 @@ const HomeButton = ({ homeClick }) => {
     );
 };
 
-// const mapStateToProps = ({ project }) => ({
-const mapStateToProps = () => ({
-    // project,
+const mapStateToProps = ({ project }) => ({
+// const mapStateToProps = () => ({
+    project,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    // homeClick: (project) => {
-    homeClick: () => {
+    homeClick: (project) => {
+    // homeClick: () => {
         dispatch(changeToIssues());
-        // fetch(`${ISSUES_URL}/${project}`)
-        fetch(ISSUES_URL)
+        fetch(`${ISSUES_URL}/${project}`)
+            // fetch(ISSUES_URL)
             .then((response) => response.json())
             .then((results) => dispatch(updateIssues(results)))
             .catch((error) => console.error(error));
@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 HomeButton.propTypes = {
     homeClick: PropTypes.func,
-    // project: PropTypes.string,
+    project: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeButton);

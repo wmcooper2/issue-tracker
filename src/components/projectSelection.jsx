@@ -8,7 +8,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import PropTypes from "prop-types";
 import { PROJECTS } from "../utilities/constants";
 import { connect } from "react-redux";
-import { chooseProject } from "../redux/actions";
+import { chooseProject, updateIssues } from "../redux/actions";
+import { ISSUES_URL } from "../utilities/constants";
 
 
 const MenuItems = (props) => {
@@ -24,7 +25,7 @@ const MenuItems = (props) => {
     ));
 };
 
-const ProjectSelection = ({ projectClick }) => {
+const ProjectSelection = ({ projectClick, project }) => {
     const [open, showDialog] = useState(false);
     // const styles = customStyles();
     const openDialog = () => {
@@ -37,7 +38,7 @@ const ProjectSelection = ({ projectClick }) => {
 
     return (
         <Box>
-            <Button onClick={openDialog}>Project Menu</Button>
+            <Button onClick={openDialog}>{project}</Button>
             <Dialog open={open}>
                 <DialogTitle>Choose a project</DialogTitle>
                 <DialogContent>
@@ -50,16 +51,24 @@ const ProjectSelection = ({ projectClick }) => {
     );
 };
 
-const mapStateToProps = () => ({});
+const mapStateToProps = ({ project }) => ({
+    project,
+});
 
 const mapDispatchToProps = (dispatch) => ({
     projectClick: (project) => {
         dispatch(chooseProject(project));
+        fetch(`${ISSUES_URL}/${project}`)
+            .then((response) => response.json())
+            .then((results) => dispatch(updateIssues(results)))
+            .catch((error) => console.error(error));
+
     },
 });
 
 ProjectSelection.propTypes = {
     projectClick: PropTypes.func,
+    project: PropTypes.string,
 };
 
 

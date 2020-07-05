@@ -3,6 +3,13 @@ Times are in minutes
 
 
 ## July
+### 5th
+180 - With a lot of distractions (my actual time is probably closer to 60 if you take away all the nagging from my wife while I try to work) I was able to get the database and endpoints to work together with the app to save, update, and display the correct issues for each project. However, the app returns to the default project (IssueTracker) when you add an issue or edit one. The issues stay in the same spot, but I would like to get the project to stay the same after a change is made through add/edit issue forms.  
+
+
+### 4th
+Did nothing on the app today. I was busy organizing my apartment to make space for my baby in the next couple of months.  
+
 
 ### 3rd
 120 - refactored the server app, to put the database logic into its own module for simple-survey-v2 and issue-tracker. Now the file is much easier to read. I will put the endpoints that remain in the server file into their own router file later.  

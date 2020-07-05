@@ -31,21 +31,19 @@ const customStyles = makeStyles({
 
 const AddIssue = (props) => {
     const styles = customStyles();
-    // const { issue, issueType, project } = props;
-    const { issue, issueType } = props;
+    const { issue, issueType, project } = props;
     const name = issue.name !== undefined ? issue.name : undefined;
+    const projectName = project !== undefined ? project : undefined;
     const description =
         issue.description !== undefined ? issue.description : undefined;
     const category = issue.category !== undefined ? issue.category : undefined;
     const version = issue.version !== undefined ? issue.version : undefined;
     const id = issue._id !== undefined ? issue._id : undefined;
 
-    // console.log("project:", project);
     return (
 
         < Box className={styles.issueForm} >
             <form
-                // action={`${ADD_ISSUE_URL}/${project}`}
                 action={ADD_ISSUE_URL}
                 method="POST"
             >
@@ -53,6 +51,7 @@ const AddIssue = (props) => {
                     Add Issue
                 </Typography>
                 <FormGroup>
+
                     <Box component="div">
                         Name:
                         <Input
@@ -60,6 +59,20 @@ const AddIssue = (props) => {
                             name="issueName"
                             className={styles.inputStyle}
                             defaultValue={name}
+                            inputProps={{
+                                maxLength: 200,
+                            }}
+                            required
+                        ></Input>
+                    </Box>
+
+                    <Box component="div">
+                        Project:
+                        <Input
+                            variant="outlined"
+                            name="projectName"
+                            className={styles.inputStyle}
+                            defaultValue={projectName}
                             inputProps={{
                                 maxLength: 200,
                             }}
@@ -155,11 +168,11 @@ const AddIssue = (props) => {
     );
 };
 
-// const mapStateToProps = ({ issueType, issue, project }) => ({
-const mapStateToProps = ({ issueType, issue }) => ({
+const mapStateToProps = ({ issueType, issue, project }) => ({
+    // const mapStateToProps = ({ issueType, issue }) => ({
     issueType,
     issue,
-    // project,
+    project,
 });
 
 const mapDispatchToProps = () => ({});
@@ -167,7 +180,7 @@ const mapDispatchToProps = () => ({});
 AddIssue.propTypes = {
     issueType: PropTypes.string,
     issue: PropTypes.object,
-    // project: PropTypes.string,
+    project: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddIssue);

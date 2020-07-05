@@ -1,4 +1,5 @@
-import { DEFAULT_ISSUE1, DEFAULT_ISSUE2, DEFAULT_ISSUE3, ISSUE } from "../utilities/constants";
+import { DEFAULT_ISSUE1, DEFAULT_PROJECT, DEFAULT_ISSUE2, DEFAULT_ISSUE3, ISSUE } from "../utilities/constants";
+
 
 export const initialState = {
     issueType: ISSUE,
@@ -7,7 +8,7 @@ export const initialState = {
     priorityASelected: true,
     priorityBSelected: true,
     priorityCSelected: true,
-    project: "Issue Tracker"
+    project: DEFAULT_PROJECT,
 };
 
 export default initialState;
