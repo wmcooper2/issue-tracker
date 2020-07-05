@@ -21,16 +21,14 @@ const customStyles = makeStyles({
     },
 });
 
-// const BugButton = ({ bugClick, project }) => {
-const BugButton = ({ bugClick }) => {
+const BugButton = ({ bugClick, project }) => {
     const classes = customStyles();
     return (
         <Button className={classes.bugButton}>
             <Link
                 to={BUGS_ENDPOINT}
                 className={classes.linkStyle}
-                // onClick={() => bugClick(project)}
-                onClick={() => bugClick()}
+                onClick={() => bugClick(project)}
             >
                 Bug
             </Link>
@@ -38,18 +36,14 @@ const BugButton = ({ bugClick }) => {
     );
 };
 
-// const mapStateToProps = ({ issueType, project }) => ({
-const mapStateToProps = () => ({
-    // issueType,
-    // project,
+const mapStateToProps = ({ project }) => ({
+    project,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    // bugClick: (project) => {
-    bugClick: () => {
+    bugClick: (project) => {
         dispatch(changeToBugs());
-        // fetch(`${BUGS_URL}/${project}`)
-        fetch(BUGS_URL)
+        fetch(`${BUGS_URL}/${project}`)
             .then((response) => response.json())
             .then((results) => dispatch(updateIssues(results)))
             .catch((error) => console.error(error));
@@ -58,7 +52,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 BugButton.propTypes = {
     bugClick: PropTypes.func,
-    // project: PropTypes.string,
+    project: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BugButton);

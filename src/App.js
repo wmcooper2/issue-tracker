@@ -1,15 +1,18 @@
 import React from "react";
+
 import AddButton from "./components/addButton";
 import AddIssue from "./components/addIssue";
-import EditIssue from "./components/editIssue";
+// import AddIssue2 from "./components/addIssue2";
+// import AddIssue3 from "./components/addIssue3";
 import AppHeader from "./components/appHeader";
 import Box from "@material-ui/core/Box";
-import Dashboard from "./components/dashboard";
-import fetch from "isomorphic-fetch";
-
 import BugButton from "./components/bugButton";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Dashboard from "./components/dashboard";
+import EditIssue from "./components/editIssue";
 import FeatureButton from "./components/featureButton";
+import fetch from "isomorphic-fetch";
+import Login from "./components/login";
 
 import { HashRouter, Switch, Route } from "react-router-dom";
 import { initialState } from "./redux/initialState";
@@ -18,7 +21,7 @@ import { reducer } from "./redux/reducers";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import PriorityBtns from "./components/priorityBtns";
-import { ISSUES_URL, EDIT_ISSUE_ENDPOINT, ADD_ISSUE_ENDPOINT } from "./utilities/constants";
+import { ADD_ISSUE_ENDPOINT, EDIT_ISSUE_ENDPOINT, ISSUES_URL, LOGIN_ENDPOINT } from "./utilities/constants";
 
 const store = createStore(
     reducer,
@@ -27,8 +30,6 @@ const store = createStore(
 );
 //GOOGLE CHROME, above line
 
-
-//componentDidMount and shoulcComponentUpdate can be refactored...
 class App extends React.Component {
     componentDidMount() {
         this.loadIssues();
@@ -64,11 +65,19 @@ class App extends React.Component {
                             <Switch>
                                 <Route path={ADD_ISSUE_ENDPOINT}>
                                     <AddIssue></AddIssue>
+                                    {/* <AddIssue2></AddIssue2> */}
+                                    {/* <AddIssue3></AddIssue3> */}
                                 </Route>
+
                                 <Route path={EDIT_ISSUE_ENDPOINT}>
                                     <EditIssue></EditIssue>
                                 </Route>
-                                <Route path="/">
+
+                                <Route path={LOGIN_ENDPOINT}>
+                                    <Login></Login>
+                                </Route>
+
+                                <Route path="*">
                                     <ButtonGroup>
                                         <BugButton></BugButton>
                                         <FeatureButton></FeatureButton>
@@ -77,9 +86,9 @@ class App extends React.Component {
                                         <PriorityBtns></PriorityBtns>
                                     </ButtonGroup>
                                     <AddButton></AddButton>
-
                                     <Dashboard></Dashboard>
                                 </Route>
+
                             </Switch>
                         </Box>
                     </Box>

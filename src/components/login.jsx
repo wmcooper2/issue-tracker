@@ -3,7 +3,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import Input from "@material-ui/core/Input";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
-import { LOGIN_URL } from "../constants";
+import { LOGIN_URL } from "../utilities/constants";
 
 
 const customStyles = makeStyles({

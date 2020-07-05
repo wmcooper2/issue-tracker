@@ -5,6 +5,7 @@ Times are in minutes
 ## July
 ### 5th
 180 - With a lot of distractions (my actual time is probably closer to 60 if you take away all the nagging from my wife while I try to work) I was able to get the database and endpoints to work together with the app to save, update, and display the correct issues for each project. However, the app returns to the default project (IssueTracker) when you add an issue or edit one. The issues stay in the same spot, but I would like to get the project to stay the same after a change is made through add/edit issue forms.  
+60 - I think I figured out what to do to keep the app from defaulting on redirect to the home page. I need to handle the redirect within the app itself (React Router) and not rely on the server to handle that (Express Router). I need to change how the form is submitted and make a function that uses fetch to post to the endpoint, then use the app's router to redirect to the home page so that the Redux store is not changed back to the default state (which happens when the server file redirects you to the home page).  
 
 
 ### 4th

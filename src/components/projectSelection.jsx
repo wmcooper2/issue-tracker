@@ -27,7 +27,6 @@ const MenuItems = (props) => {
 
 const ProjectSelection = ({ projectClick, project }) => {
     const [open, showDialog] = useState(false);
-    // const styles = customStyles();
     const openDialog = () => {
         showDialog(true);
     };

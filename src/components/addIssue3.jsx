@@ -8,7 +8,7 @@ import List from "@material-ui/core/List";
 import PriorityRadio from "./priorityRadio";
 import PropTypes from "prop-types";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
-import { ADD_ISSUE_URL } from "../utilities/constants";
+// import { ADD_ISSUE_URL } from "../utilities/constants";
 
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/styles";
@@ -29,6 +29,17 @@ const customStyles = makeStyles({
     },
 });
 
+const handleFormSubmit = (prop) => {
+    console.log("submit");
+    console.log("prop:", prop);
+    //use state hooks
+    //make fetch request to endpoint
+    //redirect within the app to the home page
+    //remove the redirect within express.
+    //use res.end() in server file endpoint
+
+};
+
 const AddIssue = (props) => {
     const styles = customStyles();
     const { issue, issueType, project } = props;
@@ -44,8 +55,7 @@ const AddIssue = (props) => {
     return (
         < Box className={styles.issueForm} >
             <form
-                action={ADD_ISSUE_URL}
-                method="POST"
+                onSubmit={() => handleFormSubmit("cats")}
             >
                 <Typography variant="h3" className={styles.pageTitle}>
                     Add Issue

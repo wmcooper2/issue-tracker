@@ -8,10 +8,8 @@ import { ISSUES_URL } from "../utilities/constants";
 import { Link } from "react-router-dom";
 
 const HomeButton = ({ homeClick, project }) => {
-// const HomeButton = ({ homeClick }) => {
     return (
         <Link to="/" onClick={() => homeClick(project)}>
-            {/* <Link to="/" onClick={() => homeClick()}> */}
             <Fab size="small" aria-label="home">
                 <HomeIcon />
             </Fab>
@@ -20,16 +18,13 @@ const HomeButton = ({ homeClick, project }) => {
 };
 
 const mapStateToProps = ({ project }) => ({
-// const mapStateToProps = () => ({
     project,
 });
 
 const mapDispatchToProps = (dispatch) => ({
     homeClick: (project) => {
-    // homeClick: () => {
         dispatch(changeToIssues());
         fetch(`${ISSUES_URL}/${project}`)
-            // fetch(ISSUES_URL)
             .then((response) => response.json())
             .then((results) => dispatch(updateIssues(results)))
             .catch((error) => console.error(error));

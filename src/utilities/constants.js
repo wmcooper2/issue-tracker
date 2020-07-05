@@ -9,6 +9,7 @@ export const DEFAULT_PROJECT = "IssueTracker";
 //endpoints within this app
 export const ADD_ISSUE_ENDPOINT = "/add-issue";
 export const BUGS_ENDPOINT = "/bugs";
+export const LOGIN_ENDPOINT = "/login";
 export const EDIT_ISSUE_ENDPOINT = "/edit-issue";
 export const FEATURES_ENDPOINT = "/features";
 
@@ -23,6 +24,7 @@ export const DELETE_URL = "/issue-tracker/delete-issue";
 export const EDIT_ISSUE_URL = "/issue-tracker/edit-issue";
 export const FEATURES_URL = "/issue-tracker/features";
 export const ISSUES_URL = "/issue-tracker/issues";
+export const LOGIN_URL = "/issue-tracker/login";
 
 
 //issueTypes
