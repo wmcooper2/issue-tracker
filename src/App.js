@@ -3,7 +3,7 @@ import React from "react";
 import AddButton from "./components/addButton";
 import AddIssue from "./components/addIssue";
 // import AddIssue2 from "./components/addIssue2";
-// import AddIssue3 from "./components/addIssue3";
+import AddIssue3 from "./components/addIssue3";
 import AppHeader from "./components/appHeader";
 import Box from "@material-ui/core/Box";
 import BugButton from "./components/bugButton";
@@ -64,9 +64,9 @@ class App extends React.Component {
                         >
                             <Switch>
                                 <Route path={ADD_ISSUE_ENDPOINT}>
-                                    <AddIssue></AddIssue>
+                                    {/* <AddIssue></AddIssue> */}
                                     {/* <AddIssue2></AddIssue2> */}
-                                    {/* <AddIssue3></AddIssue3> */}
+                                    <AddIssue3></AddIssue3>
                                 </Route>
 
                                 <Route path={EDIT_ISSUE_ENDPOINT}>
