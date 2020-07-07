@@ -1,27 +1,26 @@
 import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import Input from "@material-ui/core/Input";
-// import IssueRadio from "./issueRadio";
+import List from "@material-ui/core/List";
+import PropTypes from "prop-types";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
-import List from "@material-ui/core/List";
-// import PriorityRadio from "./priorityRadio";
-import PropTypes from "prop-types";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
-// import { ADD_ISSUE_URL } from "../utilities/constants";
 
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/styles";
 import { BUG, FEATURE, ADD_ISSUE_URL } from "../utilities/constants";
 import { PRIORITY_A, PRIORITY_B, PRIORITY_C } from "../utilities/constants";
 import { Typography } from "@material-ui/core";
-import { updateIssues } from "../redux/actions";
+// import { updateIssues } from "../redux/actions";
+// make the fetch to get issues a function in the utilities module, then I can call it after the history.push() method? OR, update the add-issues endpoint to return a new issue list for the given project which will trigger an update on the Dashboard?
 
 const customStyles = makeStyles({
     bugFeatureBox: { display: "flex" },
@@ -64,9 +63,8 @@ const customStyles = makeStyles({
     },
 });
 
-const AddIssue = ({ issue, issueType, project, dispatch }) => {
+const AddIssue = ({ issue, issueType, project }) => {
     const styles = customStyles();
-    // const { issue, issueType, project, dispatch } = props;
     let history = useHistory();
 
     const name = issue.name !== undefined ? issue.name : undefined;
@@ -121,15 +119,6 @@ const AddIssue = ({ issue, issueType, project, dispatch }) => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        // console.log("TARGET stateName: ", stateName);
-        // console.log("TARGET stateProjectName: ", stateProjectName);
-        // console.log("TARGET stateCategory: ", stateCategory);
-        // console.log("TARGET stateDescription: ", stateDescription);
-        // console.log("TARGET stateVersion: ", stateVersion);
-        // console.log("TARGET stateID: ", stateID);
-        // console.log("TARGET stateIssueType: ", stateIssueType);
-        // console.log("TARGET statePriority: ", statePriority);
-
         fetch(ADD_ISSUE_URL, {
             method: "POST",
             body: JSON.stringify({
@@ -145,23 +134,14 @@ const AddIssue = ({ issue, issueType, project, dispatch }) => {
                 "Content-type": "application/json; charset=UTF-8"
             }
         })
-            .then(res => console.log("ADDISSUE: ", res))
-            // .then(() => dispatch(updateIssues()))
+            .then()
             .catch(error => console.error(error));
-
-        //done, use state hooks
-        //make fetch request to endpoint
-        //redirect within the app to the home page
-        //remove the redirect within express.
-        //use res.end() in server file endpoint
         history.push("/");
     };
 
     return (
         < Box className={styles.issueForm} >
-            <form
-                onSubmit={handleFormSubmit}
-            >
+            <form onSubmit={handleFormSubmit} >
                 <Typography variant="h3" className={styles.pageTitle}>
                     Add Issue
                 </Typography>
@@ -245,7 +225,6 @@ const AddIssue = ({ issue, issueType, project, dispatch }) => {
                     <Box className={styles.bugFeatureBox}>
                         <Box component="div">
                             Type:
-                            {/* <IssueRadio></IssueRadio> */}
                             <FormControl component="fieldset">
                                 <RadioGroup
                                     row
@@ -294,7 +273,6 @@ const AddIssue = ({ issue, issueType, project, dispatch }) => {
 
                         <Box component="div">
                             Priority:
-                            {/* <PriorityRadio></PriorityRadio> */}
                             <FormControl component="fieldset">
                                 <RadioGroup
                                     row
@@ -357,6 +335,8 @@ const AddIssue = ({ issue, issueType, project, dispatch }) => {
                                     ></FormControlLabel>
                                 </RadioGroup>
                             </FormControl>
+
+
                         </Box>
                     </Box>
                 </FormGroup>
@@ -377,7 +357,6 @@ const AddIssue = ({ issue, issueType, project, dispatch }) => {
                     </Box>
                 </FormGroup>
 
-
                 <FormGroup>
                     <Box>
                         <List>Make similar issues list</List>
@@ -387,11 +366,12 @@ const AddIssue = ({ issue, issueType, project, dispatch }) => {
                 <FormGroup>
                     <Box>Make keywords text area</Box>
                 </FormGroup>
+
                 <Button variant="contained" color="primary" name="submit" type="submit">
                     Submit {issueType}
                 </Button>
             </form>
-        </Box >
+        </Box>
     );
 };
 
@@ -401,9 +381,7 @@ const mapStateToProps = ({ issueType, issue, project }) => ({
     project,
 });
 
-const mapDispatchToProps = ({ dispatch }) => ({
-    dispatch,
-});
+const mapDispatchToProps = ({ dispatch }) => ({ dispatch });
 
 AddIssue.propTypes = {
     issueType: PropTypes.string,
