@@ -3,6 +3,10 @@ Times are in minutes
 
 
 ## July
+### 7th
+40 - Figured out why the form data wasn't working properly with the AddIssue3 component. I added a "Content-type" property to the fetch request and now the data is actually being recognized by the server app and is being saved properly in MongoDB. I moved the history.push() method outside of the fetch method's ".then()" chain and now that works properly, too. I added an event.preventDefault() to the javasript function that handles the form submission to prevent the garbled mess from appearing in the address bar which I think happened to have been the browser's default way of sending the data without an action attribute in the HTML form tag. I need to send a call to dispatch to the Redux store to update the dashboard component when the app is redirected to the home page.
+
+
 ### 6th
 120 - Added state hooks for each form field in AddIssue3 component, got the state to work properly, figured out how to use fetch to send the data to the endpoint, got the app to redirect to the homepage without clearing the redux store which allowed the selected project to remain the same, and now there is a slight issue of the form not being connected to the DOM or something. I have to figure that one out next, then run dispatch() to update the store from the API with the newly added issue. I added res.end() in the server file, too.
 

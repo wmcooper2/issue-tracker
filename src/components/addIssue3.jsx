@@ -21,7 +21,7 @@ import { makeStyles } from "@material-ui/styles";
 import { BUG, FEATURE, ADD_ISSUE_URL } from "../utilities/constants";
 import { PRIORITY_A, PRIORITY_B, PRIORITY_C } from "../utilities/constants";
 import { Typography } from "@material-ui/core";
-
+import { updateIssues } from "../redux/actions";
 
 const customStyles = makeStyles({
     bugFeatureBox: { display: "flex" },
@@ -64,9 +64,9 @@ const customStyles = makeStyles({
     },
 });
 
-const AddIssue = (props) => {
+const AddIssue = ({ issue, issueType, project, dispatch }) => {
     const styles = customStyles();
-    const { issue, issueType, project } = props;
+    // const { issue, issueType, project, dispatch } = props;
     let history = useHistory();
 
     const name = issue.name !== undefined ? issue.name : undefined;
@@ -119,7 +119,8 @@ const AddIssue = (props) => {
         }
     };
 
-    const handleFormSubmit = () => {
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
         // console.log("TARGET stateName: ", stateName);
         // console.log("TARGET stateProjectName: ", stateProjectName);
         // console.log("TARGET stateCategory: ", stateCategory);
@@ -128,6 +129,7 @@ const AddIssue = (props) => {
         // console.log("TARGET stateID: ", stateID);
         // console.log("TARGET stateIssueType: ", stateIssueType);
         // console.log("TARGET statePriority: ", statePriority);
+
         fetch(ADD_ISSUE_URL, {
             method: "POST",
             body: JSON.stringify({
@@ -139,17 +141,20 @@ const AddIssue = (props) => {
                 version: stateVersion,
                 description: stateDescription,
             }),
-            // redirect: "/",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
         })
-            .then(
-                history.push("/")
-            )
+            .then(res => console.log("ADDISSUE: ", res))
+            // .then(() => dispatch(updateIssues()))
             .catch(error => console.error(error));
+
         //done, use state hooks
         //make fetch request to endpoint
         //redirect within the app to the home page
         //remove the redirect within express.
         //use res.end() in server file endpoint
+        history.push("/");
     };
 
     return (
@@ -396,12 +401,15 @@ const mapStateToProps = ({ issueType, issue, project }) => ({
     project,
 });
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = ({ dispatch }) => ({
+    dispatch,
+});
 
 AddIssue.propTypes = {
     issueType: PropTypes.string,
     issue: PropTypes.object,
     project: PropTypes.string,
+    dispatch: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddIssue);
