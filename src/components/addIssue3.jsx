@@ -125,6 +125,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                 issueName: stateName,
                 projectName: stateProjectName,
                 issueType: stateIssueType,
+                issueID: stateID,
                 category: stateCategory,
                 priority: statePriority,
                 version: stateVersion,
@@ -211,7 +212,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                         ID:
                         <Input
                             readOnly={true}
-                            value={stateID}
+                            defaultValue={stateID}
                             name="issueid"
                             className={styles.inputStyle}
                             inputProps={{

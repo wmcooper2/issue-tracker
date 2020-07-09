@@ -16,11 +16,13 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 import { BUG, FEATURE, EDIT_ISSUE_URL } from "../utilities/constants";
+import { ISSUES_URL } from "../utilities/constants";
 import { PRIORITY_A, PRIORITY_B, PRIORITY_C } from "../utilities/constants";
 
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
+import { updateIssues } from "../redux/actions";
 
 const customStyles = makeStyles({
     bugFeatureBox: { display: "flex" },
@@ -65,7 +67,7 @@ const customStyles = makeStyles({
 
 });
 
-const EditIssue = ({ issue, issueType, project }) => {
+const EditIssue = ({ issue, issueType, project, dispatch }) => {
     const styles = customStyles();
     let history = useHistory();
     // const { issue, issueType, project } = props;
@@ -131,6 +133,7 @@ const EditIssue = ({ issue, issueType, project }) => {
                 issueName: stateName,
                 projectName: stateProjectName,
                 issueType: stateIssueType,
+                issueID: stateID,
                 category: stateCategory,
                 priority: statePriority,
                 version: stateVersion,
@@ -141,9 +144,30 @@ const EditIssue = ({ issue, issueType, project }) => {
                 "Content-type": "application/json; charset=UTF-8"
             }
         })
-            .then()
+            .then(
+                fetch(`${ISSUES_URL}/${project}`)
+                    .then((response) => response.json())
+                    .then((result) => {
+                        dispatch(updateIssues(result));
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    })
+            )
+            .then(
+                history.push("/")
+            )
             .catch(error => console.error(error));
-        history.push("/");
+
+
+
+
+
+
+
+
+
+
     };
 
     return (
@@ -218,7 +242,7 @@ const EditIssue = ({ issue, issueType, project }) => {
                         ID:
                         <Input
                             readOnly={true}
-                            value={stateID}
+                            defaultValue={stateID}
                             name="issueid"
                             className={styles.inputStyle}
                             inputProps={{
