@@ -125,9 +125,9 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
         }
     };
 
-    const handleFormSubmit = (event) => {
+    async function handleFormSubmit(event) {
         event.preventDefault();
-        fetch(EDIT_ISSUE_URL, {
+        await fetch(EDIT_ISSUE_URL, {
             method: "POST",
             body: JSON.stringify({
                 issueName: stateName,
@@ -145,7 +145,7 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
             }
         })
             .then(
-                fetch(`${ISSUES_URL}/${project}`)
+                await fetch(`${ISSUES_URL}/${project}`)
                     .then((response) => response.json())
                     .then((result) => {
                         dispatch(updateIssues(result));
@@ -154,21 +154,10 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                         console.error(error);
                     })
             )
-            .then(
-                history.push("/")
-            )
             .catch(error => console.error(error));
 
-
-
-
-
-
-
-
-
-
-    };
+        history.push("/");
+    }
 
     return (
         <Box className={styles.issueForm}>

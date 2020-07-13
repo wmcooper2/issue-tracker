@@ -11,7 +11,8 @@ import TableRow from "@material-ui/core/TableRow";
 
 import { selectIssue } from "../redux/actions";
 import { connect } from "react-redux";
-import { EditButton } from "./editButton";
+// import { EditButton } from "./editButton";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 import {
@@ -34,26 +35,26 @@ const customStyles = makeStyles({
 
 const filterPriorities = (issue, priorityASelected, priorityBSelected, priorityCSelected) => {
     switch (issue.priority) {
-    case PRIORITY_A:
-        if (priorityASelected) {
-            return true;
-        }
-        // eslint-disable-next-line
+        case PRIORITY_A:
+            if (priorityASelected) {
+                return true;
+            }
+            // eslint-disable-next-line
             break;
-    case PRIORITY_B:
-        if (priorityBSelected) {
-            return true;
-        }
-        // eslint-disable-next-line
+        case PRIORITY_B:
+            if (priorityBSelected) {
+                return true;
+            }
+            // eslint-disable-next-line
             break;
-    case PRIORITY_C:
-        if (priorityCSelected) {
-            return true;
-        }
-        // eslint-disable-next-line
+        case PRIORITY_C:
+            if (priorityCSelected) {
+                return true;
+            }
+            // eslint-disable-next-line
             break;
-    default:
-        return false;
+        default:
+            return false;
     }
 };
 
@@ -63,7 +64,10 @@ const IssueTable = ({
     issueType,
     priorityASelected,
     priorityBSelected,
-    priorityCSelected }) => {
+    priorityCSelected
+}) => {
+
+    let history = useHistory();
 
     const filteredIssues = issues.filter(issue => filterPriorities(issue, priorityASelected, priorityBSelected, priorityCSelected) === true);
 
@@ -74,7 +78,7 @@ const IssueTable = ({
 
                 <TableRow
                     className="issueRow"
-                    onClick={() => rowClick(issue)}
+                    onClick={() => rowClick(issue, history)}
                     key={index}
                 >
                     <TableCell
@@ -84,7 +88,7 @@ const IssueTable = ({
                                 : { backgroundColor: FEATURE_PURPLE_3 }
                         }
                     >
-                        <EditButton></EditButton>
+                        {/* <EditButton></EditButton> */}
                         {issue.name}
                     </TableCell>
 
@@ -149,8 +153,9 @@ const mapStateToProps = ({ issues, issueType, priorityASelected, priorityBSelect
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    rowClick: (issue) => {
-        dispatch(selectIssue(issue));
+    rowClick: async (issue, history) => {
+        await dispatch(selectIssue(issue));
+        history.push("/full-details");
     },
 });
 

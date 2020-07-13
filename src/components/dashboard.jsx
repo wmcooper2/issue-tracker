@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import IssueDates from "./issueDates";
-import IssuePeople from "./issuePeople";
+// import IssueDates from "./issueDates";
+// import IssuePeople from "./issuePeople";
 import IssueTable from "./issueTable";
 import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
@@ -31,14 +31,15 @@ const Dashboard = ({ issue }) => {
             <Paper component="div" className={styles.description}>
                 {issue.description}
             </Paper>
-            <Paper component="div" className={styles.details}>
-                <IssueDates></IssueDates>
-                <IssuePeople></IssuePeople>
-            </Paper>
+
+            {/* quick details */}
+            {/* <Paper component="div" className={styles.details}> */}
+            {/* <IssueDates></IssueDates> */}
+            {/* <IssuePeople></IssuePeople> */}
+            {/* </Paper> */}
         </React.Fragment >
     );
 };
-
 
 const mapStateToProps = ({ issue }) => ({
     issue,

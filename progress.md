@@ -3,6 +3,14 @@ Times are in minutes
 
 
 ## July
+### 13th
+90 - Added new <FullDetails> component to show the full details of the selected issue. Added some stuff to it. Removed the dates and people data from the <Dashboard> component to make room for more issues and improve the flow of the app. I tried the async/await pattern on the fetch request for the <add-issue> and the <App> components, but it didn't work. Added the EditButton to the <FullDetails> component rather than the <IssuesTable> component. Everything seems to work fine, so far.
+
+
+### 10th - 12th 
+Did nothing.
+
+
 ### 9th
 30 - I figured out what bonehead thing I did to break the edit-issue form. I forgot to include the objectid input's value in the component's data when I made the fetch request to update the database. I corrected that and now it works well. I still don't know how to get the app to update the Dashboard component when you submit the changes. The app still needs to be refreshed in order to see the changes made using the add-issue or edit-issue forms.
 

@@ -12,6 +12,7 @@ export const BUGS_ENDPOINT = "/bugs";
 export const LOGIN_ENDPOINT = "/login";
 export const EDIT_ISSUE_ENDPOINT = "/edit-issue";
 export const FEATURES_ENDPOINT = "/features";
+export const FULL_DETAILS = "/full-details";
 
 export const BASE_URL = "https://wmcooper2.com/";
 export const APP_URL = "https://wmcooper2.com/issue-tracker";
@@ -83,7 +84,7 @@ export const DEFAULT_ISSUE1 = {
         lastEdited: "BOB",
     },
     hoursSpent: 0,
-    description: "Click on an issue above to see the description.",
+    description: "Click on an issue above to see its details.",
     messages: [
         {
             person: null,
