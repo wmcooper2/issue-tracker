@@ -1,15 +1,12 @@
 # [Issue Tracker]()
 Track issues (bugs and features) for various projects.  
 
-
 ![Screenshot](screenshot.jpg)
-
 
 ## Purpose/Goal
 To draw upon many different skills that I learned and put them all together into one comprehensive project.  
-To create an app that helps me keep track of my progress on projects.  
+To create a demo app that shows I can make an issue tracker.  
 To learn a new style library (Material UI) while attempting a new project.
-
 
 ## Operation
 Click on ... to;

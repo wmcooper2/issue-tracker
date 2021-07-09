@@ -19,7 +19,7 @@ import { updateIssues } from "./redux/actions";
 import { reducer } from "./redux/reducers";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import PriorityBtns from "./components/priorityBtns";
+import PriorityBtns from "./components/filterButtons";
 import { ADD_ISSUE_ENDPOINT, EDIT_ISSUE_ENDPOINT, FULL_DETAILS, ISSUES_URL, LOGIN_ENDPOINT } from "./utilities/constants";
 
 const store = createStore(
@@ -80,6 +80,7 @@ class App extends React.Component {
                                 </Route>
 
                                 <Route path="*">
+                                    {/* Filter-by button group */}
                                     <ButtonGroup>
                                         <BugButton></BugButton>
                                         <FeatureButton></FeatureButton>
@@ -87,7 +88,7 @@ class App extends React.Component {
                                     <ButtonGroup>
                                         <PriorityBtns></PriorityBtns>
                                     </ButtonGroup>
-                                    <AddButton></AddButton>
+                                        <AddButton></AddButton>
                                     <Dashboard></Dashboard>
                                 </Route>
 
@@ -101,3 +102,4 @@ class App extends React.Component {
 }
 
 export default App;
+

@@ -11,6 +11,9 @@ const customStyles = makeStyles({
     featureButton: { backgroundColor: "purple" },
 });
 
+//TODO: merge bug and feature modules here
+
+
 const IssueBtns = () => {
     const classes = customStyles();
     return (

@@ -69,7 +69,8 @@ const IssueTable = ({
 
     let history = useHistory();
 
-    const filteredIssues = issues.filter(issue => filterPriorities(issue, priorityASelected, priorityBSelected, priorityCSelected) === true);
+    const filteredIssues = issues.filter(issue =>
+        filterPriorities(issue, priorityASelected, priorityBSelected, priorityCSelected) === true);
 
     const styles = customStyles();
     const Rows = () => {
@@ -88,7 +89,6 @@ const IssueTable = ({
                                 : { backgroundColor: FEATURE_PURPLE_3 }
                         }
                     >
-                        {/* <EditButton></EditButton> */}
                         {issue.name}
                     </TableCell>
 
@@ -99,8 +99,7 @@ const IssueTable = ({
                                 : issue.priority === PRIORITY_B
                                     ? { backgroundColor: PRIORITY_B_YELLOW_3 }
                                     : { backgroundColor: PRIORITY_C_GREEN_3 }
-                        }
-                    >
+                        }>
                         {issue.priority}
                     </TableCell>
 
@@ -122,8 +121,8 @@ const IssueTable = ({
         <Paper>
             <TableContainer className={styles.table}>
                 <Table stickyHeader>
-                    <TableHead>
 
+                    <TableHead>
                         <TableRow>
                             <TableCell>{issueType}</TableCell>
                             <TableCell>Priority</TableCell>

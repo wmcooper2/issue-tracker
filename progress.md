@@ -1,6 +1,17 @@
 # Progress
-Times are in minutes
+Times are in minutes, most recent entries on top.
 
+
+
+
+### 20th
+Haven't touched this project in a year. I began studying for the LFCS last summer before my son was born, then after he was born, I've had little free time to work on this project. Instead I used the little bits of free time (that I was lucky enough to get) to clean up the web-portfolio and other projects.
+
+
+
+
+## June
+# Year 2021
 
 ## July
 ### 13th
@@ -175,3 +186,4 @@ I finally got it straightened out and the app works normally. I feel dumb.
 15 - took notes about what to include in a bug tracker from online article/blog.  
 15 - sketched preliminary UI in notebook and thought about data structure in MongoDB.  
 
+# Year 2020

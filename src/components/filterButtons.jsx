@@ -37,14 +37,16 @@ const customStyles = makeStyles({
     },
 });
 
-const PriorityBtns = ({
+const FilterBtns = ({
     priorityAClick,
     priorityBClick,
     priorityCClick,
     priorityASelected,
     priorityBSelected,
     priorityCSelected }) => {
+
     const classes = customStyles();
+
     return (
         <Box>
             <ButtonGroup className={classes.buttonGroup}>
@@ -75,7 +77,7 @@ const mapDispatchToProps = (dispatch) => ({
     priorityCClick: () => dispatch(togglePriorityC()),
 });
 
-PriorityBtns.propTypes = {
+FilterBtns.propTypes = {
     priorityAClick: PropTypes.func,
     priorityBClick: PropTypes.func,
     priorityCClick: PropTypes.func,
@@ -84,4 +86,4 @@ PriorityBtns.propTypes = {
     priorityCSelected: PropTypes.bool,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PriorityBtns);
+export default connect(mapStateToProps, mapDispatchToProps)(FilterBtns);

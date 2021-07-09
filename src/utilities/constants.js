@@ -1,10 +1,10 @@
 export const PROJECTS = [
-    "IssueTracker",
-    "DirectionsGame",
-    "FreelanceSite",
+    "Some Game",
+    "Directions Game",
+    "Freelance Site",
 ];
 
-export const DEFAULT_PROJECT = "IssueTracker";
+export const DEFAULT_PROJECT = "Progress Tracker";
 
 //endpoints within this app
 export const ADD_ISSUE_ENDPOINT = "/add-issue";
