@@ -37,7 +37,7 @@ const customStyles = makeStyles({
     },
 });
 
-const FilterBtns = ({
+const PriorityBtns = ({
     priorityAClick,
     priorityBClick,
     priorityCClick,
@@ -77,7 +77,7 @@ const mapDispatchToProps = (dispatch) => ({
     priorityCClick: () => dispatch(togglePriorityC()),
 });
 
-FilterBtns.propTypes = {
+PriorityBtns.propTypes = {
     priorityAClick: PropTypes.func,
     priorityBClick: PropTypes.func,
     priorityCClick: PropTypes.func,
@@ -86,4 +86,4 @@ FilterBtns.propTypes = {
     priorityCSelected: PropTypes.bool,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilterBtns);
+export default connect(mapStateToProps, mapDispatchToProps)(PriorityBtns);

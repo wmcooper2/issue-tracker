@@ -10,11 +10,17 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import MenuItem from "@material-ui/core/MenuItem";
 import PropTypes from "prop-types";
-import { PROJECTS } from "../utilities/constants";
 import { connect } from "react-redux";
 import { chooseProject, updateIssues } from "../redux/actions";
 import { ISSUES_URL } from "../utilities/constants";
 import { makeStyles } from "@material-ui/core/styles";
+
+const PROJECTS = [
+    "Some Game",
+    "Directions Game",
+    "Freelance Site",
+];
+
 
 
 const MenuItems = (props) => {

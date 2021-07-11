@@ -11,21 +11,10 @@ import TableRow from "@material-ui/core/TableRow";
 
 import { selectIssue } from "../redux/actions";
 import { connect } from "react-redux";
-// import { EditButton } from "./editButton";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
-import {
-    BUG,
-    BUG_BLUE_3,
-    FEATURE_PURPLE_3,
-    PRIORITY_A,
-    PRIORITY_B,
-    PRIORITY_C,
-    PRIORITY_A_RED_3,
-    PRIORITY_B_YELLOW_3,
-    PRIORITY_C_GREEN_3,
-} from "../utilities/constants";
+import { issue, PRIORITY_A, PRIORITY_B, PRIORITY_C} from "../utilities/constants";
 import { initialState } from "../redux/initialState";
 import { dateFormat3 } from "../utilities/utilities";
 
@@ -33,35 +22,92 @@ const customStyles = makeStyles({
     table: { maxHeight: "50vh" },
 });
 
-const filterPriorities = (issue, priorityASelected, priorityBSelected, priorityCSelected) => {
-    switch (issue.priority) {
+const filterBugsFeatures = (item, selections) => {
+    if (selections.includes(item.issueType)){
+        return true;
+    } else {
+        return false;
+    }
+    //for selection in selections
+    // if the item.issueType is not in selections
+    //  then remove it
+    //if selections is empty
+    // return false
+};
+
+
+
+const filterPriorities = (item, priorityASelected, priorityBSelected, priorityCSelected) => {
+    switch (item.priority) {
         case PRIORITY_A:
             if (priorityASelected) {
                 return true;
             }
-            // eslint-disable-next-line
             break;
         case PRIORITY_B:
             if (priorityBSelected) {
                 return true;
             }
-            // eslint-disable-next-line
             break;
         case PRIORITY_C:
             if (priorityCSelected) {
                 return true;
             }
-            // eslint-disable-next-line
             break;
         default:
             return false;
     }
 };
 
-const IssueTable = ({
+
+// const filterIssues = (item) => {
+    // switch(item)
+// }
+
+let IssueRow = (item) => {
+
+                <TableRow
+                    className="issueRow"
+                    onClick={() => rowClick(item, history)}
+                    onMouseEnter={() => toggleHover(item)}
+                    onMouseLeave={() => toggleHover}
+                    key={index}>
+{/* move to styling to makestyles */}
+                    <TableCell
+                        style={
+                            item.issueType === issue.bug
+                                ? { backgroundColor: "rgba(0,0,255, 0.3)"}
+                                : { backgroundColor: "rgba(128,0,128, 0.3)"}}>
+                        {item.name}
+                    </TableCell>
+
+                    <TableCell
+                        style={
+                            item.priority === PRIORITY_A
+                                ? { backgroundColor: "rgba(255,0,0,0.3)"}
+                                : item.priority === PRIORITY_B
+                                    ? { backgroundColor: "rgba(255,255,0,0.3)"}
+                                    : { backgroundColor: "rgba(0,128,0,0.3)"}}>
+                        {item.priority}
+                    </TableCell>
+
+                    <TableCell>
+                        {item.dates === undefined ? null : dateFormat3(item.dates.opened)}
+                    </TableCell>
+
+                    <TableCell>
+                        {item.people === undefined ? null : item.people.opened}
+                    </TableCell>
+                </TableRow>
+
+}
+
+
+let IssueTable = ({
     rowClick,
     issues,
     issueType,
+    issueSelection,
     priorityASelected,
     priorityBSelected,
     priorityCSelected
@@ -69,48 +115,56 @@ const IssueTable = ({
 
     let history = useHistory();
 
-    const filteredIssues = issues.filter(issue =>
-        filterPriorities(issue, priorityASelected, priorityBSelected, priorityCSelected) === true);
+    //filter issues based on bug or feature
+    let filteredIssues = issues.filter(item => filterBugsFeatures(item, issueSelection) === true);
+
+    // then filter on pirority
+    // filteredIssues = issues.filter(item =>
+    filteredIssues = filteredIssues.filter(item =>
+        filterPriorities(item, priorityASelected, priorityBSelected, priorityCSelected) === true);
+    
+
+    let toggleHover = (item) => {
+        console.log("hovering...", item);
+    }
 
     const styles = customStyles();
+
     const Rows = () => {
         if (filteredIssues !== undefined) {
-            return filteredIssues.map((issue, index) => (
+            return filteredIssues.map((item, index) => (
 
                 <TableRow
                     className="issueRow"
-                    onClick={() => rowClick(issue, history)}
-                    key={index}
-                >
+                    onClick={() => rowClick(item, history)}
+                    onMouseEnter={() => toggleHover(item)}
+                    onMouseLeave={() => toggleHover}
+                    key={index}>
                     <TableCell
                         style={
-                            issue.issueType === BUG
-                                ? { backgroundColor: BUG_BLUE_3 }
-                                : { backgroundColor: FEATURE_PURPLE_3 }
-                        }
-                    >
-                        {issue.name}
+                            item.issueType === issue.bug
+                                ? { backgroundColor: "rgba(0,0,255, 0.3)"}
+                                : { backgroundColor: "rgba(128,0,128, 0.3)"}}>
+                        {item.name}
                     </TableCell>
-
                     <TableCell
                         style={
-                            issue.priority === PRIORITY_A
-                                ? { backgroundColor: PRIORITY_A_RED_3 }
-                                : issue.priority === PRIORITY_B
-                                    ? { backgroundColor: PRIORITY_B_YELLOW_3 }
-                                    : { backgroundColor: PRIORITY_C_GREEN_3 }
-                        }>
-                        {issue.priority}
+                            item.priority === PRIORITY_A
+                                ? { backgroundColor: "rgba(255,0,0,0.3)"}
+                                : item.priority === PRIORITY_B
+                                    ? { backgroundColor: "rgba(255,255,0,0.3)"}
+                                    : { backgroundColor: "rgba(0,128,0,0.3)"}}>
+                        {item.priority}
+                    </TableCell>
+                    <TableCell>
+                       {item.dates === undefined ? null : dateFormat3(item.dates.opened)}
                     </TableCell>
 
                     <TableCell>
-                        {issue.dates === undefined ? null : dateFormat3(issue.dates.opened)}
-                    </TableCell>
-
-                    <TableCell>
-                        {issue.people === undefined ? null : issue.people.opened}
+                        {item.people === undefined ? null : item.people.opened}
                     </TableCell>
                 </TableRow>
+
             ));
         } else {
             return null;
@@ -121,13 +175,15 @@ const IssueTable = ({
         <Paper>
             <TableContainer className={styles.table}>
                 <Table stickyHeader>
-
+{/* need to change the  */}
                     <TableHead>
                         <TableRow>
-                            <TableCell>{issueType}</TableCell>
-                            <TableCell>Priority</TableCell>
-                            <TableCell>Date Opened</TableCell>
-                            <TableCell>Opened by</TableCell>
+                            {/* <TableCell>{issueType === issue.bug ? issue.bug : (issue.feature ? issue.feature : "ISSUES")}</TableCell> */}
+                            <TableCell></TableCell>
+                            {/* <TableCell>Priority</TableCell> */}
+                            <TableCell></TableCell>
+                            <TableCell>Opened</TableCell>
+                            <TableCell>By</TableCell>
                         </TableRow>
                     </TableHead>
 
@@ -143,26 +199,27 @@ const IssueTable = ({
 
 //the issues in the body match the props that the IssueTable uses
 //the destructured issues in the argument are what you want to pull from the store
-const mapStateToProps = ({ issues, issueType, priorityASelected, priorityBSelected, priorityCSelected }) => ({
+const mapStateToProps = ({ issues, issueType, issueSelection, priorityASelected, priorityBSelected, priorityCSelected }) => ({
     issues,
     issueType,
+    issueSelection,
     priorityASelected,
     priorityBSelected,
     priorityCSelected,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    rowClick: async (issue, history) => {
-        await dispatch(selectIssue(issue));
+    rowClick: async (item, history) => {
+        await dispatch(selectIssue(item));
         history.push("/full-details");
     },
 });
 
 IssueTable.propTypes = {
-    // issues: PropTypes.any,
     rowClick: PropTypes.func,
     issues: PropTypes.array,
     issueType: PropTypes.string,
+    issueSelection: PropTypes.array,
     priorityASelected: PropTypes.bool,
     priorityBSelected: PropTypes.bool,
     priorityCSelected: PropTypes.bool,

@@ -1,18 +1,19 @@
 import {
   ADD_NEW_ISSUE,
-  BUG,
+  issue,
   CHOOSE_PROJECT,
   CLEAR_ISSUE,
-  FEATURE,
-  ISSUE,
   SELECT_ISSUE,
   SHOW_ISSUE_DESCRIPTION,
   TOGGLE_PRIORITY_A,
   TOGGLE_PRIORITY_B,
   TOGGLE_PRIORITY_C,
+  TOGGLE_FEATURES,
+  TOGGLE_BUGS,
   UPDATE_ISSUES,
 } from "../utilities/constants";
 
+const ISSUE = "ISSUE";
 
 export const addNewIssue = (payload) => {
   return {
@@ -21,9 +22,9 @@ export const addNewIssue = (payload) => {
   };
 };
 
-export const changeToBugs = () => {
+export const toggleBugs = () => {
   return {
-    type: BUG,
+    type: TOGGLE_BUGS,
   };
 };
 
@@ -35,9 +36,9 @@ export const clearIssue = (payload) => {
   };
 };
 
-export const changeToFeatures = () => {
+export const toggleFeatures = () => {
   return {
-    type: FEATURE,
+    type: TOGGLE_FEATURES,
   };
 };
 
@@ -88,9 +89,6 @@ export const togglePriorityC = () => {
     type: TOGGLE_PRIORITY_C,
   }
 }
-
-
-
 
 export const chooseProject = (payload) => {
   return {

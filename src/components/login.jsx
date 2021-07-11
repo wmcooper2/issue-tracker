@@ -3,11 +3,9 @@ import FormGroup from "@material-ui/core/FormGroup";
 import Input from "@material-ui/core/Input";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
-import { LOGIN_URL } from "../utilities/constants";
-
 
 const customStyles = makeStyles({
-    loginScreen: {
+    screen: {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -15,7 +13,7 @@ const customStyles = makeStyles({
         height: "100vh",
     },
 
-    loginForm: {
+    form: {
         display: "flex",
         flexDirection: "column",
         maxWidth: "100mm",
@@ -28,8 +26,8 @@ const customStyles = makeStyles({
 const LogIn = () => {
     const classes = customStyles();
     return (
-        <Box className={classes.loginScreen} fixed="true">
-            <form className={classes.loginForm} action={LOGIN_URL} method="POST">
+        <Box className={classes.screen} fixed="true">
+            <form className={classes.form} action={"/issue-tracker/login"} method="POST">
                 <FormGroup>
                     <Input defaultValue="User Name" variant="outlined"></Input>
                     <Input defaultValue="Password" variant="outlined"></Input>
@@ -40,4 +38,21 @@ const LogIn = () => {
     );
 };
 
-export default LogIn;
+const Register = () => {
+    const classes = customStyles();
+    return (
+        <Box className={classes.screen} fixed="true">
+            <form className={classes.form} action={"/issue-tracker/login"} method="POST">
+                <FormGroup>
+                    <Input defaultValue="User Name" variant="outlined"></Input>
+                    <Input defaultValue="Password" variant="outlined"></Input>
+                </FormGroup>
+                <Input type="submit" value="Register">
+                    Register
+                </Input>
+            </form>
+        </Box>
+    );
+};
+
+export default {LogIn, Register};

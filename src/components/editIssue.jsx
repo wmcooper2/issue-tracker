@@ -15,7 +15,9 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
-import { BUG, FEATURE, EDIT_ISSUE_URL } from "../utilities/constants";
+// import { BUG, FEATURE} from "../utilities/constants";
+import { issue } from "../utilities/constants";
+
 import { ISSUES_URL } from "../utilities/constants";
 import { PRIORITY_A, PRIORITY_B, PRIORITY_C } from "../utilities/constants";
 
@@ -85,7 +87,7 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
     const [stateDescription, changeDescription] = useState(description);
     const [stateVersion, changeVersion] = useState(version);
     const [stateID, changeID] = useState(id);
-    const [stateIssueType, changeIssueType] = useState(BUG);
+    const [stateIssueType, changeIssueType] = useState(issue.bug);
     const [statePriority, changePriority] = useState(PRIORITY_A);
     const [stateClosed, changeClosed] = useState(false);
 
@@ -127,7 +129,7 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
 
     async function handleFormSubmit(event) {
         event.preventDefault();
-        await fetch(EDIT_ISSUE_URL, {
+        await fetch("/issue-tracker/edit-issue", {
             method: "POST",
             body: JSON.stringify({
                 issueName: stateName,
@@ -256,18 +258,18 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                                 >
 
                                     <FormControlLabel
-                                        value={BUG}
+                                        value={issue.bug}
                                         control={
                                             issue === "NONE" ? (
                                                 <Radio color="default" />
                                             ) : (
                                                     <Radio
                                                         color="default"
-                                                        checked={issue.issueType === BUG ? true : false}
+                                                        checked={issue.issueType === issue.bug ? true : false}
                                                     />
                                                 )
                                         }
-                                        label={BUG}
+                                        label={issue.bug}
                                         labelPlacement="bottom"
                                         className={styles.bug}
                                     ></FormControlLabel>

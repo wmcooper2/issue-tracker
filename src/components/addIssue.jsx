@@ -16,7 +16,8 @@ import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/styles";
-import { BUG, FEATURE, ADD_ISSUE_URL } from "../utilities/constants";
+// import { BUG, FEATURE} from "../utilities/constants";
+import { issue } from "../utilities/constants";
 import { PRIORITY_A, PRIORITY_B, PRIORITY_C } from "../utilities/constants";
 import { Typography } from "@material-ui/core";
 // import { updateIssues } from "../redux/actions";
@@ -81,7 +82,7 @@ const AddIssue = ({ issue, issueType, project }) => {
     const [stateDescription, changeDescription] = useState(description);
     const [stateVersion, changeVersion] = useState(version);
     const [stateID, changeID] = useState(id);
-    const [stateIssueType, changeIssueType] = useState(BUG);
+    const [stateIssueType, changeIssueType] = useState(issue.bug);
     const [statePriority, changePriority] = useState(PRIORITY_A);
 
     const changeState = (event) => {
@@ -110,7 +111,7 @@ const AddIssue = ({ issue, issueType, project }) => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        fetch(ADD_ISSUE_URL, {
+        fetch("/issue-tracker/add-issue", {
             method: "POST",
             body: JSON.stringify({
                 issueName: stateName,
@@ -227,12 +228,12 @@ const AddIssue = ({ issue, issueType, project }) => {
                                 >
 
                                     <FormControlLabel
-                                        value={BUG}
+                                        value={issue.bug}
                                         control={
                                             issue === "NONE" ? (<Radio color="default" />) :
-                                                (<Radio color="default" checked={issue.issueType === BUG ? true : false} />)
+                                                (<Radio color="default" checked={issue.issueType === issue.bug ? true : false} />)
                                         }
-                                        label={BUG}
+                                        label={issue.bug}
                                         labelPlacement="bottom"
                                         className={styles.bug}
                                     ></FormControlLabel>
@@ -259,8 +260,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                                     aria-label="priority"
                                     name="priority"
                                     defaultValue={statePriority}
-                                    onChange={changeState}
-                                >
+                                    onChange={changeState}>
 
                                     <FormControlLabel
                                         value={PRIORITY_A}

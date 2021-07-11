@@ -2,14 +2,11 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { changeToFeatures } from "../redux/actions";
-import { FEATURE_GRADIENT, FEATURES_URL, FEATURES_ENDPOINT } from "../utilities/constants";
-import { updateIssues } from "../redux/actions";
+import { toggleFeatures } from "../redux/actions";
 
 const customStyles = makeStyles({
-    featureButton: { background: FEATURE_GRADIENT },
+    featureButton: { background: "linear-gradient(300deg, rgba(128,0,128,0.6) 0%, rgba(128,0,128,0.9) 100%)"},
     linkStyle: {
         border: "none",
         outline: "none",
@@ -23,14 +20,21 @@ const customStyles = makeStyles({
 const FeatureButton = ({ featureClick, project }) => {
     const classes = customStyles();
     return (
-        <Button className={classes.featureButton}>
+        <Button className={classes.featureButton}
+                // to={"/features"}
+                onClick={() => featureClick(project)}>
+                Feature
+
+{/* 
+
             <Link
-                to={FEATURES_ENDPOINT}
+                to={"/features"}
                 className={classes.linkStyle}
-                onClick={() => featureClick(project)}
-            >
+                onClick={() => featureClick(project)}>
                 Feature
             </Link>
+
+*/}
         </Button>
     );
 };
@@ -39,15 +43,22 @@ const mapStateToProps = ({ project }) => ({
     project,
 });
 
+// const mapDispatchToProps = (dispatch) => ({
+    // featureClick: (project) => {
+        // dispatch(toggleFeatures());
+        // fetch(`${"/issue-tracker/features"}/${project}`)
+            // .then((response) => response.json())
+            // .then((results) => dispatch(updateIssues(results)))
+            // .catch((error) => console.error(error));
+    // },
+// });
+
 const mapDispatchToProps = (dispatch) => ({
     featureClick: (project) => {
-        dispatch(changeToFeatures());
-        fetch(`${FEATURES_URL}/${project}`)
-            .then((response) => response.json())
-            .then((results) => dispatch(updateIssues(results)))
-            .catch((error) => console.error(error));
+        dispatch(toggleFeatures());
     },
 });
+
 
 FeatureButton.propTypes = {
     project: PropTypes.string,

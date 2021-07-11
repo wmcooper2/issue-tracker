@@ -4,13 +4,14 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { changeToBugs } from "../redux/actions";
-import { BUG_GRADIENT, BUGS_URL, BUGS_ENDPOINT } from "../utilities/constants";
+import { toggleBugs } from "../redux/actions";
+// import { BUG_GRADIENT, BUGS_URL, BUGS_ENDPOINT } from "../utilities/constants";
+// import { BUGS_URL, BUGS_ENDPOINT } from "../utilities/constants";
+// import { BUGS_ENDPOINT } from "../utilities/constants";
 import { updateIssues } from "../redux/actions";
-
-
+// bugButton: { background: BUG_GRADIENT },
 const customStyles = makeStyles({
-    bugButton: { background: BUG_GRADIENT },
+    bugButton: { background: "linear-gradient(300deg, rgba(0,0,255,0.6) 0%, rgba(0,0,255,0.9) 100%)"},
     linkStyle: {
         border: "none",
         outline: "none",
@@ -21,12 +22,13 @@ const customStyles = makeStyles({
     },
 });
 
+// to={BUGS_ENDPOINT}
 const BugButton = ({ bugClick, project }) => {
     const classes = customStyles();
     return (
         <Button className={classes.bugButton}>
             <Link
-                to={BUGS_ENDPOINT}
+                // to={"/bugs"}
                 className={classes.linkStyle}
                 onClick={() => bugClick(project)}
             >
@@ -40,15 +42,24 @@ const mapStateToProps = ({ project }) => ({
     project,
 });
 
+// fetch(`${BUGS_URL}/${project}`)
+// const mapDispatchToProps = (dispatch) => ({
+    // bugClick: (project) => {
+        // dispatch(toggleBugs());
+        // fetch(`${"/issue-tracker/bugs"}/${project}`)
+            // .then((response) => response.json())
+            // .then((results) => dispatch(updateIssues(results)))
+            // .catch((error) => console.error(error));
+    // },
+// });
+
+// fetch(`${BUGS_URL}/${project}`)
 const mapDispatchToProps = (dispatch) => ({
     bugClick: (project) => {
-        dispatch(changeToBugs());
-        fetch(`${BUGS_URL}/${project}`)
-            .then((response) => response.json())
-            .then((results) => dispatch(updateIssues(results)))
-            .catch((error) => console.error(error));
+        dispatch(toggleBugs());
     },
 });
+
 
 BugButton.propTypes = {
     bugClick: PropTypes.func,

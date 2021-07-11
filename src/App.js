@@ -19,8 +19,8 @@ import { updateIssues } from "./redux/actions";
 import { reducer } from "./redux/reducers";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import PriorityBtns from "./components/filterButtons";
-import { ADD_ISSUE_ENDPOINT, EDIT_ISSUE_ENDPOINT, FULL_DETAILS, ISSUES_URL, LOGIN_ENDPOINT } from "./utilities/constants";
+import PriorityBtns from "./components/priorityButtons";
+import { ADD_ISSUE_ENDPOINT, EDIT_ISSUE_ENDPOINT, ISSUES_URL } from "./utilities/constants";
 
 const store = createStore(
     reducer,
@@ -41,7 +41,6 @@ class App extends React.Component {
 
     async loadIssues() {
         const project = store.getState().project;
-        console.log("App, loadIssues, project:", project);
         await fetch(`${ISSUES_URL}/${project}`)
             .then((response) => response.json())
             .then((result) => {
@@ -60,8 +59,7 @@ class App extends React.Component {
                         <AppHeader></AppHeader>
                         <Box
                             component="div"
-                            className={{ display: "flex", flexDirection: "column" }}
-                        >
+                            className={{ display: "flex", flexDirection: "column" }}>
                             <Switch>
                                 <Route path={ADD_ISSUE_ENDPOINT}>
                                     <AddIssue></AddIssue>
@@ -71,14 +69,15 @@ class App extends React.Component {
                                     <EditIssue></EditIssue>
                                 </Route>
 
-                                <Route path={FULL_DETAILS}>
+                                <Route path={"/full-details"}>
                                     <FullDetails></FullDetails>
                                 </Route>
 
-                                <Route path={LOGIN_ENDPOINT}>
+                                <Route path={"/login"}>
                                     <Login></Login>
                                 </Route>
 
+{/* move filter buttons inside the table component */}
                                 <Route path="*">
                                     {/* Filter-by button group */}
                                     <ButtonGroup>
@@ -96,7 +95,7 @@ class App extends React.Component {
                         </Box>
                     </Box>
                 </HashRouter>
-            </Provider >
+            </Provider>
         );
     }
 }

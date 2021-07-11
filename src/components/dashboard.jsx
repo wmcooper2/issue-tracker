@@ -1,7 +1,5 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-// import IssueDates from "./issueDates";
-// import IssuePeople from "./issuePeople";
 import IssueTable from "./issueTable";
 import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
