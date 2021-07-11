@@ -16,12 +16,9 @@ import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/styles";
-// import { BUG, FEATURE} from "../utilities/constants";
-import { issue } from "../utilities/constants";
+// import { issue } from "../utilities/constants";
 import { PRIORITY_A, PRIORITY_B, PRIORITY_C } from "../utilities/constants";
 import { Typography } from "@material-ui/core";
-// import { updateIssues } from "../redux/actions";
-// make the fetch to get issues a function in the utilities module, then I can call it after the history.push() method? OR, update the add-issues endpoint to return a new issue list for the given project which will trigger an update on the Dashboard?
 
 const customStyles = makeStyles({
     bugFeatureBox: { display: "flex" },
@@ -239,12 +236,12 @@ const AddIssue = ({ issue, issueType, project }) => {
                                     ></FormControlLabel>
 
                                     <FormControlLabel
-                                        value={FEATURE}
+                                        value={issue.feature}
                                         control={
                                             issue === "NONE" ? (<Radio color="default" />) :
-                                                (<Radio color="default" checked={issue.issueType === FEATURE ? true : false} />)
+                                                (<Radio color="default" checked={issue.issueType === issue.feature ? true : false} />)
                                         }
-                                        label={FEATURE}
+                                        label={issue.feature}
                                         labelPlacement="bottom"
                                         className={styles.feature}
                                     ></FormControlLabel>

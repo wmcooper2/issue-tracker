@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 
 import Paper from "@material-ui/core/Paper";
@@ -28,14 +28,7 @@ const filterBugsFeatures = (item, selections) => {
     } else {
         return false;
     }
-    //for selection in selections
-    // if the item.issueType is not in selections
-    //  then remove it
-    //if selections is empty
-    // return false
 };
-
-
 
 const filterPriorities = (item, priorityASelected, priorityBSelected, priorityCSelected) => {
     switch (item.priority) {
@@ -59,48 +52,42 @@ const filterPriorities = (item, priorityASelected, priorityBSelected, priorityCS
     }
 };
 
-
-// const filterIssues = (item) => {
-    // switch(item)
-// }
-
-let IssueRow = (item) => {
-
-                <TableRow
-                    className="issueRow"
-                    onClick={() => rowClick(item, history)}
-                    onMouseEnter={() => toggleHover(item)}
-                    onMouseLeave={() => toggleHover}
-                    key={index}>
-{/* move to styling to makestyles */}
-                    <TableCell
-                        style={
-                            item.issueType === issue.bug
-                                ? { backgroundColor: "rgba(0,0,255, 0.3)"}
-                                : { backgroundColor: "rgba(128,0,128, 0.3)"}}>
-                        {item.name}
-                    </TableCell>
-
-                    <TableCell
-                        style={
-                            item.priority === PRIORITY_A
-                                ? { backgroundColor: "rgba(255,0,0,0.3)"}
-                                : item.priority === PRIORITY_B
-                                    ? { backgroundColor: "rgba(255,255,0,0.3)"}
-                                    : { backgroundColor: "rgba(0,128,0,0.3)"}}>
-                        {item.priority}
-                    </TableCell>
-
-                    <TableCell>
-                        {item.dates === undefined ? null : dateFormat3(item.dates.opened)}
-                    </TableCell>
-
-                    <TableCell>
-                        {item.people === undefined ? null : item.people.opened}
-                    </TableCell>
-                </TableRow>
-
-}
+const Rows = ({items, rowClick, history}) => {
+    if (items !== undefined) {
+        return items.map((item, index) => (
+            <TableRow
+                className="issueRow"
+                onClick={() => rowClick(item, history)}
+                key={index}
+                hover>
+                <TableCell
+                    style={
+                        item.issueType === issue.bug
+                            ? { backgroundColor: "rgba(0,0,255, 0.3)"}
+                            : { backgroundColor: "rgba(128,0,128, 0.3)"}}>
+                    {item.name}
+                </TableCell>
+                <TableCell
+                    style={
+                        item.priority === PRIORITY_A
+                            ? { backgroundColor: "rgba(255,0,0,0.3)"}
+                            : item.priority === PRIORITY_B
+                                ? { backgroundColor: "rgba(255,255,0,0.3)"}
+                                : { backgroundColor: "rgba(0,128,0,0.3)"}}>
+                    {item.priority}
+                </TableCell>
+                <TableCell>
+                    {item.dates === undefined ? null : dateFormat3(item.dates.opened)}
+                </TableCell>
+                <TableCell>
+                    {item.people === undefined ? null : item.people.opened}
+                </TableCell>
+            </TableRow>
+        ));
+    } else {
+        return null;
+    }
+};
 
 
 let IssueTable = ({
@@ -114,66 +101,13 @@ let IssueTable = ({
 }) => {
 
     let history = useHistory();
-
-    //filter issues based on bug or feature
     let filteredIssues = issues.filter(item => filterBugsFeatures(item, issueSelection) === true);
-
-    // then filter on pirority
-    // filteredIssues = issues.filter(item =>
     filteredIssues = filteredIssues.filter(item =>
         filterPriorities(item, priorityASelected, priorityBSelected, priorityCSelected) === true);
-    
-
-    let toggleHover = (item) => {
-        console.log("hovering...", item);
-    }
-
-    const styles = customStyles();
-
-    const Rows = () => {
-        if (filteredIssues !== undefined) {
-            return filteredIssues.map((item, index) => (
-
-                <TableRow
-                    className="issueRow"
-                    onClick={() => rowClick(item, history)}
-                    onMouseEnter={() => toggleHover(item)}
-                    onMouseLeave={() => toggleHover}
-                    key={index}>
-                    <TableCell
-                        style={
-                            item.issueType === issue.bug
-                                ? { backgroundColor: "rgba(0,0,255, 0.3)"}
-                                : { backgroundColor: "rgba(128,0,128, 0.3)"}}>
-                        {item.name}
-                    </TableCell>
-                    <TableCell
-                        style={
-                            item.priority === PRIORITY_A
-                                ? { backgroundColor: "rgba(255,0,0,0.3)"}
-                                : item.priority === PRIORITY_B
-                                    ? { backgroundColor: "rgba(255,255,0,0.3)"}
-                                    : { backgroundColor: "rgba(0,128,0,0.3)"}}>
-                        {item.priority}
-                    </TableCell>
-                    <TableCell>
-                       {item.dates === undefined ? null : dateFormat3(item.dates.opened)}
-                    </TableCell>
-
-                    <TableCell>
-                        {item.people === undefined ? null : item.people.opened}
-                    </TableCell>
-                </TableRow>
-
-            ));
-        } else {
-            return null;
-        }
-    };
 
     return (
         <Paper>
-            <TableContainer className={styles.table}>
+            <TableContainer className={customStyles.table}>
                 <Table stickyHeader>
 {/* need to change the  */}
                     <TableHead>
@@ -188,7 +122,7 @@ let IssueTable = ({
                     </TableHead>
 
                     <TableBody>
-                        <Rows></Rows>
+                        <Rows items={filteredIssues} rowClick={rowClick} history={history}></Rows>
                     </TableBody>
 
                 </Table>

@@ -15,9 +15,6 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
-// import { BUG, FEATURE} from "../utilities/constants";
-import { issue } from "../utilities/constants";
-
 import { ISSUES_URL } from "../utilities/constants";
 import { PRIORITY_A, PRIORITY_B, PRIORITY_C } from "../utilities/constants";
 
@@ -275,18 +272,18 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                                     ></FormControlLabel>
 
                                     <FormControlLabel
-                                        value={FEATURE}
+                                        value={issue.feature}
                                         control={
                                             issue === "NONE" ? (
                                                 <Radio color="default" />
                                             ) : (
                                                     <Radio
                                                         color="default"
-                                                        checked={issue.issueType === FEATURE ? true : false}
+                                                        checked={issue.issueType === issue.feature ? true : false}
                                                     />
                                                 )
                                         }
-                                        label={FEATURE}
+                                        label={issue.feature}
                                         labelPlacement="bottom"
                                         className={styles.feature}
                                     ></FormControlLabel>
