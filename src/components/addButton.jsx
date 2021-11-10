@@ -14,7 +14,7 @@ const AddButton = ({ addBtnClick, issueType }) => {
     const classes = customStyles();
     
     return (
-        <Link to={ADD_ISSUE_ENDPOINT} class={classes.addNew}onClick={() => addBtnClick(issueType)}>
+        <Link to={ADD_ISSUE_ENDPOINT} className={classes.addNew}onClick={() => addBtnClick(issueType)}>
             <Button>
             {/* <Fab size="small" aria-label="add"> */}
                 <AddIcon />

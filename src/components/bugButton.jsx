@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { toggleBugs } from "../redux/actions";
 // import { BUG_GRADIENT, BUGS_URL, BUGS_ENDPOINT } from "../utilities/constants";
@@ -11,8 +11,8 @@ import { toggleBugs } from "../redux/actions";
 import { updateIssues } from "../redux/actions";
 // bugButton: { background: BUG_GRADIENT },
 const customStyles = makeStyles({
-    bugButton: { background: "linear-gradient(300deg, rgba(0,0,255,0.6) 0%, rgba(0,0,255,0.9) 100%)"},
     linkStyle: {
+        background: "linear-gradient(300deg, rgba(0,0,255,0.6) 0%, rgba(0,0,255,0.9) 100%)",
         border: "none",
         outline: "none",
         backgroundColor: "transparent",
@@ -26,17 +26,14 @@ const customStyles = makeStyles({
 const BugButton = ({ bugClick, project }) => {
     const classes = customStyles();
     return (
-        <Button className={classes.bugButton}>
-            <Link
-                // to={"/bugs"}
-                className={classes.linkStyle}
+        <Button className={classes.linkStyle}
                 onClick={() => bugClick(project)}
-            >
+        >
                 Bug
-            </Link>
         </Button>
     );
 };
+
 
 const mapStateToProps = ({ project }) => ({
     project,

@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
@@ -16,9 +17,10 @@ import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/styles";
-// import { issue } from "../utilities/constants";
-import { PRIORITY_A, PRIORITY_B, PRIORITY_C } from "../utilities/constants";
 import { Typography } from "@material-ui/core";
+// import { issue } from "../utilities/constants";
+
+import { PRIORITY_A, PRIORITY_B, PRIORITY_C } from "../utilities/constants";
 
 const customStyles = makeStyles({
     bugFeatureBox: { display: "flex" },
@@ -68,8 +70,7 @@ const AddIssue = ({ issue, issueType, project }) => {
     const name = issue.name !== undefined ? issue.name : undefined;
     const projectName = project !== undefined ? project : undefined;
     const category = issue.category !== undefined ? issue.category : undefined;
-    const description =
-        issue.description !== undefined ? issue.description : undefined;
+    const description = issue.description !== undefined ? issue.description : undefined;
     const version = issue.version !== undefined ? issue.version : undefined;
     const id = issue._id !== undefined ? issue._id : undefined;
 
@@ -86,29 +87,39 @@ const AddIssue = ({ issue, issueType, project }) => {
         const e = event.target.name;
         const v = event.target.value;
         switch (e) {
-        case "issueName": changeName(v);
+        case "issueName": 
+            changeName(v);
             break;
-        case "projectName": changeProjectName(v);
+        case "projectName": 
+            changeProjectName(v);
             break;
-        case "category": changeCategory(v);
+        case "category": 
+            changeCategory(v);
             break;
-        case "description": changeDescription(v);
+        case "description": 
+            changeDescription(v);
             break;
-        case "version": changeVersion(v);
+        case "version": 
+            changeVersion(v);
             break;
-        case "issueid": changeID(v);
+        case "issueid": 
+            changeID(v);
             break;
-        case "issueType": changeIssueType(v);
+        case "issueType": 
+            changeIssueType(v);
             break;
-        case "priority": changePriority(v);
+        case "priority": 
+            changePriority(v);
             break;
-        default: return;
+        default: 
+            return;
         }
     };
 
-    const handleFormSubmit = (event) => {
+    async function handleFormSubmit(event) {
+    // const handleFormSubmit = (event) => {
         event.preventDefault();
-        fetch("/issue-tracker/add-issue", {
+        await fetch("/issue-tracker/add-issue", {
             method: "POST",
             body: JSON.stringify({
                 issueName: stateName,
@@ -129,6 +140,7 @@ const AddIssue = ({ issue, issueType, project }) => {
         history.push("/");
     };
 
+// Compare to editIssue.jsx
     return (
         < Box className={styles.issueForm} >
             <form onSubmit={handleFormSubmit} >
@@ -143,7 +155,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                             variant="outlined"
                             name="issueName"
                             className={styles.inputStyle}
-                            defaultValue={stateName}
+                            value={stateName}
                             inputProps={{
                                 maxLength: 200,
                             }}
@@ -158,7 +170,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                             variant="outlined"
                             name="projectName"
                             className={styles.inputStyle}
-                            defaultValue={stateProjectName}
+                            value={stateProjectName}
                             inputProps={{
                                 maxLength: 200,
                             }}
@@ -173,7 +185,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                             variant="outlined"
                             name="category"
                             className={styles.inputStyle}
-                            defaultValue={stateCategory}
+                            value={stateCategory}
                             inputProps={{
                                 maxLength: 50,
                             }}
@@ -188,7 +200,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                             readOnly={true}
                             name="version"
                             className={styles.inputStyle}
-                            defaultValue={stateVersion}
+                            value={stateVersion}
                             inputProps={{
                                 maxLength: 10,
                             }}
@@ -201,7 +213,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                         ID:
                         <Input
                             readOnly={true}
-                            defaultValue={stateID}
+                            value={stateID}
                             name="issueid"
                             className={styles.inputStyle}
                             inputProps={{
@@ -212,6 +224,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                         ></Input>
                     </Box>
 
+                    {/* Bug Feature Filters */}
                     <Box className={styles.bugFeatureBox}>
                         <Box component="div">
                             Type:
@@ -220,7 +233,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                                     row
                                     aria-label="issueType"
                                     name="issueType"
-                                    defaultValue={stateIssueType}
+                                    value={stateIssueType}
                                     onChange={changeState}
                                 >
 
@@ -230,7 +243,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                                             issue === "NONE" ? (<Radio color="default" />) :
                                                 (<Radio color="default" checked={issue.issueType === issue.bug ? true : false} />)
                                         }
-                                        label={issue.bug}
+                                        label="bug"
                                         labelPlacement="bottom"
                                         className={styles.bug}
                                     ></FormControlLabel>
@@ -241,7 +254,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                                             issue === "NONE" ? (<Radio color="default" />) :
                                                 (<Radio color="default" checked={issue.issueType === issue.feature ? true : false} />)
                                         }
-                                        label={issue.feature}
+                                        label="feature"
                                         labelPlacement="bottom"
                                         className={styles.feature}
                                     ></FormControlLabel>
@@ -249,6 +262,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                             </FormControl>
                         </Box>
 
+                        {/* Priority Filters */}
                         <Box component="div">
                             Priority:
                             <FormControl component="fieldset">
@@ -256,7 +270,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                                     row
                                     aria-label="priority"
                                     name="priority"
-                                    defaultValue={statePriority}
+                                    value={statePriority}
                                     onChange={changeState}>
 
                                     <FormControlLabel
@@ -269,7 +283,6 @@ const AddIssue = ({ issue, issueType, project }) => {
                                         labelPlacement="bottom"
                                         className={styles.priorityA}
                                     ></FormControlLabel>
-
 
                                     <FormControlLabel
                                         value={PRIORITY_B}
@@ -306,7 +319,7 @@ const AddIssue = ({ issue, issueType, project }) => {
                         <TextareaAutosize
                             name="description"
                             className={styles.textAreaStyle}
-                            defaultValue={stateDescription}
+                            value={stateDescription}
                             inputProps={{
                                 maxLength: 1000,
                             }}

@@ -15,13 +15,12 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
-import { ISSUES_URL } from "../utilities/constants";
-import { PRIORITY_A, PRIORITY_B, PRIORITY_C } from "../utilities/constants";
-
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 import { updateIssues } from "../redux/actions";
+import { ISSUES_URL } from "../utilities/constants";
+import { PRIORITY_A, PRIORITY_B, PRIORITY_C } from "../utilities/constants";
 
 const customStyles = makeStyles({
     bugFeatureBox: { display: "flex" },
@@ -69,11 +68,9 @@ const customStyles = makeStyles({
 const EditIssue = ({ issue, issueType, project, dispatch }) => {
     const styles = customStyles();
     let history = useHistory();
-    // const { issue, issueType, project } = props;
     const name = issue.name !== undefined ? issue.name : undefined;
     const projectName = project !== undefined ? project : undefined;
-    const description =
-        issue.description !== undefined ? issue.description : undefined;
+    const description = issue.description !== undefined ? issue.description : undefined;
     const category = issue.category !== undefined ? issue.category : undefined;
     const version = issue.version !== undefined ? issue.version : undefined;
     const id = issue._id !== undefined ? issue._id : undefined;
@@ -88,9 +85,16 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
     const [statePriority, changePriority] = useState(PRIORITY_A);
     const [stateClosed, changeClosed] = useState(false);
 
+
+    //debug
+    console.log("issueType:", issueType);
+    console.table("issue:", issue);
+
     const changeState = (event) => {
         const e = event.target.name;
         const v = event.target.value;
+        console.log("new value:", v);
+        console.log("new name:", e);
         switch (e) {
             case "issueName":
                 changeName(v);
@@ -154,7 +158,6 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                     })
             )
             .catch(error => console.error(error));
-
         history.push("/");
     }
 
@@ -172,8 +175,8 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                             variant="outlined"
                             name="issueName"
                             className={styles.inputStyle}
-                            defaultValue={stateName}
-                            inputProps={{
+                            value={stateName}
+                            inputprops={{
                                 maxLength: 200,
                             }}
                             onChange={changeState}
@@ -187,8 +190,8 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                             variant="outlined"
                             name="projectName"
                             className={styles.inputStyle}
-                            defaultValue={stateProjectName}
-                            inputProps={{
+                            value={stateProjectName}
+                            inputprops={{
                                 maxLength: 200,
                             }}
                             onChange={changeState}
@@ -202,8 +205,8 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                             variant="outlined"
                             name="category"
                             className={styles.inputStyle}
-                            defaultValue={stateCategory}
-                            inputProps={{
+                            value={stateCategory}
+                            inputprops={{
                                 maxLength: 50,
                             }}
                             onChange={changeState}
@@ -217,8 +220,8 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                             readOnly={true}
                             name="version"
                             className={styles.inputStyle}
-                            defaultValue={stateVersion}
-                            inputProps={{
+                            value={stateVersion}
+                            inputprops={{
                                 maxLength: 10,
                             }}
                             onChange={changeState}
@@ -230,10 +233,10 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                         ID:
                         <Input
                             readOnly={true}
-                            defaultValue={stateID}
+                            value={stateID}
                             name="issueid"
                             className={styles.inputStyle}
-                            inputProps={{
+                            inputprops={{
                                 maxLength: 30,
                             }}
                             onChange={changeState}
@@ -241,32 +244,26 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                         ></Input>
                     </Box>
 
+                    {/* Bug Feature Filters */}
                     <Box className={styles.bugFeatureBox}>
                         <Box component="div">
                             Type:
-                            {/* <IssueRadio></IssueRadio> */}
                             <FormControl component="fieldset">
                                 <RadioGroup
                                     row
                                     aria-label="issueType"
                                     name="issueType"
-                                    defaultValue={stateIssueType}
+                                    value={stateIssueType ? stateIssueType : null}
                                     onChange={changeState}
                                 >
 
                                     <FormControlLabel
                                         value={issue.bug}
                                         control={
-                                            issue === "NONE" ? (
-                                                <Radio color="default" />
-                                            ) : (
-                                                    <Radio
-                                                        color="default"
-                                                        checked={issue.issueType === issue.bug ? true : false}
-                                                    />
-                                                )
+                                            issue === "NONE" ? (<Radio color="default" />) :
+                                                (<Radio color="default" checked={issue.issueType === issue.bug ? true : false} />)
                                         }
-                                        label={issue.bug}
+                                        label="bug"
                                         labelPlacement="bottom"
                                         className={styles.bug}
                                     ></FormControlLabel>
@@ -274,65 +271,44 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                                     <FormControlLabel
                                         value={issue.feature}
                                         control={
-                                            issue === "NONE" ? (
-                                                <Radio color="default" />
-                                            ) : (
-                                                    <Radio
-                                                        color="default"
-                                                        checked={issue.issueType === issue.feature ? true : false}
-                                                    />
-                                                )
+                                            issue === "NONE" ? (<Radio color="default" />) : 
+                                                ( <Radio color="default" checked={issue.issueType === issue.feature ? true : false} />)
                                         }
-                                        label={issue.feature}
+                                        label="feature"
                                         labelPlacement="bottom"
                                         className={styles.feature}
                                     ></FormControlLabel>
                                 </RadioGroup>
                             </FormControl>
-
                         </Box>
 
+                        {/* Priority Filters */}
                         <Box component="div">
                             Priority:
-                            {/* <PriorityRadio></PriorityRadio> */}
                             <FormControl component="fieldset">
                                 <RadioGroup
                                     row
                                     aria-label="priority"
                                     name="priority"
-                                    defaultValue={statePriority}
                                     onChange={changeState}
                                 >
 
                                     <FormControlLabel
                                         value={PRIORITY_A}
                                         control={
-                                            issue === "NONE" ? (
-                                                <Radio color="default" />
-                                            ) : (
-                                                    <Radio
-                                                        color="default"
-                                                        checked={issue.priority === PRIORITY_A ? true : false}
-                                                    />
-                                                )
+                                            issue === "NONE" ? (<Radio color="default" />) : 
+                                                (<Radio color="default" checked={issue.priority === PRIORITY_A ? true : false} />)
                                         }
                                         label={PRIORITY_A}
                                         labelPlacement="bottom"
                                         className={styles.priorityA}
                                     ></FormControlLabel>
 
-
                                     <FormControlLabel
                                         value={PRIORITY_B}
                                         control={
-                                            issue === "NONE" ? (
-                                                <Radio color="default" />
-                                            ) : (
-                                                    <Radio
-                                                        color="default"
-                                                        checked={issue.priority === PRIORITY_B ? true : false}
-                                                    />
-                                                )
+                                            issue === "NONE" ? (<Radio color="default" />) : 
+                                                (<Radio color="default" checked={issue.priority === PRIORITY_B ? true : false} />)
                                         }
                                         label={PRIORITY_B}
                                         labelPlacement="bottom"
@@ -342,14 +318,8 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                                     <FormControlLabel
                                         value={PRIORITY_C}
                                         control={
-                                            issue === "NONE" ? (
-                                                <Radio color="default" />
-                                            ) : (
-                                                    <Radio
-                                                        color="default"
-                                                        checked={issue.priority === PRIORITY_C ? true : false}
-                                                    />
-                                                )
+                                            issue === "NONE" ? (<Radio color="default" />) : 
+                                                (<Radio color="default" checked={issue.priority === PRIORITY_C ? true : false} />)
                                         }
                                         label={PRIORITY_C}
                                         labelPlacement="bottom"
@@ -369,8 +339,7 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                         <TextareaAutosize
                             name="description"
                             className={styles.textAreaStyle}
-                            defaultValue={stateDescription}
-                            inputProps={{
+                            inputprops={{
                                 maxLength: 1000,
                             }}
                             onChange={changeState}
@@ -395,9 +364,9 @@ const EditIssue = ({ issue, issueType, project, dispatch }) => {
                         onChange={changeState}
                         control={
                             <Checkbox
-                                color="Secondary"
+                                color="secondary"
                                 checked={stateClosed}
-                                // value={true}
+                                value={true}
                                 name="closeIssue"
                             ></Checkbox>
                         }

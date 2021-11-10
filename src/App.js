@@ -11,14 +11,16 @@ import EditIssue from "./components/editIssue";
 import FeatureButton from "./components/featureButton";
 import FullDetails from "./components/fullDetails";
 import fetch from "isomorphic-fetch";
-import Login from "./components/login";
+// import Login from "./components/login";
 
 import { HashRouter, Switch, Route } from "react-router-dom";
 import { initialState } from "./redux/initialState";
 import { updateIssues } from "./redux/actions";
 import { reducer } from "./redux/reducers";
+// import { connect } from "react-redux";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
 import PriorityBtns from "./components/priorityButtons";
 import { ADD_ISSUE_ENDPOINT, EDIT_ISSUE_ENDPOINT, ISSUES_URL } from "./utilities/constants";
 
@@ -29,6 +31,14 @@ const store = createStore(
     //GOOGLE CHROME, DEVTOOL
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+
+
+const customStyles = makeStyles({
+    header:{
+        display: "flex",
+        flexDirection: "column" ,
+    }
+})
 
 class App extends React.Component {
     componentDidMount() {
@@ -44,9 +54,10 @@ class App extends React.Component {
         await fetch(`${ISSUES_URL}/${project}`)
             .then((response) => response.json())
             .then((result) => {
+                console.log(result);
                 store.dispatch(updateIssues(result));
             })
-            .catch((error) => {
+            .catch(error => {
                 console.error(error);
             });
     }
@@ -56,10 +67,10 @@ class App extends React.Component {
             <Provider store={store} >
                 <HashRouter>
                     <Box>
-                        <AppHeader></AppHeader>
+                        <AppHeader store={store}></AppHeader>
                         <Box
                             component="div"
-                            className={{ display: "flex", flexDirection: "column" }}>
+                            className={customStyles.header}>
                             <Switch>
                                 <Route path={ADD_ISSUE_ENDPOINT}>
                                     <AddIssue></AddIssue>
@@ -73,9 +84,9 @@ class App extends React.Component {
                                     <FullDetails></FullDetails>
                                 </Route>
 
-                                <Route path={"/login"}>
-                                    <Login></Login>
-                                </Route>
+                                {/* <Route path={"/login"}> */}
+                                    {/* <Login></Login> */}
+                                {/* </Route> */}
 
 {/* move filter buttons inside the table component */}
                                 <Route path="*">
@@ -102,3 +113,8 @@ class App extends React.Component {
 
 export default App;
 
+
+// const mapStateToProps = () => {};
+// const mapDispatchToProps = () => {};
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);

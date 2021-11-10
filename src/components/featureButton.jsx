@@ -6,8 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { toggleFeatures } from "../redux/actions";
 
 const customStyles = makeStyles({
-    featureButton: { background: "linear-gradient(300deg, rgba(128,0,128,0.6) 0%, rgba(128,0,128,0.9) 100%)"},
     linkStyle: {
+        background: "linear-gradient(300deg, rgba(128,0,128,0.6) 0%, rgba(128,0,128,0.9) 100%)",
         border: "none",
         outline: "none",
         backgroundColor: "transparent",
@@ -20,21 +20,9 @@ const customStyles = makeStyles({
 const FeatureButton = ({ featureClick, project }) => {
     const classes = customStyles();
     return (
-        <Button className={classes.featureButton}
-                // to={"/features"}
+        <Button className={classes.linkStyle}
                 onClick={() => featureClick(project)}>
                 Feature
-
-{/* 
-
-            <Link
-                to={"/features"}
-                className={classes.linkStyle}
-                onClick={() => featureClick(project)}>
-                Feature
-            </Link>
-
-*/}
         </Button>
     );
 };
@@ -42,16 +30,6 @@ const FeatureButton = ({ featureClick, project }) => {
 const mapStateToProps = ({ project }) => ({
     project,
 });
-
-// const mapDispatchToProps = (dispatch) => ({
-    // featureClick: (project) => {
-        // dispatch(toggleFeatures());
-        // fetch(`${"/issue-tracker/features"}/${project}`)
-            // .then((response) => response.json())
-            // .then((results) => dispatch(updateIssues(results)))
-            // .catch((error) => console.error(error));
-    // },
-// });
 
 const mapDispatchToProps = (dispatch) => ({
     featureClick: (project) => {

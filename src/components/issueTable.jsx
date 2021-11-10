@@ -19,7 +19,17 @@ import { initialState } from "../redux/initialState";
 import { dateFormat3 } from "../utilities/utilities";
 
 const customStyles = makeStyles({
-    table: { maxHeight: "50vh" },
+    table: { 
+        maxHeight: "50vh",
+    },
+    bugBlue: { 
+        backgroundColor: "rgba(0,0,255, 0.3)",
+
+    },
+    featurePurple: {
+        backgroundColor: "rgba(128,0,128, 0.3)",
+    }
+
 });
 
 const filterBugsFeatures = (item, selections) => {
@@ -53,6 +63,7 @@ const filterPriorities = (item, priorityASelected, priorityBSelected, priorityCS
 };
 
 const Rows = ({items, rowClick, history}) => {
+    const styles = customStyles();
     if (items !== undefined) {
         return items.map((item, index) => (
             <TableRow
@@ -61,10 +72,7 @@ const Rows = ({items, rowClick, history}) => {
                 key={index}
                 hover>
                 <TableCell
-                    style={
-                        item.issueType === issue.bug
-                            ? { backgroundColor: "rgba(0,0,255, 0.3)"}
-                            : { backgroundColor: "rgba(128,0,128, 0.3)"}}>
+                    styles={item.issueType === issue.bug ? styles.bugBlue : styles.featurePurple}>
                     {item.name}
                 </TableCell>
                 <TableCell
@@ -109,12 +117,9 @@ let IssueTable = ({
         <Paper>
             <TableContainer className={customStyles.table}>
                 <Table stickyHeader>
-{/* need to change the  */}
                     <TableHead>
                         <TableRow>
-                            {/* <TableCell>{issueType === issue.bug ? issue.bug : (issue.feature ? issue.feature : "ISSUES")}</TableCell> */}
                             <TableCell></TableCell>
-                            {/* <TableCell>Priority</TableCell> */}
                             <TableCell></TableCell>
                             <TableCell>Opened</TableCell>
                             <TableCell>By</TableCell>

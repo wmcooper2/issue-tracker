@@ -9,8 +9,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { PRIORITY_A, PRIORITY_B, PRIORITY_C } from "../utilities/constants";
 
-const customStyles = makeStyles({
-    buttonGroup: { minHeight: "10mm", margin: "1rem" },
+let customStyles = makeStyles({
+    // buttonGroup: { minHeight: "10mm", margin: "1rem" },
+    buttonGroup: { minHeight: "10mm" },
     priorityA: {
         background:
             "linear-gradient(300deg, rgba(255,0,0,0.3) 0%, rgba(255,0,0,0.6) 100%)",
@@ -22,19 +23,24 @@ const customStyles = makeStyles({
         borderRadius: "10%",
     },
     priorityC: {
-        background:
-            "linear-gradient(300deg, rgba(0,128,0,0.3) 0%, rgba(0,128,0,0.6) 100%)",
+        // background:
+            // "linear-gradient(300deg, rgba(0,128,0,0.3) 0%, rgba(0,128,0,0.6) 100%)",
         borderRadius: "10%",
     },
 });
 
-export const PriorityRadio = ({ issue }) => {
-    const classes = customStyles();
+export let PriorityRadio = ({ issue }) => {
+    let classes = customStyles();
     return (
         <FormControl component="fieldset">
-            <RadioGroup row aria-label="priority" name="priority" defaultValue={PRIORITY_A}>
+            {/* <RadioGroup row aria-label="priority" name="priority" defaultValue={issue.priority ? issue.priority: " "} value={issue.priority ? issue.priority : " "}> */}
+            {/* <RadioGroup row aria-label="priority" name="priority" value={issue.priority ? issue.priority : " "}> */}
+            {/* <RadioGroup row aria-label="priority" name="priority"> */}
+            {/* <RadioGroup row aria-label="priority" name="priority"> */}
+
                 <FormControlLabel
                     value={PRIORITY_A}
+                    // value={PRIORITY_A ? PRIORITY_A : " "}
                     control={
                         issue === "NONE" ? (
                             <Radio color="default" />
@@ -50,9 +56,9 @@ export const PriorityRadio = ({ issue }) => {
                     className={classes.priorityA}
                 ></FormControlLabel>
 
-
                 <FormControlLabel
                     value={PRIORITY_B}
+                    // value={PRIORITY_B ? PRIORITY_B : " "}
                     control={
                         issue === "NONE" ? (
                             <Radio color="default" />
@@ -70,6 +76,7 @@ export const PriorityRadio = ({ issue }) => {
 
                 <FormControlLabel
                     value={PRIORITY_C}
+                    // value={PRIORITY_C ? PRIORITY_C : " "}
                     control={
                         issue === "NONE" ? (
                             <Radio color="default" />
@@ -84,16 +91,16 @@ export const PriorityRadio = ({ issue }) => {
                     labelPlacement="bottom"
                     className={classes.priorityC}
                 ></FormControlLabel>
-            </RadioGroup>
+            {/* </RadioGroup> */}
         </FormControl>
     );
 };
 
-const mapStateToProps = ({ issue }) => ({
+let mapStateToProps = ({ issue }) => ({
     issue,
 });
 
-const mapDispatchToProps = () => ({});
+let mapDispatchToProps = () => ({});
 
 PriorityRadio.propTypes = {
     issue: PropTypes.object,
